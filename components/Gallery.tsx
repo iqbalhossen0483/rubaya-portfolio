@@ -54,16 +54,6 @@ export default function Gallery() {
       caption: "Community Engagement",
       className: "md:col-span-1 md:row-span-1 aspect-square md:aspect-auto", // Standard square
     },
-    {
-      src: "/gellery-3.jpeg",
-      caption: "Climate Research",
-      className: "md:col-span-2 md:row-span-1 aspect-[2/1] md:aspect-auto", // Wide landscape
-    },
-    {
-      src: "/gellery-2.jpeg",
-      caption: "Data Collection",
-      className: "md:col-span-1 md:row-span-1 aspect-square md:aspect-auto", // Standard square
-    },
   ];
 
   return (
