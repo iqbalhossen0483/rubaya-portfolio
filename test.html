@@ -1,0 +1,1752 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Rubaya Nasrin Shejuti — Climate & Development Professional
+        </title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* ═══════════════════════════════════════════════
+     DESIGN SYSTEM
+     Theme: Clean Light — Professional Environmental
+     Fonts: Merriweather (headings) + Lato (body)
+     Base size: 18px — generous, reader-friendly
+  ═══════════════════════════════════════════════ */
+
+            :root {
+                /* Backgrounds — gentle light green tonal steps */
+                --bg: #f4f8f5;
+                --bg-alt: #eaf2ec;
+                --bg-mid: #ddeee2;
+                --bg-deep: #cce4d3;
+                --bg-dark: #ddeee2; /* kept for compat — resolves to light mid-green */
+                --bg-dark-2: #cce4d3;
+
+                /* Accent greens */
+                --accent: #1f6b42; /* deeper, accessible on light bg */
+                --accent-soft: #2f8a56;
+                --accent-pale: #b8dfc6;
+                --accent-muted: #5a8a72;
+
+                /* Warm badge detail */
+                --gold: #7a5410;
+                --gold-pale: #f5ead4;
+
+                /* Text — DARK, high-contrast on all light green backgrounds */
+                --text-head: #0e1c14; /* near-black with green tint — max contrast */
+                --text-body: #1a2e22; /* very dark green-black — clear on all bg steps */
+                --text-mid: #2e4a38; /* dark green — still clearly readable */
+                --text-light: #3d5c48; /* medium-dark — for secondary text, still legible */
+                --text-nav: #1a2e22; /* nav links */
+
+                --border: #a8cfb8;
+                --white: #ffffff;
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Lato", sans-serif;
+                font-size: 18px;
+                line-height: 1.8;
+                background: var(--bg);
+                color: var(--text-body);
+                overflow-x: hidden;
+            }
+
+            /* ─── NAV ─── */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.1rem 4rem;
+                background: rgba(246, 248, 246, 0.96);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--border);
+                transition: box-shadow 0.3s ease;
+            }
+            .nav-logo {
+                font-family: "Merriweather", serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: var(--accent);
+                letter-spacing: 0.01em;
+            }
+            .nav-logo span {
+                font-style: italic;
+                font-weight: 300;
+            }
+            .nav-links {
+                display: flex;
+                gap: 2.5rem;
+                list-style: none;
+            }
+            .nav-links a {
+                font-family: "Lato", sans-serif;
+                font-size: 0.85rem;
+                font-weight: 700;
+                letter-spacing: 0.09em;
+                text-transform: uppercase;
+                color: var(--text-mid);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .nav-links a:hover {
+                color: var(--accent);
+            }
+
+            /* ─── HERO ─── */
+            .hero {
+                min-height: 100vh;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero-bg {
+                position: absolute;
+                inset: 0;
+                background: var(--bg);
+            }
+            .hero-bg::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 52vw;
+                height: 100%;
+                background: linear-gradient(
+                    160deg,
+                    #3a7d52 0%,
+                    #4a9060 60%,
+                    #5aa070 100%
+                );
+                clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 22%);
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-16px);
+                }
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 8rem 3rem 4rem 5rem;
+                position: relative;
+                z-index: 2;
+                animation: slideUp 0.9s ease both;
+            }
+
+            .hero-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.7rem;
+                font-family: "Lato", sans-serif;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 1.6rem;
+            }
+            .hero-tag::before {
+                content: "";
+                display: block;
+                width: 30px;
+                height: 2px;
+                background: var(--accent);
+            }
+
+            .hero-name {
+                font-family: "Merriweather", serif;
+                font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+                font-weight: 700;
+                line-height: 1.1;
+                color: var(--text-head);
+                margin-bottom: 0.5rem;
+            }
+            .hero-name em {
+                font-style: italic;
+                font-weight: 300;
+                color: var(--accent);
+                display: block;
+            }
+
+            .hero-title {
+                font-family: "Lato", sans-serif;
+                font-size: 0.9rem;
+                font-weight: 400;
+                letter-spacing: 0.1em;
+                color: var(--text-mid);
+                text-transform: uppercase;
+                margin-bottom: 1.8rem;
+                line-height: 1.9;
+            }
+
+            .hero-desc {
+                font-size: 1.1rem;
+                line-height: 1.85;
+                color: var(--text-mid);
+                max-width: 420px;
+                margin-bottom: 2.5rem;
+            }
+
+            .hero-ctas {
+                display: flex;
+                gap: 1.2rem;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .btn-primary {
+                display: inline-block;
+                padding: 0.9rem 2.2rem;
+                background: var(--accent);
+                color: var(--white);
+                font-family: "Lato", sans-serif;
+                font-size: 0.88rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-decoration: none;
+                text-transform: uppercase;
+                border-radius: 3px;
+                transition:
+                    background 0.25s ease,
+                    transform 0.2s;
+            }
+            .btn-primary:hover {
+                background: var(--accent-soft);
+                transform: translateY(-2px);
+            }
+
+            .btn-secondary {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-family: "Lato", sans-serif;
+                font-size: 0.88rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                color: var(--accent);
+                text-decoration: none;
+                transition: gap 0.2s;
+            }
+            .btn-secondary::after {
+                content: "→";
+            }
+            .btn-secondary:hover {
+                gap: 0.75rem;
+            }
+
+            .hero-visual {
+                position: relative;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 1.1s ease 0.25s both;
+            }
+
+            .hero-photo-frame {
+                position: relative;
+                width: 320px;
+                height: 400px;
+            }
+            .hero-photo-frame img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
+                border-radius: 4px;
+                filter: brightness(0.92) contrast(1.04);
+            }
+            .hero-photo-badge {
+                position: absolute;
+                bottom: -18px;
+                left: -28px;
+                background: var(--gold-pale);
+                border: 2px solid var(--gold);
+                padding: 1rem 1.4rem;
+                border-radius: 3px;
+            }
+            .hero-photo-badge .badge-num {
+                font-family: "Merriweather", serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--gold);
+                line-height: 1;
+            }
+            .hero-photo-badge .badge-text {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                color: var(--text-mid);
+            }
+
+            .hero-stats {
+                position: absolute;
+                right: 50px;
+                bottom: 12%;
+                display: flex;
+                flex-direction: column;
+                gap: 0.9rem;
+            }
+            .stat-item {
+                background: rgba(246, 248, 246, 0.97);
+                padding: 0.8rem 1.2rem;
+                border-left: 3px solid var(--accent);
+                border-radius: 0 3px 3px 0;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            }
+            .stat-num {
+                font-family: "Merriweather", serif;
+                font-size: 1.7rem;
+                font-weight: 700;
+                line-height: 1;
+            }
+            .stat-label {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.09em;
+                text-transform: uppercase;
+                color: var(--text-light);
+            }
+
+            /* ─── SECTION COMMONS ─── */
+            section {
+                padding: 6rem 5rem;
+            }
+
+            .section-tag {
+                font-family: "Lato", sans-serif;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 0.75rem;
+                display: flex;
+                align-items: center;
+                gap: 0.9rem;
+            }
+            .section-tag::after {
+                content: "";
+                display: block;
+                height: 2px;
+                width: 48px;
+                background: var(--accent-pale);
+            }
+
+            .section-title {
+                font-family: "Merriweather", serif;
+                font-size: clamp(1.9rem, 3vw, 2.8rem);
+                font-weight: 700;
+                color: var(--text-head);
+                line-height: 1.2;
+                margin-bottom: 1.1rem;
+            }
+            .section-title em {
+                font-style: italic;
+                font-weight: 300;
+                color: var(--accent);
+            }
+
+            /* ─── ABOUT ─── */
+            .about {
+                background: var(--white);
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5rem;
+                align-items: start;
+            }
+
+            .about-text p {
+                font-size: 1.05rem;
+                line-height: 1.85;
+                color: var(--text-body);
+                margin-bottom: 1.2rem;
+            }
+
+            .expertise-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+                margin-top: 2rem;
+            }
+            .expertise-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding: 1rem 1.1rem;
+                background: var(--bg);
+                border-radius: 4px;
+                border-left: 3px solid var(--accent-pale);
+                transition: border-color 0.2s;
+            }
+            .expertise-item:hover {
+                border-color: var(--accent);
+            }
+            .expertise-icon {
+                width: 34px;
+                height: 34px;
+                background: var(--accent-pale);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+                flex-shrink: 0;
+            }
+            .expertise-label {
+                font-size: 0.9rem;
+                font-weight: 700;
+                color: var(--text-head);
+                line-height: 1.35;
+                margin-top: 0.15rem;
+            }
+
+            .about-quote {
+                background: var(--bg-dark);
+                padding: 2.5rem 2.5rem 2rem;
+                border-radius: 4px;
+                margin-bottom: 1.5rem;
+                position: relative;
+            }
+            .about-quote::before {
+                content: "\201C";
+                font-family: "Merriweather", serif;
+                font-size: 7rem;
+                line-height: 0.6;
+                color: var(--accent-soft);
+                opacity: 0.35;
+                position: absolute;
+                top: 2rem;
+                left: 0.5rem;
+            }
+            .about-quote p {
+                font-family: "Merriweather", serif;
+                font-size: 1.15rem;
+                font-style: italic;
+                font-weight: 300;
+                line-height: 1.75;
+                position: relative;
+                z-index: 1;
+                margin-top: 1.2rem;
+            }
+            .about-quote cite {
+                display: block;
+                margin-top: 1.1rem;
+                font-family: "Lato", sans-serif;
+                font-size: 0.78rem;
+                letter-spacing: 0.08em;
+                font-weight: 700;
+                color: var(--accent-soft);
+                font-style: normal;
+                text-transform: uppercase;
+            }
+
+            /* ─── EXPERIENCE ─── */
+            .experience {
+                background: var(--bg-alt);
+            }
+            .experience-inner {
+                max-width: 860px;
+            }
+
+            .timeline {
+                position: relative;
+                margin-top: 3rem;
+            }
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: var(--border);
+            }
+
+            .timeline-item {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 0 2.2rem;
+                padding-bottom: 2.8rem;
+                position: relative;
+            }
+
+            .timeline-dot {
+                width: 12px;
+                height: 12px;
+                background: var(--white);
+                border: 3px solid var(--accent);
+                border-radius: 50%;
+                margin-top: 0.4rem;
+                margin-left: -5px;
+                flex-shrink: 0;
+                position: relative;
+                z-index: 1;
+                transition: background 0.2s;
+            }
+            .timeline-item:hover .timeline-dot {
+                background: var(--accent);
+            }
+
+            .timeline-period {
+                font-family: "Lato", sans-serif;
+                font-size: 0.82rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                color: var(--accent);
+                margin-bottom: 0.3rem;
+                text-transform: uppercase;
+            }
+            .timeline-role {
+                font-family: "Merriweather", serif;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--text-head);
+                margin-bottom: 0.2rem;
+            }
+            .timeline-org {
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: var(--text-mid);
+                margin-bottom: 0.6rem;
+            }
+            .timeline-desc {
+                font-size: 0.98rem;
+                line-height: 1.8;
+                color: var(--text-light);
+                max-width: 560px;
+            }
+
+            /* ─── GALLERY ─── */
+            .gallery {
+                background: var(--bg-alt);
+            }
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                margin-top: 2.5rem;
+            }
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 4px;
+                aspect-ratio: 4/3;
+            }
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+                filter: brightness(0.9);
+            }
+            .gallery-item:hover img {
+                transform: scale(1.05);
+                filter: brightness(1);
+            }
+            .gallery-caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 1rem;
+                background: linear-gradient(
+                    to top,
+                    rgba(20, 40, 28, 0.8),
+                    transparent
+                );
+                color: var(--white);
+                font-family: "Lato", sans-serif;
+                font-size: 0.85rem;
+                font-weight: 700;
+                transform: translateY(100%);
+                transition: transform 0.3s ease;
+            }
+            .gallery-item:hover .gallery-caption {
+                transform: translateY(0);
+            }
+
+            /* ─── EVENTS ─── */
+            .events {
+                background: var(--bg-dark);
+                position: relative;
+                overflow: hidden;
+            }
+            .events::before {
+                content: "";
+                position: absolute;
+                top: -40%;
+                right: -5%;
+                width: 500px;
+                height: 500px;
+                border-radius: 50%;
+                background: var(--accent-pale);
+                opacity: 0.56;
+                pointer-events: none;
+            }
+
+            .events .section-tag::after {
+                background: var(--accent);
+            }
+            .events .section-title em {
+                color: var(--accent);
+            }
+
+            .events-intro {
+                font-size: 1.05rem;
+                line-height: 1.85;
+                color: var(--accent-muted);
+                max-width: 640px;
+                margin-bottom: 3rem;
+            }
+
+            .events-grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 1rem;
+            }
+
+            .event-card {
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+            .event-card:nth-child(1) {
+                grid-column: span 7;
+            }
+            .event-card:nth-child(2) {
+                grid-column: span 5;
+            }
+            .event-card:nth-child(3) {
+                grid-column: span 4;
+            }
+            .event-card:nth-child(4) {
+                grid-column: span 4;
+            }
+            .event-card:nth-child(5) {
+                grid-column: span 4;
+            }
+
+            .event-card img {
+                width: 100%;
+                height: 270px;
+                object-fit: cover;
+                object-position: top center;
+                display: block;
+                transition: transform 0.5s ease;
+                filter: brightness(0.78) saturate(0.85);
+            }
+            .event-card:hover img {
+                transform: scale(1.05);
+                filter: brightness(0.88);
+            }
+
+            .event-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    to top,
+                    rgba(20, 40, 28, 0.93) 0%,
+                    transparent 55%
+                );
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 1.4rem;
+            }
+
+            .event-role-badge {
+                display: inline-block;
+                padding: 0.25rem 0.8rem;
+                background: var(--gold-pale);
+                border: 1px solid var(--gold);
+                font-family: "Lato", sans-serif;
+                font-size: 0.68rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 0.6rem;
+                border-radius: 2px;
+                align-self: flex-start;
+            }
+
+            .event-title {
+                font-family: "Merriweather", serif;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #ffffff;
+                line-height: 1.35;
+                margin-bottom: 0.35rem;
+            }
+
+            .event-meta {
+                font-family: "Lato", sans-serif;
+                font-size: 0.78rem;
+                font-weight: 400;
+                letter-spacing: 0.05em;
+                color: #9abea8;
+                text-transform: uppercase;
+            }
+
+            /* ─── IMPACT ─── */
+            .impact {
+                background: var(--white);
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 5rem;
+                align-items: start;
+            }
+
+            .impact-cards {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .impact-card {
+                background: var(--bg);
+                padding: 2rem 1.8rem;
+                border-radius: 4px;
+                border-top: 3px solid var(--border);
+                transition:
+                    border-color 0.25s,
+                    transform 0.25s,
+                    box-shadow 0.25s;
+            }
+            .impact-card:hover {
+                border-color: var(--accent);
+                transform: translateY(-4px);
+                box-shadow: 0 8px 24px rgba(55, 118, 78, 0.1);
+            }
+            .impact-card-icon {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            .impact-card-title {
+                font-family: "Merriweather", serif;
+                font-size: 1.05rem;
+                font-weight: 700;
+                color: var(--text-head);
+                margin-bottom: 0.55rem;
+            }
+            .impact-card-desc {
+                font-size: 0.93rem;
+                line-height: 1.8;
+                color: var(--text-mid);
+            }
+
+            /* ─── AWARDS ─── */
+            .awards {
+                background: var(--bg-alt);
+            }
+
+            .awards-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.2rem;
+                margin-top: 2.5rem;
+            }
+
+            .award-item {
+                padding: 1.8rem 1.5rem;
+                background: var(--white);
+                border-radius: 4px;
+                border-left: 4px solid var(--accent-pale);
+                transition:
+                    border-color 0.25s,
+                    box-shadow 0.25s;
+            }
+            .award-item:hover {
+                border-color: var(--accent);
+                box-shadow: 0 4px 16px rgba(55, 118, 78, 0.1);
+                transition: all 0.25s;
+            }
+            .award-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
+            .award-title {
+                font-family: "Merriweather", serif;
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: var(--text-head);
+                margin-bottom: 0.3rem;
+                line-height: 1.35;
+            }
+            .award-year {
+                font-family: "Lato", sans-serif;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                color: var(--accent);
+                text-transform: uppercase;
+            }
+
+            /* ─── CONTACT ─── */
+            .contact {
+                background: var(--bg-dark-2);
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5rem;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+            }
+            .contact::before {
+                content: "";
+                position: absolute;
+                bottom: -30%;
+                left: -8%;
+                width: 420px;
+                height: 420px;
+                border-radius: 50%;
+                border: 70px solid rgba(87, 151, 106, 0.08);
+                pointer-events: none;
+            }
+
+            .contact-left .section-tag::after {
+                background: var(--accent);
+            }
+            .contact-left .section-title em {
+                color: var(--accent);
+            }
+            .contact-left > p {
+                font-size: 1.05rem;
+                line-height: 1.85;
+                color: var(--accent-muted);
+                margin-top: 1rem;
+            }
+
+            .contact-details {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-item {
+                display: flex;
+                align-items: center;
+                gap: 1.1rem;
+                padding: 1.1rem 1.4rem;
+                background: var(--accent-pale);
+                opacity: 0.95;
+                border: var(--border);
+                border-radius: 4px;
+                transition:
+                    background 0.25s,
+                    border-color 0.25s;
+            }
+            .contact-item:hover {
+                opacity: 1;
+            }
+            .contact-item-icon {
+                width: 42px;
+                height: 42px;
+                background: rgba(87, 151, 106, 0.25);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                flex-shrink: 0;
+            }
+            .contact-item-label {
+                font-family: "Lato", sans-serif;
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.09em;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 0.15rem;
+            }
+            .contact-item-value {
+                font-size: 1rem;
+                color: var(--accent-muted);
+                text-decoration: none;
+            }
+            .contact-item-value:hover {
+                color: var(--accent);
+            }
+
+            .linkedin-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.8rem;
+                margin-top: 1.2rem;
+                padding: 1rem 2rem;
+                background: var(--accent);
+                color: var(--white);
+                font-family: "Lato", sans-serif;
+                font-size: 0.88rem;
+                font-weight: 700;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                text-decoration: none;
+                border-radius: 3px;
+                opacity: 0.95;
+                transition:
+                    background 0.25s,
+                    transform 0.2s;
+            }
+            .linkedin-btn:hover {
+                opacity: 1;
+                transform: translateY(-2px);
+            }
+
+            /* ─── FOOTER ─── */
+            footer {
+                background: var(--bg-dark);
+                padding: 1.8rem 5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            footer p {
+                font-family: "Lato", sans-serif;
+                font-size: 0.8rem;
+                font-weight: 400;
+                letter-spacing: 0.05em;
+                color: var(--accent-muted);
+            }
+
+            /* ─── ANIMATIONS ─── */
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(28px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .reveal {
+                opacity: 0;
+                transform: translateY(22px);
+                transition:
+                    opacity 0.7s ease,
+                    transform 0.7s ease;
+            }
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* ─── RESPONSIVE ─── */
+            @media (max-width: 960px) {
+                nav {
+                    padding: 1rem 1.8rem;
+                }
+                .nav-links {
+                    gap: 1.5rem;
+                }
+                .nav-links a {
+                    font-size: 0.78rem;
+                }
+                .hero {
+                    grid-template-columns: 1fr;
+                }
+                .hero-bg::before {
+                    display: none;
+                }
+                .hero-content {
+                    padding: 7rem 2rem 3rem;
+                }
+                .hero-visual {
+                    display: none;
+                }
+                section {
+                    padding: 4rem 2rem;
+                }
+                .about,
+                .impact,
+                .contact {
+                    grid-template-columns: 1fr;
+                    gap: 2.5rem;
+                }
+                .awards-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .events-grid {
+                    grid-template-columns: 1fr;
+                }
+                .event-card:nth-child(n) {
+                    grid-column: span 12;
+                }
+                footer {
+                    padding: 1.5rem 2rem;
+                    flex-direction: column;
+                    gap: 0.4rem;
+                    text-align: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav>
+            <div class="nav-logo">Rubaya <span>Nasrin</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+
+            <div class="hero-content">
+                <div class="hero-tag">
+                    Development Professional · Climate & Sustainability
+                </div>
+                <h1 class="hero-name">
+                    Rubaya<br />Nasrin
+                    <em>Shejuti</em>
+                </h1>
+                <p class="hero-title">
+                    Climate Change Adaptation · Environmental Research ·
+                    Disaster Risk
+                </p>
+                <p class="hero-desc">
+                    Building climate resilience and supporting sustainable
+                    development initiatives — combining academic rigor with
+                    field experience across South Asia.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn-primary">Get in Touch</a>
+                    <a href="#experience" class="btn-secondary"
+                        >View Experience</a
+                    >
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-photo-frame">
+                    <!-- Profile photo placeholder -->
+                    <div
+                        style="
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(
+                                160deg,
+                                #4a9668,
+                                #3a7d52,
+                                #5aa070
+                            );
+                            clip-path: polygon(
+                                15% 0%,
+                                100% 0%,
+                                100% 80%,
+                                85% 100%,
+                                0% 100%,
+                                0% 20%
+                            );
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: column;
+                            gap: 1rem;
+                        "
+                    >
+                        <img
+                            src="https://rubayanasrin.com/storage/profiles/Lvwfzbt2Hp6cmu97VVkOOxo7PgbZA3krejqN8VnU.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div class="hero-photo-badge">
+                        <div class="badge-num">8+</div>
+                        <div class="badge-text">Years<br />Experience</div>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num">4+</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">5+</div>
+                        <div class="stat-label">Awards</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="about" id="about">
+            <div class="about-text reveal">
+                <div class="section-tag">About</div>
+                <h2 class="section-title">
+                    Where <em>Science</em><br />Meets Practice
+                </h2>
+                <p>
+                    I am a development professional specializing in climate
+                    change adaptation, sustainability, and social-ecological
+                    research. My work sits at the intersection of environmental
+                    science, community resilience, and evidence-based policy.
+                </p>
+                <p>
+                    With experience spanning academia, international NGOs, and
+                    government-linked research institutions, I bring a
+                    cross-disciplinary lens to challenges at the frontlines of
+                    the climate crisis — particularly in climate-vulnerable
+                    South Asian contexts.
+                </p>
+                <div class="expertise-grid">
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🌍</div>
+                        <div class="expertise-label">
+                            Climate Change Adaptation
+                        </div>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🔬</div>
+                        <div class="expertise-label">
+                            Environmental Research
+                        </div>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">⚡</div>
+                        <div class="expertise-label">
+                            Disaster Risk Management
+                        </div>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🛰️</div>
+                        <div class="expertise-label">GIS & Remote Sensing</div>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🎓</div>
+                        <div class="expertise-label">Capacity Building</div>
+                    </div>
+                    <div class="expertise-item">
+                        <div class="expertise-icon">🌿</div>
+                        <div class="expertise-label">Sustainability Policy</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual reveal" style="animation-delay: 0.2s">
+                <div class="about-quote">
+                    <p>
+                        Bridging rigorous environmental science with
+                        on-the-ground development practice — so that climate
+                        knowledge translates into real resilience for real
+                        communities.
+                    </p>
+                    <cite>— Professional Philosophy</cite>
+                </div>
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 1rem;
+                        margin-top: 1rem;
+                    "
+                >
+                    <div
+                        style="
+                            background: var(--bg-dark);
+                            padding: 1.5rem;
+                            text-align: center;
+                        "
+                    >
+                        <div
+                            style="
+                                font-family: &quot;Merriweather&quot;, serif;
+                                font-size: 2rem;
+                                font-weight: 600;
+                                color: var(--accent-soft);
+                            "
+                        >
+                            USA
+                        </div>
+                        <div
+                            style="
+                                font-family: &quot;Lato&quot;, sans-serif;
+                                font-size: 0.78rem;
+                                letter-spacing: 0.08em;
+                                font-weight: 700;
+                                color: var(--accent-soft);
+                            "
+                        >
+                            Adjunct Faculty
+                        </div>
+                    </div>
+                    <div
+                        style="
+                            background: var(--accent);
+                            padding: 1.5rem;
+                            text-align: center;
+                        "
+                    >
+                        <div
+                            style="
+                                font-family: &quot;Merriweather&quot;, serif;
+                                font-size: 2rem;
+                                font-weight: 600;
+                                color: var(--bg);
+                            "
+                        >
+                            BRAC
+                        </div>
+                        <div
+                            style="
+                                font-size: 0.7rem;
+                                color: rgba(255, 255, 255, 0.7);
+                                letter-spacing: 0.08em;
+                                text-transform: uppercase;
+                            "
+                        >
+                            Program Officer
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="experience" id="experience">
+            <div class="experience-inner reveal">
+                <div class="section-tag">Career</div>
+                <h2 class="section-title">Professional <em>Journey</em></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-period">Jan 2024 — Present</div>
+                        <div class="timeline-role">Program Officer</div>
+                        <div class="timeline-org">BRAC, Bangladesh</div>
+                        <div class="timeline-desc">
+                            Leading climate resilience programming, overseeing
+                            implementation of nature-based solutions and
+                            community-centered adaptation strategies at national
+                            scale.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-period">Aug 2022 — Present</div>
+                        <div class="timeline-role">Adjunct Faculty</div>
+                        <div class="timeline-org">
+                            University of South Asia, Bangladesh
+                        </div>
+                        <div class="timeline-desc">
+                            Teaching Environmental Science; guiding students
+                            through applied research in climate modeling and
+                            environmental assessment.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-body" style="grid-column: 2">
+                        <div class="timeline-period">Jan 2024 — Jul 2024</div>
+                        <div class="timeline-role">Green Response Officer</div>
+                        <div class="timeline-org">
+                            Bangladesh Environment Society (BMS)
+                        </div>
+                        <div class="timeline-desc">
+                            Coordinated climate response initiatives,
+                            stakeholder outreach and climate communication
+                            campaigns.
+                        </div>
+                    </div>
+                    <div class="timeline-dot" style="order: -1"></div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-period">Nov 2021 — Dec 2023</div>
+                        <div class="timeline-role">
+                            Assistant Manager, Project Development
+                        </div>
+                        <div class="timeline-org">
+                            Research World | Dec 2021 — Nov 2023
+                        </div>
+                        <div class="timeline-desc">
+                            Led research design and project management for
+                            climate change adaptation studies across South Asia.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-period">Nov 2020 — Dec 2023</div>
+                        <div class="timeline-role">Research Officer</div>
+                        <div class="timeline-org">
+                            Center for Natural Resource & Climate Change
+                            Research (ORCA)
+                        </div>
+                        <div class="timeline-desc">
+                            Spearheaded climate change adaptation research;
+                            field data collection, spatial analysis, and
+                            policy-facing report writing.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-period">Jul 2019 — Jun 2021</div>
+                        <div class="timeline-role">Program Officer</div>
+                        <div class="timeline-org">
+                            Bangladesh Institute of ICT in Development (BIID)
+                        </div>
+                        <div class="timeline-desc">
+                            Managed digital literacy and sustainable development
+                            programs in rural and peri-urban Bangladesh.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVENTS -->
+        <section class="events" id="events">
+            <div class="reveal">
+                <div class="section-tag">Engagements</div>
+                <h2 class="section-title">
+                    Speaking, Mentoring<br />& <em>Leadership</em>
+                </h2>
+            </div>
+            <p class="events-intro reveal">
+                From international climate camps in Nepal to regional
+                fellowships connecting young women across South Asia — here is a
+                selection of events where I've contributed as mentor, panelist,
+                and facilitator.
+            </p>
+
+            <div class="events-grid reveal">
+                <div class="event-card">
+                    <img
+                        src="https://rubayanasrin.com/images/1774022186.jpg"
+                        alt="International Climate Camp Nepal 2025"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="event-overlay">
+                        <span class="event-role-badge">Mentor</span>
+                        <div class="event-title">
+                            International Climate Camp at a Village in Nepal
+                        </div>
+                        <div class="event-meta">
+                            📍 Kathmandu & Nagarkot · Jul 2025
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <img
+                        src="https://rubayanasrin.com/images/1774022186.jpg"
+                        alt="SheConnects Global Fellowship Mentor"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="event-overlay">
+                        <span class="event-role-badge">Honorable Mentor</span>
+                        <div class="event-title">
+                            SheConnects Global Fellowship
+                        </div>
+                        <div class="event-meta">
+                            🌏 BD, PK, NP, IN & SL · Nov 2025
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <img
+                        src="https://rubayanasrin.com/images/1774022186.jpg"
+                        alt="Climate Change 101 Session"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="event-overlay">
+                        <span class="event-role-badge">Facilitator</span>
+                        <div class="event-title">
+                            Climate Change 101: Impacts, Adaptation & Resilience
+                        </div>
+                        <div class="event-meta">
+                            🌐 Virtual · SheConnects, Nov 2025
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <img
+                        src="https://rubayanasrin.com/images/1774022186.jpg"
+                        alt="Bangladesh Biodiversity Summit 2025"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="event-overlay">
+                        <span class="event-role-badge">Honorable Panelist</span>
+                        <div class="event-title">
+                            Bangladesh Biodiversity Summit 2025
+                        </div>
+                        <div class="event-meta">📍 Bandarban · Nov 2025</div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <img
+                        src="https://rubayanasrin.com/images/1774022186.jpg"
+                        alt="SheConnects Fellowship Session 2"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="event-overlay">
+                        <span class="event-role-badge">Session Lead</span>
+                        <div class="event-title">
+                            SheConnects — Climate Resilience Workshop
+                        </div>
+                        <div class="event-meta">🌐 South Asia · Nov 2025</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="gallery" id="gallery">
+            <div class="reveal">
+                <div class="section-tag">Moments</div>
+                <h2 class="section-title">Fieldwork &<br /><em>Gallery</em></h2>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-item">
+                    <img
+                        src="https://rubayanasrin.com/storage/blogs/o1sXokseduUHdtU5jVppAn2EgWILSCmNR0mKKy4c.jpg"
+                        alt="Fieldwork moment 1"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="gallery-caption">Community Engagement</div>
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://rubayanasrin.com/storage/blogs/R0JV9kW73qyLudPQBZAtgzFav86IPczf1rh43m3Y.jpg"
+                        alt="Fieldwork moment 2"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="gallery-caption">Climate Research</div>
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://rubayanasrin.com/storage/blogs/C0LIHH5KhiWBnyAn7jFpfcfUFcdo6nJ9meEHnrL3.jpg"
+                        alt="Fieldwork moment 3"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="gallery-caption">Data Collection</div>
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://rubayanasrin.com/storage/blogs/o1sXokseduUHdtU5jVppAn2EgWILSCmNR0mKKy4c.jpg"
+                        alt="Fieldwork moment 4"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="gallery-caption">Stakeholder Workshop</div>
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://rubayanasrin.com/storage/blogs/R0JV9kW73qyLudPQBZAtgzFav86IPczf1rh43m3Y.jpg"
+                        alt="Fieldwork moment 5"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="gallery-caption">Field Observation</div>
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="https://rubayanasrin.com/storage/blogs/C0LIHH5KhiWBnyAn7jFpfcfUFcdo6nJ9meEHnrL3.jpg"
+                        alt="Fieldwork moment 6"
+                        onerror="
+                            this.parentElement.style.background =
+                                'var(--accent-pale)'
+                        "
+                    />
+                    <div class="gallery-caption">Team Briefing</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPACT -->
+        <section class="impact" id="impact">
+            <div class="impact-left reveal">
+                <div class="section-tag">Impact</div>
+                <h2 class="section-title">Research &<br /><em>Projects</em></h2>
+                <p
+                    style="
+                        font-size: 0.9rem;
+                        line-height: 1.8;
+                        color: var(--text-mid);
+                        margin-top: 1rem;
+                    "
+                >
+                    Translating research into programs that protect lives,
+                    ecosystems, and livelihoods — from climate access to
+                    sustainability capacity.
+                </p>
+            </div>
+            <div class="impact-cards reveal">
+                <div class="impact-card">
+                    <div class="impact-card-icon">🌾</div>
+                    <div class="impact-card-title">Climate Access Programs</div>
+                    <div class="impact-card-desc">
+                        Designing mechanisms to expose climate-vulnerable
+                        communities to resources, policies, and adaptive
+                        strategies.
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-card-icon">📚</div>
+                    <div class="impact-card-title">
+                        Environmental Capacity Building
+                    </div>
+                    <div class="impact-card-desc">
+                        Developing and delivering training programs for
+                        students, NGO staff, and community practitioners.
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-card-icon">🔭</div>
+                    <div class="impact-card-title">Sustainability Research</div>
+                    <div class="impact-card-desc">
+                        Publishing peer-reviewed insights on socio-environmental
+                        sustainability and climate resilience frameworks.
+                    </div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-card-icon">🗺️</div>
+                    <div class="impact-card-title">
+                        Spatial & Field Analysis
+                    </div>
+                    <div class="impact-card-desc">
+                        GIS-based mapping of climate risk zones, ecosystem
+                        services, and disaster vulnerability corridors.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AWARDS -->
+        <section class="awards" id="awards">
+            <div class="reveal">
+                <div class="section-tag">Recognition</div>
+                <h2 class="section-title">Leadership &<br /><em>Awards</em></h2>
+            </div>
+            <div class="awards-grid">
+                <div class="award-item reveal">
+                    <div class="award-icon">🏆</div>
+                    <div class="award-title">Duke of Edinburgh Gold Award</div>
+                    <div class="award-year">Recognition</div>
+                </div>
+                <div class="award-item reveal" style="animation-delay: 0.1s">
+                    <div class="award-icon">🌐</div>
+                    <div class="award-title">UPG Sustainability Leader</div>
+                    <div class="award-year">2023</div>
+                </div>
+                <div class="award-item reveal" style="animation-delay: 0.2s">
+                    <div class="award-icon">🌍</div>
+                    <div class="award-title">World Food Prize Mentor</div>
+                    <div class="award-year">2023–2024</div>
+                </div>
+                <div class="award-item reveal" style="animation-delay: 0.3s">
+                    <div class="award-icon">🌿</div>
+                    <div class="award-title">YFU Leader</div>
+                    <div class="award-year">2025</div>
+                </div>
+                <div class="award-item reveal" style="animation-delay: 0.4s">
+                    <div class="award-icon">⚡</div>
+                    <div class="award-title">
+                        Solar-Driven Youth Leadership Festival
+                    </div>
+                    <div class="award-year">Selected</div>
+                </div>
+                <div class="award-item reveal" style="animation-delay: 0.5s">
+                    <div class="award-icon">👩‍🎓</div>
+                    <div class="award-title">SheConnects Honorable Mentor</div>
+                    <div class="award-year">2025</div>
+                </div>
+                <div class="award-item reveal" style="animation-delay: 0.6s">
+                    <div class="award-icon">🦁</div>
+                    <div class="award-title">Biodiversity Summit Panelist</div>
+                    <div class="award-year">2025</div>
+                </div>
+                <div class="award-item reveal" style="animation-delay: 0.7s">
+                    <div class="award-icon">🌱</div>
+                    <div class="award-title">ICIMOD Climate Camp Mentor</div>
+                    <div class="award-year">2025</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact" id="contact">
+            <div class="contact-left reveal">
+                <div class="section-tag">Get in Touch</div>
+                <h2 class="section-title">
+                    Let's Build<br /><em>Resilience</em><br />Together
+                </h2>
+                <p>
+                    Open to research collaborations, speaking invitations,
+                    advisory roles, and international development partnerships
+                    focused on climate, environment, and sustainability.
+                </p>
+            </div>
+            <div class="contact-details reveal" style="animation-delay: 0.2s">
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <div>
+                        <div class="contact-item-label">Email</div>
+                        <a
+                            href="mailto:admin@gmail.com"
+                            class="contact-item-value"
+                            >admin@gmail.com</a
+                        >
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div>
+                        <div class="contact-item-label">Phone</div>
+                        <a
+                            href="tel:+8801810967-2242"
+                            class="contact-item-value"
+                            >+1 (810) 967-2242</a
+                        >
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div>
+                        <div class="contact-item-label">Location</div>
+                        <span class="contact-item-value"
+                            >Dhaka, Bangladesh</span
+                        >
+                    </div>
+                </div>
+                <a href="#" class="linkedin-btn">
+                    <span>🔗</span>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>
+                © 2025 Rubaya Nasrin Shejuti — Climate & Development
+                Professional
+            </p>
+            <p>Built with purpose · For the planet 🌿</p>
+        </footer>
+
+        <script>
+            // Scroll reveal
+            const reveals = document.querySelectorAll(".reveal");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry, i) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(
+                                () => entry.target.classList.add("visible"),
+                                i * 60,
+                            );
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+            reveals.forEach((el) => observer.observe(el));
+
+            // Nav shadow on scroll
+            const nav = document.querySelector("nav");
+            window.addEventListener("scroll", () => {
+                nav.style.boxShadow =
+                    window.scrollY > 30
+                        ? "0 2px 20px rgba(26,58,42,0.1)"
+                        : "none";
+            });
+        </script>
+    </body>
+</html>
