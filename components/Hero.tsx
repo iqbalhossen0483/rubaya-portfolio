@@ -64,7 +64,7 @@ export default function Hero() {
             }}
           >
             <Image
-              src="https://rubayanasrin.com/storage/profiles/Lvwfzbt2Hp6cmu97VVkOOxo7PgbZA3krejqN8VnU.jpg"
+              src="/profile.jpg"
               alt="Rubaya Nasrin"
               width={320}
               height={400}

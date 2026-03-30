@@ -5,28 +5,52 @@ import Typography from "./utils/Typography";
 export default function Gallery() {
   const images = [
     {
-      src: "https://rubayanasrin.com/storage/blogs/o1sXokseduUHdtU5jVppAn2EgWILSCmNR0mKKy4c.jpg",
+      src: "/gellery-1.jpeg",
       caption: "Community Engagement",
     },
     {
-      src: "https://rubayanasrin.com/storage/blogs/R0JV9kW73qyLudPQBZAtgzFav86IPczf1rh43m3Y.jpg",
+      src: "/gellery-3.jpeg",
       caption: "Climate Research",
     },
     {
-      src: "https://rubayanasrin.com/storage/blogs/C0LIHH5KhiWBnyAn7jFpfcfUFcdo6nJ9meEHnrL3.jpg",
+      src: "/gellery-2.jpeg",
       caption: "Data Collection",
     },
     {
-      src: "https://rubayanasrin.com/storage/blogs/o1sXokseduUHdtU5jVppAn2EgWILSCmNR0mKKy4c.jpg",
-      caption: "Stakeholder Workshop",
+      src: "/gellery-1.jpeg",
+      caption: "Community Engagement",
     },
     {
-      src: "https://rubayanasrin.com/storage/blogs/R0JV9kW73qyLudPQBZAtgzFav86IPczf1rh43m3Y.jpg",
-      caption: "Field Observation",
+      src: "/gellery-3.jpeg",
+      caption: "Climate Research",
     },
     {
-      src: "https://rubayanasrin.com/storage/blogs/C0LIHH5KhiWBnyAn7jFpfcfUFcdo6nJ9meEHnrL3.jpg",
-      caption: "Team Briefing",
+      src: "/gellery-2.jpeg",
+      caption: "Data Collection",
+    },
+    {
+      src: "/gellery-1.jpeg",
+      caption: "Community Engagement",
+    },
+    {
+      src: "/gellery-3.jpeg",
+      caption: "Climate Research",
+    },
+    {
+      src: "/gellery-2.jpeg",
+      caption: "Data Collection",
+    },
+    {
+      src: "/gellery-1.jpeg",
+      caption: "Community Engagement",
+    },
+    {
+      src: "/gellery-3.jpeg",
+      caption: "Climate Research",
+    },
+    {
+      src: "/gellery-2.jpeg",
+      caption: "Data Collection",
     },
   ];
 
