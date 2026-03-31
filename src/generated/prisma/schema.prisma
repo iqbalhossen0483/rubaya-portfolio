@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -12,10 +9,11 @@ datasource db {
 
 model AdminUser {
   id           Int      @id @default(autoincrement())
+  name         String?
   username     String   @unique
   passwordHash String
   createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  updatedAt    DateTime @default(now()) @updatedAt
 }
 
 model Hero {
@@ -24,14 +22,14 @@ model Hero {
   subtitle    String?
   description String?  @db.Text
   imageUrl    String?
-  updatedAt   DateTime @updatedAt
+  updatedAt   DateTime @default(now()) @updatedAt
 }
 
 model About {
   id        Int      @id @default(1)
   content   String   @db.Text
   resumeUrl String?
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Experience {
@@ -44,7 +42,7 @@ model Experience {
   description String    @db.Text
   order       Int       @default(0)
   createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  updatedAt   DateTime  @default(now()) @updatedAt
 }
 
 model Event {
@@ -55,7 +53,7 @@ model Event {
   description   String    @db.Text
   coverImageUrl String?
   createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  updatedAt     DateTime  @default(now()) @updatedAt
   galleryImages Gallery[]
 }
 
@@ -66,7 +64,7 @@ model Gallery {
   eventId   Int?
   event     Event?   @relation(fields: [eventId], references: [id], onDelete: SetNull)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Contact {
@@ -76,5 +74,5 @@ model Contact {
   linkedin  String?
   github    String?
   twitter   String?
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
 }

@@ -33,15 +33,20 @@ export const POST = withErrorHandler(async (req: Request) => {
   const secret = process.env.NEXTAUTH_SECRET || "defaultsecret";
 
   // Create JWT with user info
-  const token = jwt.sign({ id: user.id, username: user.username }, secret, {
-    expiresIn: "7d",
-  });
+  const token = jwt.sign(
+    { id: user.id, username: user.username, name: user.name },
+    secret,
+    {
+      expiresIn: "7d",
+    },
+  );
 
   return NextResponse.json({
     success: true,
     user: {
       id: user.id,
-      name: user.username,
+      name: user.name,
+      username: user.username,
     },
     token,
   });

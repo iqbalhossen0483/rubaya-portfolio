@@ -31,10 +31,10 @@ export const authOptions: NextAuthOptions = {
           const data = await res.json();
 
           if (res.ok && data.user) {
-            // Include token so it can be passed to jwt callback
             return {
               id: data.user.id.toString(),
               name: data.user.name,
+              username: data.user.username,
               token: data.token,
             } as any;
           }
@@ -58,15 +58,17 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = Number(user.id);
-        token.accessToken = (user as any).token;
+        token.username = user.username;
+        token.accessToken = user.token;
       }
       return token;
     },
     async session({ session, token }) {
       if (token && session.user) {
         session.user.name = token.name;
+        session.user.username = token.username;
         session.user.id = Number(token.id);
-        session.accessToken = token.accessToken;
+        (session as any).accessToken = token.accessToken; // map to session
       }
       return session;
     },
