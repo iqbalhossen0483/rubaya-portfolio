@@ -1,6 +1,8 @@
 import Providers from "@/components/admin/Providers";
 
 import AdminSidebar from "@/components/admin/AdminSidebar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AdminLayout({
   children,
@@ -9,6 +11,16 @@ export default function AdminLayout({
 }) {
   return (
     <Providers>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="flex min-h-screen bg-background-alt">
         <AdminSidebar />
         <div className="flex-1 ml-64 p-8">

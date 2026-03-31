@@ -19,35 +19,53 @@ export const PUT = withErrorHandler(async (req: Request) => {
   }
 
   const formData = await req.formData();
-  const title = formData.get("title") as string;
-  const subtitle = formData.get("subtitle") as string | null;
-  const description = formData.get("description") as string | null;
-  const profileFile = formData.get("profile") as File | null;
+  const values = Object.fromEntries(formData.entries());
+
+  const {
+    title,
+    subtitle,
+    description,
+    yearsOfExperience,
+    countries,
+    award,
+    profile,
+  } = values as { [key: string]: string | File };
 
   const result = heroSchema.safeParse({
     title,
     subtitle,
     description,
-    profile: profileFile,
+    yearsOfExperience,
+    countries,
+    award,
+    profile,
   });
 
   if (!result.success) {
     throw new AppError("Invalid input", 400, z.treeifyError(result.error));
   }
-
   let profileUrl: string | undefined = undefined;
-  if (profileFile) {
+  if (profile && profile instanceof File) {
     try {
-      profileUrl = await uploadToCloudinary(profileFile);
+      profileUrl = await uploadToCloudinary(profile);
     } catch (error) {
       console.error("Image upload failed:", error);
       throw new AppError("Image upload failed", 500);
     }
   }
 
-  const dataToUpdate: any = { title, subtitle, description };
+  const dataToUpdate: any = {
+    title,
+    subtitle,
+    description,
+    yearsOfExperience,
+    countries,
+    award,
+  };
   if (profileUrl) {
     dataToUpdate.profile = profileUrl;
+  } else if (typeof profile === "string") {
+    dataToUpdate.profile = profile; // keep existing URL if no new file
   }
 
   // We assume ID 1 is always the primary hero

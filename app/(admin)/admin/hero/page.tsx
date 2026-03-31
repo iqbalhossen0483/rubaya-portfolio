@@ -3,18 +3,19 @@
 import Button from "@/components/utils/Button";
 import FileInput from "@/components/utils/FileInput";
 import Input from "@/components/utils/Input";
+import Spinner from "@/components/utils/Spinner";
 import Textarea from "@/components/utils/Textarea";
 import Typography from "@/components/utils/Typography";
 import { HeroFormValues, heroSchema } from "@/lib/validations/content.schema";
 import { useGetHeroQuery, useUpdateHeroMutation } from "@/store/api/baseApi";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export default function HeroAdminPage() {
   const { data: heroRes, isLoading: isFetching } = useGetHeroQuery();
   const [updateHero, { isLoading: isUpdating }] = useUpdateHeroMutation();
-  const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
   const {
     register,
@@ -27,6 +28,9 @@ export default function HeroAdminPage() {
       title: "",
       subtitle: "",
       description: "",
+      yearsOfExperience: "",
+      countries: "",
+      award: "",
       profile: undefined,
     },
   });
@@ -38,6 +42,9 @@ export default function HeroAdminPage() {
         title: heroRes.data.title || "",
         subtitle: heroRes.data.subtitle || "",
         description: heroRes.data.description || "",
+        yearsOfExperience: heroRes.data.yearsOfExperience || "",
+        countries: heroRes.data.countries || "",
+        award: heroRes.data.award || "",
         profile: heroRes.data.profile || undefined,
       });
     }
@@ -45,27 +52,27 @@ export default function HeroAdminPage() {
 
   const onSubmit = async (data: HeroFormValues) => {
     try {
-      setSuccessMsg(null);
-
       const formData = new FormData();
-      formData.append("title", data.title);
-      if (data.subtitle) formData.append("subtitle", data.subtitle);
-      if (data.description) formData.append("description", data.description);
-      if (data.profile && data.profile.length > 0) {
-        formData.append("profile", data.profile[0]);
-      }
+      Object.entries(data).forEach(([key, value]) => {
+        if (value) {
+          if (key === "profile" && value instanceof FileList) {
+            formData.append(key, value[0]);
+          } else {
+            formData.append(key, value as string);
+          }
+        }
+      });
 
       await updateHero(formData).unwrap();
-      setSuccessMsg("Hero section updated successfully!");
+      toast.success("Hero section updated successfully!");
     } catch (err: any) {
       console.error("Update failed:", err);
+      toast.error("An unexpected error occurred. Please try again.");
     }
   };
 
   if (isFetching) {
-    return (
-      <div className="text-text-mid animate-pulse">Loading hero content...</div>
-    );
+    return <Spinner text="Loading hero content..." />;
   }
 
   return (
@@ -78,12 +85,6 @@ export default function HeroAdminPage() {
           Update the main introduction content on your portfolio homepage.
         </Typography>
       </div>
-
-      {successMsg && (
-        <div className="p-4 bg-accent-pale text-accent-muted border border-accent-soft rounded-lg">
-          {successMsg}
-        </div>
-      )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
         <Input
@@ -109,6 +110,30 @@ export default function HeroAdminPage() {
           rows={4}
           {...register("description")}
           error={errors.description?.message}
+        />
+
+        <Input
+          id="yearsOfExperience"
+          label="Years of Experience"
+          placeholder="e.g., 5+ Years"
+          {...register("yearsOfExperience")}
+          error={errors.yearsOfExperience?.message}
+        />
+
+        <Input
+          id="countries"
+          label="Countries Worked In"
+          placeholder="e.g., Canada, UAE, Bangladesh"
+          {...register("countries")}
+          error={errors.countries?.message}
+        />
+
+        <Input
+          id="award"
+          label="Award"
+          placeholder="e.g., Google Dev Award"
+          {...register("award")}
+          error={errors.award?.message}
         />
 
         <FileInput

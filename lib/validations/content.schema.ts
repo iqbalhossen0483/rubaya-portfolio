@@ -12,6 +12,9 @@ export const heroSchema = z.object({
   title: z.string().min(1, "Title is required"),
   subtitle: z.string().optional().nullable(),
   description: z.string().optional().nullable(),
+  yearsOfExperience: z.string().optional().nullable(),
+  countries: z.string().optional().nullable(),
+  award: z.string().optional().nullable(),
   profile: z
     .any()
     .refine(

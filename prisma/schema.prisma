@@ -17,12 +17,15 @@ model AdminUser {
 }
 
 model Hero {
-  id          Int      @id @default(1)
-  title       String
-  subtitle    String?
-  description String?  @db.Text
-  profile     String?
-  updatedAt   DateTime @default(now()) @updatedAt
+  id                Int      @id @default(1)
+  title             String
+  subtitle          String?
+  description       String?  @db.Text
+  yearsOfExperience String?
+  countries         String?
+  award             String?
+  profile           String?
+  updatedAt         DateTime @default(now()) @updatedAt
 }
 
 model About {
