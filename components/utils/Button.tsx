@@ -1,3 +1,4 @@
+import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -9,6 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   className?: string;
   icon?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 export default function Button({
@@ -17,6 +19,8 @@ export default function Button({
   children,
   className = "",
   icon,
+  isLoading,
+  disabled,
   ...props
 }: ButtonProps) {
   const baseClasses =
@@ -36,7 +40,8 @@ export default function Button({
 
   const content = (
     <>
-      {icon && <span>{icon}</span>}
+      {isLoading && <Loader2 className="w-5 h-5 mr-2 animate-spin" />}
+      {icon && !isLoading && <span>{icon}</span>}
       {children}
     </>
   );
@@ -50,7 +55,11 @@ export default function Button({
   }
 
   return (
-    <button className={combinedClassName} {...props}>
+    <button
+      className={`${combinedClassName} ${isLoading || disabled ? "opacity-70 cursor-not-allowed" : ""}`}
+      disabled={disabled || isLoading}
+      {...props}
+    >
       {content}
     </button>
   );
