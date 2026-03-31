@@ -193,7 +193,6 @@ exports.Prisma.SortOrder = {
 };
 
 exports.Prisma.AdminUserOrderByRelevanceFieldEnum = {
-  id: 'id',
   username: 'username',
   passwordHash: 'passwordHash'
 };
@@ -216,14 +215,12 @@ exports.Prisma.AboutOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
-  id: 'id',
   company: 'company',
   role: 'role',
   description: 'description'
 };
 
 exports.Prisma.EventOrderByRelevanceFieldEnum = {
-  id: 'id',
   title: 'title',
   location: 'location',
   description: 'description',
@@ -231,10 +228,8 @@ exports.Prisma.EventOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.GalleryOrderByRelevanceFieldEnum = {
-  id: 'id',
   imageUrl: 'imageUrl',
-  caption: 'caption',
-  eventId: 'eventId'
+  caption: 'caption'
 };
 
 exports.Prisma.ContactOrderByRelevanceFieldEnum = {

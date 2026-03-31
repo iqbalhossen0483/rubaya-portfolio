@@ -1392,12 +1392,22 @@ export namespace Prisma {
 
   export type AggregateAdminUser = {
     _count: AdminUserCountAggregateOutputType | null
+    _avg: AdminUserAvgAggregateOutputType | null
+    _sum: AdminUserSumAggregateOutputType | null
     _min: AdminUserMinAggregateOutputType | null
     _max: AdminUserMaxAggregateOutputType | null
   }
 
+  export type AdminUserAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type AdminUserSumAggregateOutputType = {
+    id: number | null
+  }
+
   export type AdminUserMinAggregateOutputType = {
-    id: string | null
+    id: number | null
     username: string | null
     passwordHash: string | null
     createdAt: Date | null
@@ -1405,7 +1415,7 @@ export namespace Prisma {
   }
 
   export type AdminUserMaxAggregateOutputType = {
-    id: string | null
+    id: number | null
     username: string | null
     passwordHash: string | null
     createdAt: Date | null
@@ -1421,6 +1431,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type AdminUserAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type AdminUserSumAggregateInputType = {
+    id?: true
+  }
 
   export type AdminUserMinAggregateInputType = {
     id?: true
@@ -1485,6 +1503,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: AdminUserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AdminUserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: AdminUserMinAggregateInputType
@@ -1515,17 +1545,21 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: AdminUserCountAggregateInputType | true
+    _avg?: AdminUserAvgAggregateInputType
+    _sum?: AdminUserSumAggregateInputType
     _min?: AdminUserMinAggregateInputType
     _max?: AdminUserMaxAggregateInputType
   }
 
   export type AdminUserGroupByOutputType = {
-    id: string
+    id: number
     username: string
     passwordHash: string
     createdAt: Date
     updatedAt: Date
     _count: AdminUserCountAggregateOutputType | null
+    _avg: AdminUserAvgAggregateOutputType | null
+    _sum: AdminUserSumAggregateOutputType | null
     _min: AdminUserMinAggregateOutputType | null
     _max: AdminUserMaxAggregateOutputType | null
   }
@@ -1568,7 +1602,7 @@ export namespace Prisma {
     name: "AdminUser"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      id: number
       username: string
       passwordHash: string
       createdAt: Date
@@ -1942,7 +1976,7 @@ export namespace Prisma {
    * Fields of the AdminUser model
    */
   interface AdminUserFieldRefs {
-    readonly id: FieldRef<"AdminUser", 'String'>
+    readonly id: FieldRef<"AdminUser", 'Int'>
     readonly username: FieldRef<"AdminUser", 'String'>
     readonly passwordHash: FieldRef<"AdminUser", 'String'>
     readonly createdAt: FieldRef<"AdminUser", 'DateTime'>
@@ -4128,15 +4162,17 @@ export namespace Prisma {
   }
 
   export type ExperienceAvgAggregateOutputType = {
+    id: number | null
     order: number | null
   }
 
   export type ExperienceSumAggregateOutputType = {
+    id: number | null
     order: number | null
   }
 
   export type ExperienceMinAggregateOutputType = {
-    id: string | null
+    id: number | null
     company: string | null
     role: string | null
     startDate: Date | null
@@ -4149,7 +4185,7 @@ export namespace Prisma {
   }
 
   export type ExperienceMaxAggregateOutputType = {
-    id: string | null
+    id: number | null
     company: string | null
     role: string | null
     startDate: Date | null
@@ -4177,10 +4213,12 @@ export namespace Prisma {
 
 
   export type ExperienceAvgAggregateInputType = {
+    id?: true
     order?: true
   }
 
   export type ExperienceSumAggregateInputType = {
+    id?: true
     order?: true
   }
 
@@ -4311,7 +4349,7 @@ export namespace Prisma {
   }
 
   export type ExperienceGroupByOutputType = {
-    id: string
+    id: number
     company: string
     role: string
     startDate: Date
@@ -4376,7 +4414,7 @@ export namespace Prisma {
     name: "Experience"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      id: number
       company: string
       role: string
       startDate: Date
@@ -4755,7 +4793,7 @@ export namespace Prisma {
    * Fields of the Experience model
    */
   interface ExperienceFieldRefs {
-    readonly id: FieldRef<"Experience", 'String'>
+    readonly id: FieldRef<"Experience", 'Int'>
     readonly company: FieldRef<"Experience", 'String'>
     readonly role: FieldRef<"Experience", 'String'>
     readonly startDate: FieldRef<"Experience", 'DateTime'>
@@ -5097,12 +5135,22 @@ export namespace Prisma {
 
   export type AggregateEvent = {
     _count: EventCountAggregateOutputType | null
+    _avg: EventAvgAggregateOutputType | null
+    _sum: EventSumAggregateOutputType | null
     _min: EventMinAggregateOutputType | null
     _max: EventMaxAggregateOutputType | null
   }
 
+  export type EventAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type EventSumAggregateOutputType = {
+    id: number | null
+  }
+
   export type EventMinAggregateOutputType = {
-    id: string | null
+    id: number | null
     title: string | null
     date: Date | null
     location: string | null
@@ -5113,7 +5161,7 @@ export namespace Prisma {
   }
 
   export type EventMaxAggregateOutputType = {
-    id: string | null
+    id: number | null
     title: string | null
     date: Date | null
     location: string | null
@@ -5135,6 +5183,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type EventAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type EventSumAggregateInputType = {
+    id?: true
+  }
 
   export type EventMinAggregateInputType = {
     id?: true
@@ -5208,6 +5264,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: EventAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: EventSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: EventMinAggregateInputType
@@ -5238,12 +5306,14 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: EventCountAggregateInputType | true
+    _avg?: EventAvgAggregateInputType
+    _sum?: EventSumAggregateInputType
     _min?: EventMinAggregateInputType
     _max?: EventMaxAggregateInputType
   }
 
   export type EventGroupByOutputType = {
-    id: string
+    id: number
     title: string
     date: Date
     location: string | null
@@ -5252,6 +5322,8 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     _count: EventCountAggregateOutputType | null
+    _avg: EventAvgAggregateOutputType | null
+    _sum: EventSumAggregateOutputType | null
     _min: EventMinAggregateOutputType | null
     _max: EventMaxAggregateOutputType | null
   }
@@ -5308,7 +5380,7 @@ export namespace Prisma {
       galleryImages: Prisma.$GalleryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      id: number
       title: string
       date: Date
       location: string | null
@@ -5686,7 +5758,7 @@ export namespace Prisma {
    * Fields of the Event model
    */
   interface EventFieldRefs {
-    readonly id: FieldRef<"Event", 'String'>
+    readonly id: FieldRef<"Event", 'Int'>
     readonly title: FieldRef<"Event", 'String'>
     readonly date: FieldRef<"Event", 'DateTime'>
     readonly location: FieldRef<"Event", 'String'>
@@ -6090,24 +6162,36 @@ export namespace Prisma {
 
   export type AggregateGallery = {
     _count: GalleryCountAggregateOutputType | null
+    _avg: GalleryAvgAggregateOutputType | null
+    _sum: GallerySumAggregateOutputType | null
     _min: GalleryMinAggregateOutputType | null
     _max: GalleryMaxAggregateOutputType | null
   }
 
+  export type GalleryAvgAggregateOutputType = {
+    id: number | null
+    eventId: number | null
+  }
+
+  export type GallerySumAggregateOutputType = {
+    id: number | null
+    eventId: number | null
+  }
+
   export type GalleryMinAggregateOutputType = {
-    id: string | null
+    id: number | null
     imageUrl: string | null
     caption: string | null
-    eventId: string | null
+    eventId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type GalleryMaxAggregateOutputType = {
-    id: string | null
+    id: number | null
     imageUrl: string | null
     caption: string | null
-    eventId: string | null
+    eventId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6122,6 +6206,16 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type GalleryAvgAggregateInputType = {
+    id?: true
+    eventId?: true
+  }
+
+  export type GallerySumAggregateInputType = {
+    id?: true
+    eventId?: true
+  }
 
   export type GalleryMinAggregateInputType = {
     id?: true
@@ -6189,6 +6283,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: GalleryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GallerySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: GalleryMinAggregateInputType
@@ -6219,18 +6325,22 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: GalleryCountAggregateInputType | true
+    _avg?: GalleryAvgAggregateInputType
+    _sum?: GallerySumAggregateInputType
     _min?: GalleryMinAggregateInputType
     _max?: GalleryMaxAggregateInputType
   }
 
   export type GalleryGroupByOutputType = {
-    id: string
+    id: number
     imageUrl: string
     caption: string | null
-    eventId: string | null
+    eventId: number | null
     createdAt: Date
     updatedAt: Date
     _count: GalleryCountAggregateOutputType | null
+    _avg: GalleryAvgAggregateOutputType | null
+    _sum: GallerySumAggregateOutputType | null
     _min: GalleryMinAggregateOutputType | null
     _max: GalleryMaxAggregateOutputType | null
   }
@@ -6281,10 +6391,10 @@ export namespace Prisma {
       event: Prisma.$EventPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      id: number
       imageUrl: string
       caption: string | null
-      eventId: string | null
+      eventId: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["gallery"]>
@@ -6657,10 +6767,10 @@ export namespace Prisma {
    * Fields of the Gallery model
    */
   interface GalleryFieldRefs {
-    readonly id: FieldRef<"Gallery", 'String'>
+    readonly id: FieldRef<"Gallery", 'Int'>
     readonly imageUrl: FieldRef<"Gallery", 'String'>
     readonly caption: FieldRef<"Gallery", 'String'>
-    readonly eventId: FieldRef<"Gallery", 'String'>
+    readonly eventId: FieldRef<"Gallery", 'Int'>
     readonly createdAt: FieldRef<"Gallery", 'DateTime'>
     readonly updatedAt: FieldRef<"Gallery", 'DateTime'>
   }
@@ -8102,7 +8212,6 @@ export namespace Prisma {
 
 
   export const AdminUserOrderByRelevanceFieldEnum: {
-    id: 'id',
     username: 'username',
     passwordHash: 'passwordHash'
   };
@@ -8137,7 +8246,6 @@ export namespace Prisma {
 
 
   export const ExperienceOrderByRelevanceFieldEnum: {
-    id: 'id',
     company: 'company',
     role: 'role',
     description: 'description'
@@ -8147,7 +8255,6 @@ export namespace Prisma {
 
 
   export const EventOrderByRelevanceFieldEnum: {
-    id: 'id',
     title: 'title',
     location: 'location',
     description: 'description',
@@ -8158,10 +8265,8 @@ export namespace Prisma {
 
 
   export const GalleryOrderByRelevanceFieldEnum: {
-    id: 'id',
     imageUrl: 'imageUrl',
-    caption: 'caption',
-    eventId: 'eventId'
+    caption: 'caption'
   };
 
   export type GalleryOrderByRelevanceFieldEnum = (typeof GalleryOrderByRelevanceFieldEnum)[keyof typeof GalleryOrderByRelevanceFieldEnum]
@@ -8184,6 +8289,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -8194,13 +8306,6 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -8225,7 +8330,7 @@ export namespace Prisma {
     AND?: AdminUserWhereInput | AdminUserWhereInput[]
     OR?: AdminUserWhereInput[]
     NOT?: AdminUserWhereInput | AdminUserWhereInput[]
-    id?: StringFilter<"AdminUser"> | string
+    id?: IntFilter<"AdminUser"> | number
     username?: StringFilter<"AdminUser"> | string
     passwordHash?: StringFilter<"AdminUser"> | string
     createdAt?: DateTimeFilter<"AdminUser"> | Date | string
@@ -8242,7 +8347,7 @@ export namespace Prisma {
   }
 
   export type AdminUserWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    id?: number
     username?: string
     AND?: AdminUserWhereInput | AdminUserWhereInput[]
     OR?: AdminUserWhereInput[]
@@ -8259,15 +8364,17 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: AdminUserCountOrderByAggregateInput
+    _avg?: AdminUserAvgOrderByAggregateInput
     _max?: AdminUserMaxOrderByAggregateInput
     _min?: AdminUserMinOrderByAggregateInput
+    _sum?: AdminUserSumOrderByAggregateInput
   }
 
   export type AdminUserScalarWhereWithAggregatesInput = {
     AND?: AdminUserScalarWhereWithAggregatesInput | AdminUserScalarWhereWithAggregatesInput[]
     OR?: AdminUserScalarWhereWithAggregatesInput[]
     NOT?: AdminUserScalarWhereWithAggregatesInput | AdminUserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"AdminUser"> | string
+    id?: IntWithAggregatesFilter<"AdminUser"> | number
     username?: StringWithAggregatesFilter<"AdminUser"> | string
     passwordHash?: StringWithAggregatesFilter<"AdminUser"> | string
     createdAt?: DateTimeWithAggregatesFilter<"AdminUser"> | Date | string
@@ -8388,7 +8495,7 @@ export namespace Prisma {
     AND?: ExperienceWhereInput | ExperienceWhereInput[]
     OR?: ExperienceWhereInput[]
     NOT?: ExperienceWhereInput | ExperienceWhereInput[]
-    id?: StringFilter<"Experience"> | string
+    id?: IntFilter<"Experience"> | number
     company?: StringFilter<"Experience"> | string
     role?: StringFilter<"Experience"> | string
     startDate?: DateTimeFilter<"Experience"> | Date | string
@@ -8415,7 +8522,7 @@ export namespace Prisma {
   }
 
   export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    id?: number
     AND?: ExperienceWhereInput | ExperienceWhereInput[]
     OR?: ExperienceWhereInput[]
     NOT?: ExperienceWhereInput | ExperienceWhereInput[]
@@ -8452,7 +8559,7 @@ export namespace Prisma {
     AND?: ExperienceScalarWhereWithAggregatesInput | ExperienceScalarWhereWithAggregatesInput[]
     OR?: ExperienceScalarWhereWithAggregatesInput[]
     NOT?: ExperienceScalarWhereWithAggregatesInput | ExperienceScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Experience"> | string
+    id?: IntWithAggregatesFilter<"Experience"> | number
     company?: StringWithAggregatesFilter<"Experience"> | string
     role?: StringWithAggregatesFilter<"Experience"> | string
     startDate?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
@@ -8468,7 +8575,7 @@ export namespace Prisma {
     AND?: EventWhereInput | EventWhereInput[]
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
-    id?: StringFilter<"Event"> | string
+    id?: IntFilter<"Event"> | number
     title?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
     location?: StringNullableFilter<"Event"> | string | null
@@ -8493,7 +8600,7 @@ export namespace Prisma {
   }
 
   export type EventWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    id?: number
     AND?: EventWhereInput | EventWhereInput[]
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
@@ -8517,15 +8624,17 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EventCountOrderByAggregateInput
+    _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
     _min?: EventMinOrderByAggregateInput
+    _sum?: EventSumOrderByAggregateInput
   }
 
   export type EventScalarWhereWithAggregatesInput = {
     AND?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
     OR?: EventScalarWhereWithAggregatesInput[]
     NOT?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Event"> | string
+    id?: IntWithAggregatesFilter<"Event"> | number
     title?: StringWithAggregatesFilter<"Event"> | string
     date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     location?: StringNullableWithAggregatesFilter<"Event"> | string | null
@@ -8539,10 +8648,10 @@ export namespace Prisma {
     AND?: GalleryWhereInput | GalleryWhereInput[]
     OR?: GalleryWhereInput[]
     NOT?: GalleryWhereInput | GalleryWhereInput[]
-    id?: StringFilter<"Gallery"> | string
+    id?: IntFilter<"Gallery"> | number
     imageUrl?: StringFilter<"Gallery"> | string
     caption?: StringNullableFilter<"Gallery"> | string | null
-    eventId?: StringNullableFilter<"Gallery"> | string | null
+    eventId?: IntNullableFilter<"Gallery"> | number | null
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeFilter<"Gallery"> | Date | string
     event?: XOR<EventNullableScalarRelationFilter, EventWhereInput> | null
@@ -8560,13 +8669,13 @@ export namespace Prisma {
   }
 
   export type GalleryWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    id?: number
     AND?: GalleryWhereInput | GalleryWhereInput[]
     OR?: GalleryWhereInput[]
     NOT?: GalleryWhereInput | GalleryWhereInput[]
     imageUrl?: StringFilter<"Gallery"> | string
     caption?: StringNullableFilter<"Gallery"> | string | null
-    eventId?: StringNullableFilter<"Gallery"> | string | null
+    eventId?: IntNullableFilter<"Gallery"> | number | null
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeFilter<"Gallery"> | Date | string
     event?: XOR<EventNullableScalarRelationFilter, EventWhereInput> | null
@@ -8580,18 +8689,20 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: GalleryCountOrderByAggregateInput
+    _avg?: GalleryAvgOrderByAggregateInput
     _max?: GalleryMaxOrderByAggregateInput
     _min?: GalleryMinOrderByAggregateInput
+    _sum?: GallerySumOrderByAggregateInput
   }
 
   export type GalleryScalarWhereWithAggregatesInput = {
     AND?: GalleryScalarWhereWithAggregatesInput | GalleryScalarWhereWithAggregatesInput[]
     OR?: GalleryScalarWhereWithAggregatesInput[]
     NOT?: GalleryScalarWhereWithAggregatesInput | GalleryScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Gallery"> | string
+    id?: IntWithAggregatesFilter<"Gallery"> | number
     imageUrl?: StringWithAggregatesFilter<"Gallery"> | string
     caption?: StringNullableWithAggregatesFilter<"Gallery"> | string | null
-    eventId?: StringNullableWithAggregatesFilter<"Gallery"> | string | null
+    eventId?: IntNullableWithAggregatesFilter<"Gallery"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
   }
@@ -8662,7 +8773,6 @@ export namespace Prisma {
   }
 
   export type AdminUserCreateInput = {
-    id?: string
     username: string
     passwordHash: string
     createdAt?: Date | string
@@ -8670,7 +8780,7 @@ export namespace Prisma {
   }
 
   export type AdminUserUncheckedCreateInput = {
-    id?: string
+    id?: number
     username: string
     passwordHash: string
     createdAt?: Date | string
@@ -8678,7 +8788,6 @@ export namespace Prisma {
   }
 
   export type AdminUserUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8686,7 +8795,7 @@ export namespace Prisma {
   }
 
   export type AdminUserUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8694,7 +8803,7 @@ export namespace Prisma {
   }
 
   export type AdminUserCreateManyInput = {
-    id?: string
+    id?: number
     username: string
     passwordHash: string
     createdAt?: Date | string
@@ -8702,7 +8811,6 @@ export namespace Prisma {
   }
 
   export type AdminUserUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8710,7 +8818,7 @@ export namespace Prisma {
   }
 
   export type AdminUserUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8830,7 +8938,6 @@ export namespace Prisma {
   }
 
   export type ExperienceCreateInput = {
-    id?: string
     company: string
     role: string
     startDate: Date | string
@@ -8843,7 +8950,7 @@ export namespace Prisma {
   }
 
   export type ExperienceUncheckedCreateInput = {
-    id?: string
+    id?: number
     company: string
     role: string
     startDate: Date | string
@@ -8856,7 +8963,6 @@ export namespace Prisma {
   }
 
   export type ExperienceUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8869,7 +8975,7 @@ export namespace Prisma {
   }
 
   export type ExperienceUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     company?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8882,7 +8988,7 @@ export namespace Prisma {
   }
 
   export type ExperienceCreateManyInput = {
-    id?: string
+    id?: number
     company: string
     role: string
     startDate: Date | string
@@ -8895,7 +9001,6 @@ export namespace Prisma {
   }
 
   export type ExperienceUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8908,7 +9013,7 @@ export namespace Prisma {
   }
 
   export type ExperienceUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     company?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8921,7 +9026,6 @@ export namespace Prisma {
   }
 
   export type EventCreateInput = {
-    id?: string
     title: string
     date: Date | string
     location?: string | null
@@ -8933,7 +9037,7 @@ export namespace Prisma {
   }
 
   export type EventUncheckedCreateInput = {
-    id?: string
+    id?: number
     title: string
     date: Date | string
     location?: string | null
@@ -8945,7 +9049,6 @@ export namespace Prisma {
   }
 
   export type EventUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8957,7 +9060,7 @@ export namespace Prisma {
   }
 
   export type EventUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8969,7 +9072,7 @@ export namespace Prisma {
   }
 
   export type EventCreateManyInput = {
-    id?: string
+    id?: number
     title: string
     date: Date | string
     location?: string | null
@@ -8980,7 +9083,6 @@ export namespace Prisma {
   }
 
   export type EventUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -8991,7 +9093,7 @@ export namespace Prisma {
   }
 
   export type EventUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9002,7 +9104,6 @@ export namespace Prisma {
   }
 
   export type GalleryCreateInput = {
-    id?: string
     imageUrl: string
     caption?: string | null
     createdAt?: Date | string
@@ -9011,16 +9112,15 @@ export namespace Prisma {
   }
 
   export type GalleryUncheckedCreateInput = {
-    id?: string
+    id?: number
     imageUrl: string
     caption?: string | null
-    eventId?: string | null
+    eventId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type GalleryUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9029,25 +9129,24 @@ export namespace Prisma {
   }
 
   export type GalleryUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
-    eventId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GalleryCreateManyInput = {
-    id?: string
+    id?: number
     imageUrl: string
     caption?: string | null
-    eventId?: string | null
+    eventId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type GalleryUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9055,10 +9154,10 @@ export namespace Prisma {
   }
 
   export type GalleryUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
-    eventId?: NullableStringFieldUpdateOperationsInput | string | null
+    eventId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9133,6 +9232,17 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -9173,6 +9283,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type AdminUserAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type AdminUserMaxOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
@@ -9187,6 +9301,26 @@ export namespace Prisma {
     passwordHash?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type AdminUserSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -9219,17 +9353,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -9291,22 +9414,6 @@ export namespace Prisma {
 
   export type HeroSumOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9398,6 +9505,7 @@ export namespace Prisma {
   }
 
   export type ExperienceAvgOrderByAggregateInput = {
+    id?: SortOrder
     order?: SortOrder
   }
 
@@ -9428,6 +9536,7 @@ export namespace Prisma {
   }
 
   export type ExperienceSumOrderByAggregateInput = {
+    id?: SortOrder
     order?: SortOrder
   }
 
@@ -9480,6 +9589,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EventAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type EventMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -9502,6 +9615,21 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EventSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type EventNullableScalarRelationFilter = {
     is?: EventWhereInput | null
     isNot?: EventWhereInput | null
@@ -9522,6 +9650,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type GalleryAvgOrderByAggregateInput = {
+    id?: SortOrder
+    eventId?: SortOrder
+  }
+
   export type GalleryMaxOrderByAggregateInput = {
     id?: SortOrder
     imageUrl?: SortOrder
@@ -9538,6 +9671,27 @@ export namespace Prisma {
     eventId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type GallerySumOrderByAggregateInput = {
+    id?: SortOrder
+    eventId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type ContactOrderByRelevanceInput = {
@@ -9670,6 +9824,25 @@ export namespace Prisma {
     update?: XOR<XOR<EventUpdateToOneWithWhereWithoutGalleryImagesInput, EventUpdateWithoutGalleryImagesInput>, EventUncheckedUpdateWithoutGalleryImagesInput>
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -9696,6 +9869,33 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -9712,17 +9912,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -9752,33 +9941,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9848,8 +10010,34 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type GalleryCreateWithoutEventInput = {
-    id?: string
     imageUrl: string
     caption?: string | null
     createdAt?: Date | string
@@ -9857,7 +10045,7 @@ export namespace Prisma {
   }
 
   export type GalleryUncheckedCreateWithoutEventInput = {
-    id?: string
+    id?: number
     imageUrl: string
     caption?: string | null
     createdAt?: Date | string
@@ -9894,16 +10082,15 @@ export namespace Prisma {
     AND?: GalleryScalarWhereInput | GalleryScalarWhereInput[]
     OR?: GalleryScalarWhereInput[]
     NOT?: GalleryScalarWhereInput | GalleryScalarWhereInput[]
-    id?: StringFilter<"Gallery"> | string
+    id?: IntFilter<"Gallery"> | number
     imageUrl?: StringFilter<"Gallery"> | string
     caption?: StringNullableFilter<"Gallery"> | string | null
-    eventId?: StringNullableFilter<"Gallery"> | string | null
+    eventId?: IntNullableFilter<"Gallery"> | number | null
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeFilter<"Gallery"> | Date | string
   }
 
   export type EventCreateWithoutGalleryImagesInput = {
-    id?: string
     title: string
     date: Date | string
     location?: string | null
@@ -9914,7 +10101,7 @@ export namespace Prisma {
   }
 
   export type EventUncheckedCreateWithoutGalleryImagesInput = {
-    id?: string
+    id?: number
     title: string
     date: Date | string
     location?: string | null
@@ -9941,7 +10128,6 @@ export namespace Prisma {
   }
 
   export type EventUpdateWithoutGalleryImagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9952,7 +10138,7 @@ export namespace Prisma {
   }
 
   export type EventUncheckedUpdateWithoutGalleryImagesInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     location?: NullableStringFieldUpdateOperationsInput | string | null
@@ -9963,7 +10149,7 @@ export namespace Prisma {
   }
 
   export type GalleryCreateManyEventInput = {
-    id?: string
+    id?: number
     imageUrl: string
     caption?: string | null
     createdAt?: Date | string
@@ -9971,7 +10157,6 @@ export namespace Prisma {
   }
 
   export type GalleryUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9979,7 +10164,7 @@ export namespace Prisma {
   }
 
   export type GalleryUncheckedUpdateWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9987,7 +10172,7 @@ export namespace Prisma {
   }
 
   export type GalleryUncheckedUpdateManyWithoutEventInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
