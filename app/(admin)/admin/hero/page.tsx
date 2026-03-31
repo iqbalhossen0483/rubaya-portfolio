@@ -67,7 +67,7 @@ export default function HeroAdminPage() {
       toast.success("Hero section updated successfully!");
     } catch (err: any) {
       console.error("Update failed:", err);
-      toast.error("An unexpected error occurred. Please try again.");
+      toast.error(err.data.message);
     }
   };
 
@@ -144,7 +144,12 @@ export default function HeroAdminPage() {
         />
 
         <div className="pt-4 flex justify-end">
-          <Button type="submit" variant="primary" isLoading={isUpdating}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="md"
+            isLoading={isUpdating}
+          >
             Save Changes
           </Button>
         </div>

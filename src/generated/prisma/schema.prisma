@@ -17,19 +17,41 @@ model AdminUser {
 }
 
 model Hero {
-  id          Int      @id @default(1)
-  title       String
-  subtitle    String?
-  description String?  @db.Text
-  imageUrl    String?
-  updatedAt   DateTime @default(now()) @updatedAt
+  id                Int      @id @default(1)
+  title             String
+  subtitle          String?
+  description       String?  @db.Text
+  yearsOfExperience String?
+  countries         String?
+  award             String?
+  profile           String?
+  updatedAt         DateTime @default(now()) @updatedAt
 }
 
 model About {
-  id        Int      @id @default(1)
-  content   String   @db.Text
-  resumeUrl String?
-  updatedAt DateTime @default(now()) @updatedAt
+  id                   Int                   @id @default(1)
+  title                String
+  description          String                @db.Text
+  philosophy           String                @db.Text
+  highlightedPositions HighlightedPosition[]
+  updatedAt            DateTime              @default(now()) @updatedAt
+  activities           Activity[]
+}
+
+model HighlightedPosition {
+  id      Int    @id @default(autoincrement())
+  title   String
+  company String
+  about   About? @relation(fields: [aboutId], references: [id])
+  aboutId Int?
+}
+
+model Activity {
+  id      Int    @id @default(autoincrement())
+  label   String
+  icon    String // image url
+  about   About? @relation(fields: [aboutId], references: [id])
+  aboutId Int?
 }
 
 model Experience {

@@ -29,6 +29,16 @@ export type Hero = $Result.DefaultSelection<Prisma.$HeroPayload>
  */
 export type About = $Result.DefaultSelection<Prisma.$AboutPayload>
 /**
+ * Model HighlightedPosition
+ * 
+ */
+export type HighlightedPosition = $Result.DefaultSelection<Prisma.$HighlightedPositionPayload>
+/**
+ * Model Activity
+ * 
+ */
+export type Activity = $Result.DefaultSelection<Prisma.$ActivityPayload>
+/**
  * Model Experience
  * 
  */
@@ -199,6 +209,26 @@ export class PrismaClient<
     * ```
     */
   get about(): Prisma.AboutDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.highlightedPosition`: Exposes CRUD operations for the **HighlightedPosition** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HighlightedPositions
+    * const highlightedPositions = await prisma.highlightedPosition.findMany()
+    * ```
+    */
+  get highlightedPosition(): Prisma.HighlightedPositionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.activity`: Exposes CRUD operations for the **Activity** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Activities
+    * const activities = await prisma.activity.findMany()
+    * ```
+    */
+  get activity(): Prisma.ActivityDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.experience`: Exposes CRUD operations for the **Experience** model.
@@ -676,6 +706,8 @@ export namespace Prisma {
     AdminUser: 'AdminUser',
     Hero: 'Hero',
     About: 'About',
+    HighlightedPosition: 'HighlightedPosition',
+    Activity: 'Activity',
     Experience: 'Experience',
     Event: 'Event',
     Gallery: 'Gallery',
@@ -695,7 +727,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "adminUser" | "hero" | "about" | "experience" | "event" | "gallery" | "contact"
+      modelProps: "adminUser" | "hero" | "about" | "highlightedPosition" | "activity" | "experience" | "event" | "gallery" | "contact"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -894,6 +926,138 @@ export namespace Prisma {
           count: {
             args: Prisma.AboutCountArgs<ExtArgs>
             result: $Utils.Optional<AboutCountAggregateOutputType> | number
+          }
+        }
+      }
+      HighlightedPosition: {
+        payload: Prisma.$HighlightedPositionPayload<ExtArgs>
+        fields: Prisma.HighlightedPositionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HighlightedPositionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HighlightedPositionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload>
+          }
+          findFirst: {
+            args: Prisma.HighlightedPositionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HighlightedPositionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload>
+          }
+          findMany: {
+            args: Prisma.HighlightedPositionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload>[]
+          }
+          create: {
+            args: Prisma.HighlightedPositionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload>
+          }
+          createMany: {
+            args: Prisma.HighlightedPositionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.HighlightedPositionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload>
+          }
+          update: {
+            args: Prisma.HighlightedPositionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload>
+          }
+          deleteMany: {
+            args: Prisma.HighlightedPositionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HighlightedPositionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.HighlightedPositionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightedPositionPayload>
+          }
+          aggregate: {
+            args: Prisma.HighlightedPositionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHighlightedPosition>
+          }
+          groupBy: {
+            args: Prisma.HighlightedPositionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HighlightedPositionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HighlightedPositionCountArgs<ExtArgs>
+            result: $Utils.Optional<HighlightedPositionCountAggregateOutputType> | number
+          }
+        }
+      }
+      Activity: {
+        payload: Prisma.$ActivityPayload<ExtArgs>
+        fields: Prisma.ActivityFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ActivityFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ActivityFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload>
+          }
+          findFirst: {
+            args: Prisma.ActivityFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ActivityFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload>
+          }
+          findMany: {
+            args: Prisma.ActivityFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload>[]
+          }
+          create: {
+            args: Prisma.ActivityCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload>
+          }
+          createMany: {
+            args: Prisma.ActivityCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ActivityDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload>
+          }
+          update: {
+            args: Prisma.ActivityUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload>
+          }
+          deleteMany: {
+            args: Prisma.ActivityDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ActivityUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ActivityUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ActivityPayload>
+          }
+          aggregate: {
+            args: Prisma.ActivityAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateActivity>
+          }
+          groupBy: {
+            args: Prisma.ActivityGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ActivityGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ActivityCountArgs<ExtArgs>
+            result: $Utils.Optional<ActivityCountAggregateOutputType> | number
           }
         }
       }
@@ -1272,6 +1436,8 @@ export namespace Prisma {
     adminUser?: AdminUserOmit
     hero?: HeroOmit
     about?: AboutOmit
+    highlightedPosition?: HighlightedPositionOmit
+    activity?: ActivityOmit
     experience?: ExperienceOmit
     event?: EventOmit
     gallery?: GalleryOmit
@@ -1349,6 +1515,46 @@ export namespace Prisma {
   /**
    * Count Types
    */
+
+
+  /**
+   * Count Type AboutCountOutputType
+   */
+
+  export type AboutCountOutputType = {
+    highlightedPositions: number
+    activities: number
+  }
+
+  export type AboutCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    highlightedPositions?: boolean | AboutCountOutputTypeCountHighlightedPositionsArgs
+    activities?: boolean | AboutCountOutputTypeCountActivitiesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AboutCountOutputType without action
+   */
+  export type AboutCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AboutCountOutputType
+     */
+    select?: AboutCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AboutCountOutputType without action
+   */
+  export type AboutCountOutputTypeCountHighlightedPositionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HighlightedPositionWhereInput
+  }
+
+  /**
+   * AboutCountOutputType without action
+   */
+  export type AboutCountOutputTypeCountActivitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ActivityWhereInput
+  }
 
 
   /**
@@ -2343,7 +2549,10 @@ export namespace Prisma {
     title: string | null
     subtitle: string | null
     description: string | null
-    imageUrl: string | null
+    yearsOfExperience: string | null
+    countries: string | null
+    award: string | null
+    profile: string | null
     updatedAt: Date | null
   }
 
@@ -2352,7 +2561,10 @@ export namespace Prisma {
     title: string | null
     subtitle: string | null
     description: string | null
-    imageUrl: string | null
+    yearsOfExperience: string | null
+    countries: string | null
+    award: string | null
+    profile: string | null
     updatedAt: Date | null
   }
 
@@ -2361,7 +2573,10 @@ export namespace Prisma {
     title: number
     subtitle: number
     description: number
-    imageUrl: number
+    yearsOfExperience: number
+    countries: number
+    award: number
+    profile: number
     updatedAt: number
     _all: number
   }
@@ -2380,7 +2595,10 @@ export namespace Prisma {
     title?: true
     subtitle?: true
     description?: true
-    imageUrl?: true
+    yearsOfExperience?: true
+    countries?: true
+    award?: true
+    profile?: true
     updatedAt?: true
   }
 
@@ -2389,7 +2607,10 @@ export namespace Prisma {
     title?: true
     subtitle?: true
     description?: true
-    imageUrl?: true
+    yearsOfExperience?: true
+    countries?: true
+    award?: true
+    profile?: true
     updatedAt?: true
   }
 
@@ -2398,7 +2619,10 @@ export namespace Prisma {
     title?: true
     subtitle?: true
     description?: true
-    imageUrl?: true
+    yearsOfExperience?: true
+    countries?: true
+    award?: true
+    profile?: true
     updatedAt?: true
     _all?: true
   }
@@ -2494,7 +2718,10 @@ export namespace Prisma {
     title: string
     subtitle: string | null
     description: string | null
-    imageUrl: string | null
+    yearsOfExperience: string | null
+    countries: string | null
+    award: string | null
+    profile: string | null
     updatedAt: Date
     _count: HeroCountAggregateOutputType | null
     _avg: HeroAvgAggregateOutputType | null
@@ -2522,7 +2749,10 @@ export namespace Prisma {
     title?: boolean
     subtitle?: boolean
     description?: boolean
-    imageUrl?: boolean
+    yearsOfExperience?: boolean
+    countries?: boolean
+    award?: boolean
+    profile?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["hero"]>
 
@@ -2533,11 +2763,14 @@ export namespace Prisma {
     title?: boolean
     subtitle?: boolean
     description?: boolean
-    imageUrl?: boolean
+    yearsOfExperience?: boolean
+    countries?: boolean
+    award?: boolean
+    profile?: boolean
     updatedAt?: boolean
   }
 
-  export type HeroOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "subtitle" | "description" | "imageUrl" | "updatedAt", ExtArgs["result"]["hero"]>
+  export type HeroOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "subtitle" | "description" | "yearsOfExperience" | "countries" | "award" | "profile" | "updatedAt", ExtArgs["result"]["hero"]>
 
   export type $HeroPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Hero"
@@ -2547,7 +2780,10 @@ export namespace Prisma {
       title: string
       subtitle: string | null
       description: string | null
-      imageUrl: string | null
+      yearsOfExperience: string | null
+      countries: string | null
+      award: string | null
+      profile: string | null
       updatedAt: Date
     }, ExtArgs["result"]["hero"]>
     composites: {}
@@ -2922,7 +3158,10 @@ export namespace Prisma {
     readonly title: FieldRef<"Hero", 'String'>
     readonly subtitle: FieldRef<"Hero", 'String'>
     readonly description: FieldRef<"Hero", 'String'>
-    readonly imageUrl: FieldRef<"Hero", 'String'>
+    readonly yearsOfExperience: FieldRef<"Hero", 'String'>
+    readonly countries: FieldRef<"Hero", 'String'>
+    readonly award: FieldRef<"Hero", 'String'>
+    readonly profile: FieldRef<"Hero", 'String'>
     readonly updatedAt: FieldRef<"Hero", 'DateTime'>
   }
     
@@ -3272,22 +3511,25 @@ export namespace Prisma {
 
   export type AboutMinAggregateOutputType = {
     id: number | null
-    content: string | null
-    resumeUrl: string | null
+    title: string | null
+    description: string | null
+    philosophy: string | null
     updatedAt: Date | null
   }
 
   export type AboutMaxAggregateOutputType = {
     id: number | null
-    content: string | null
-    resumeUrl: string | null
+    title: string | null
+    description: string | null
+    philosophy: string | null
     updatedAt: Date | null
   }
 
   export type AboutCountAggregateOutputType = {
     id: number
-    content: number
-    resumeUrl: number
+    title: number
+    description: number
+    philosophy: number
     updatedAt: number
     _all: number
   }
@@ -3303,22 +3545,25 @@ export namespace Prisma {
 
   export type AboutMinAggregateInputType = {
     id?: true
-    content?: true
-    resumeUrl?: true
+    title?: true
+    description?: true
+    philosophy?: true
     updatedAt?: true
   }
 
   export type AboutMaxAggregateInputType = {
     id?: true
-    content?: true
-    resumeUrl?: true
+    title?: true
+    description?: true
+    philosophy?: true
     updatedAt?: true
   }
 
   export type AboutCountAggregateInputType = {
     id?: true
-    content?: true
-    resumeUrl?: true
+    title?: true
+    description?: true
+    philosophy?: true
     updatedAt?: true
     _all?: true
   }
@@ -3411,8 +3656,9 @@ export namespace Prisma {
 
   export type AboutGroupByOutputType = {
     id: number
-    content: string
-    resumeUrl: string | null
+    title: string
+    description: string
+    philosophy: string
     updatedAt: Date
     _count: AboutCountAggregateOutputType | null
     _avg: AboutAvgAggregateOutputType | null
@@ -3437,29 +3683,43 @@ export namespace Prisma {
 
   export type AboutSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    content?: boolean
-    resumeUrl?: boolean
+    title?: boolean
+    description?: boolean
+    philosophy?: boolean
     updatedAt?: boolean
+    highlightedPositions?: boolean | About$highlightedPositionsArgs<ExtArgs>
+    activities?: boolean | About$activitiesArgs<ExtArgs>
+    _count?: boolean | AboutCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["about"]>
 
 
 
   export type AboutSelectScalar = {
     id?: boolean
-    content?: boolean
-    resumeUrl?: boolean
+    title?: boolean
+    description?: boolean
+    philosophy?: boolean
     updatedAt?: boolean
   }
 
-  export type AboutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "resumeUrl" | "updatedAt", ExtArgs["result"]["about"]>
+  export type AboutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "philosophy" | "updatedAt", ExtArgs["result"]["about"]>
+  export type AboutInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    highlightedPositions?: boolean | About$highlightedPositionsArgs<ExtArgs>
+    activities?: boolean | About$activitiesArgs<ExtArgs>
+    _count?: boolean | AboutCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $AboutPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "About"
-    objects: {}
+    objects: {
+      highlightedPositions: Prisma.$HighlightedPositionPayload<ExtArgs>[]
+      activities: Prisma.$ActivityPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      content: string
-      resumeUrl: string | null
+      title: string
+      description: string
+      philosophy: string
       updatedAt: Date
     }, ExtArgs["result"]["about"]>
     composites: {}
@@ -3801,6 +4061,8 @@ export namespace Prisma {
    */
   export interface Prisma__AboutClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    highlightedPositions<T extends About$highlightedPositionsArgs<ExtArgs> = {}>(args?: Subset<T, About$highlightedPositionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    activities<T extends About$activitiesArgs<ExtArgs> = {}>(args?: Subset<T, About$activitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3831,8 +4093,9 @@ export namespace Prisma {
    */
   interface AboutFieldRefs {
     readonly id: FieldRef<"About", 'Int'>
-    readonly content: FieldRef<"About", 'String'>
-    readonly resumeUrl: FieldRef<"About", 'String'>
+    readonly title: FieldRef<"About", 'String'>
+    readonly description: FieldRef<"About", 'String'>
+    readonly philosophy: FieldRef<"About", 'String'>
     readonly updatedAt: FieldRef<"About", 'DateTime'>
   }
     
@@ -3850,6 +4113,10 @@ export namespace Prisma {
      * Omit specific fields from the About
      */
     omit?: AboutOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
     /**
      * Filter, which About to fetch.
      */
@@ -3869,6 +4136,10 @@ export namespace Prisma {
      */
     omit?: AboutOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+    /**
      * Filter, which About to fetch.
      */
     where: AboutWhereUniqueInput
@@ -3886,6 +4157,10 @@ export namespace Prisma {
      * Omit specific fields from the About
      */
     omit?: AboutOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
     /**
      * Filter, which About to fetch.
      */
@@ -3935,6 +4210,10 @@ export namespace Prisma {
      */
     omit?: AboutOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+    /**
      * Filter, which About to fetch.
      */
     where?: AboutWhereInput
@@ -3982,6 +4261,10 @@ export namespace Prisma {
      * Omit specific fields from the About
      */
     omit?: AboutOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
     /**
      * Filter, which Abouts to fetch.
      */
@@ -4031,6 +4314,10 @@ export namespace Prisma {
      */
     omit?: AboutOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+    /**
      * The data needed to create a About.
      */
     data: XOR<AboutCreateInput, AboutUncheckedCreateInput>
@@ -4059,6 +4346,10 @@ export namespace Prisma {
      * Omit specific fields from the About
      */
     omit?: AboutOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
     /**
      * The data needed to update a About.
      */
@@ -4100,6 +4391,10 @@ export namespace Prisma {
      */
     omit?: AboutOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+    /**
      * The filter to search for the About to update in case it exists.
      */
     where: AboutWhereUniqueInput
@@ -4126,6 +4421,10 @@ export namespace Prisma {
      */
     omit?: AboutOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+    /**
      * Filter which About to delete.
      */
     where: AboutWhereUniqueInput
@@ -4146,6 +4445,54 @@ export namespace Prisma {
   }
 
   /**
+   * About.highlightedPositions
+   */
+  export type About$highlightedPositionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    where?: HighlightedPositionWhereInput
+    orderBy?: HighlightedPositionOrderByWithRelationInput | HighlightedPositionOrderByWithRelationInput[]
+    cursor?: HighlightedPositionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HighlightedPositionScalarFieldEnum | HighlightedPositionScalarFieldEnum[]
+  }
+
+  /**
+   * About.activities
+   */
+  export type About$activitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    where?: ActivityWhereInput
+    orderBy?: ActivityOrderByWithRelationInput | ActivityOrderByWithRelationInput[]
+    cursor?: ActivityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ActivityScalarFieldEnum | ActivityScalarFieldEnum[]
+  }
+
+  /**
    * About without action
    */
   export type AboutDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4157,6 +4504,1970 @@ export namespace Prisma {
      * Omit specific fields from the About
      */
     omit?: AboutOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HighlightedPosition
+   */
+
+  export type AggregateHighlightedPosition = {
+    _count: HighlightedPositionCountAggregateOutputType | null
+    _avg: HighlightedPositionAvgAggregateOutputType | null
+    _sum: HighlightedPositionSumAggregateOutputType | null
+    _min: HighlightedPositionMinAggregateOutputType | null
+    _max: HighlightedPositionMaxAggregateOutputType | null
+  }
+
+  export type HighlightedPositionAvgAggregateOutputType = {
+    id: number | null
+    aboutId: number | null
+  }
+
+  export type HighlightedPositionSumAggregateOutputType = {
+    id: number | null
+    aboutId: number | null
+  }
+
+  export type HighlightedPositionMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    company: string | null
+    aboutId: number | null
+  }
+
+  export type HighlightedPositionMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    company: string | null
+    aboutId: number | null
+  }
+
+  export type HighlightedPositionCountAggregateOutputType = {
+    id: number
+    title: number
+    company: number
+    aboutId: number
+    _all: number
+  }
+
+
+  export type HighlightedPositionAvgAggregateInputType = {
+    id?: true
+    aboutId?: true
+  }
+
+  export type HighlightedPositionSumAggregateInputType = {
+    id?: true
+    aboutId?: true
+  }
+
+  export type HighlightedPositionMinAggregateInputType = {
+    id?: true
+    title?: true
+    company?: true
+    aboutId?: true
+  }
+
+  export type HighlightedPositionMaxAggregateInputType = {
+    id?: true
+    title?: true
+    company?: true
+    aboutId?: true
+  }
+
+  export type HighlightedPositionCountAggregateInputType = {
+    id?: true
+    title?: true
+    company?: true
+    aboutId?: true
+    _all?: true
+  }
+
+  export type HighlightedPositionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HighlightedPosition to aggregate.
+     */
+    where?: HighlightedPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightedPositions to fetch.
+     */
+    orderBy?: HighlightedPositionOrderByWithRelationInput | HighlightedPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HighlightedPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightedPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightedPositions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HighlightedPositions
+    **/
+    _count?: true | HighlightedPositionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HighlightedPositionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HighlightedPositionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HighlightedPositionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HighlightedPositionMaxAggregateInputType
+  }
+
+  export type GetHighlightedPositionAggregateType<T extends HighlightedPositionAggregateArgs> = {
+        [P in keyof T & keyof AggregateHighlightedPosition]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHighlightedPosition[P]>
+      : GetScalarType<T[P], AggregateHighlightedPosition[P]>
+  }
+
+
+
+
+  export type HighlightedPositionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HighlightedPositionWhereInput
+    orderBy?: HighlightedPositionOrderByWithAggregationInput | HighlightedPositionOrderByWithAggregationInput[]
+    by: HighlightedPositionScalarFieldEnum[] | HighlightedPositionScalarFieldEnum
+    having?: HighlightedPositionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HighlightedPositionCountAggregateInputType | true
+    _avg?: HighlightedPositionAvgAggregateInputType
+    _sum?: HighlightedPositionSumAggregateInputType
+    _min?: HighlightedPositionMinAggregateInputType
+    _max?: HighlightedPositionMaxAggregateInputType
+  }
+
+  export type HighlightedPositionGroupByOutputType = {
+    id: number
+    title: string
+    company: string
+    aboutId: number | null
+    _count: HighlightedPositionCountAggregateOutputType | null
+    _avg: HighlightedPositionAvgAggregateOutputType | null
+    _sum: HighlightedPositionSumAggregateOutputType | null
+    _min: HighlightedPositionMinAggregateOutputType | null
+    _max: HighlightedPositionMaxAggregateOutputType | null
+  }
+
+  type GetHighlightedPositionGroupByPayload<T extends HighlightedPositionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HighlightedPositionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HighlightedPositionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HighlightedPositionGroupByOutputType[P]>
+            : GetScalarType<T[P], HighlightedPositionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HighlightedPositionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    company?: boolean
+    aboutId?: boolean
+    about?: boolean | HighlightedPosition$aboutArgs<ExtArgs>
+  }, ExtArgs["result"]["highlightedPosition"]>
+
+
+
+  export type HighlightedPositionSelectScalar = {
+    id?: boolean
+    title?: boolean
+    company?: boolean
+    aboutId?: boolean
+  }
+
+  export type HighlightedPositionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "company" | "aboutId", ExtArgs["result"]["highlightedPosition"]>
+  export type HighlightedPositionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    about?: boolean | HighlightedPosition$aboutArgs<ExtArgs>
+  }
+
+  export type $HighlightedPositionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HighlightedPosition"
+    objects: {
+      about: Prisma.$AboutPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      company: string
+      aboutId: number | null
+    }, ExtArgs["result"]["highlightedPosition"]>
+    composites: {}
+  }
+
+  type HighlightedPositionGetPayload<S extends boolean | null | undefined | HighlightedPositionDefaultArgs> = $Result.GetResult<Prisma.$HighlightedPositionPayload, S>
+
+  type HighlightedPositionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HighlightedPositionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HighlightedPositionCountAggregateInputType | true
+    }
+
+  export interface HighlightedPositionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HighlightedPosition'], meta: { name: 'HighlightedPosition' } }
+    /**
+     * Find zero or one HighlightedPosition that matches the filter.
+     * @param {HighlightedPositionFindUniqueArgs} args - Arguments to find a HighlightedPosition
+     * @example
+     * // Get one HighlightedPosition
+     * const highlightedPosition = await prisma.highlightedPosition.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HighlightedPositionFindUniqueArgs>(args: SelectSubset<T, HighlightedPositionFindUniqueArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HighlightedPosition that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HighlightedPositionFindUniqueOrThrowArgs} args - Arguments to find a HighlightedPosition
+     * @example
+     * // Get one HighlightedPosition
+     * const highlightedPosition = await prisma.highlightedPosition.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HighlightedPositionFindUniqueOrThrowArgs>(args: SelectSubset<T, HighlightedPositionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HighlightedPosition that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightedPositionFindFirstArgs} args - Arguments to find a HighlightedPosition
+     * @example
+     * // Get one HighlightedPosition
+     * const highlightedPosition = await prisma.highlightedPosition.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HighlightedPositionFindFirstArgs>(args?: SelectSubset<T, HighlightedPositionFindFirstArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HighlightedPosition that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightedPositionFindFirstOrThrowArgs} args - Arguments to find a HighlightedPosition
+     * @example
+     * // Get one HighlightedPosition
+     * const highlightedPosition = await prisma.highlightedPosition.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HighlightedPositionFindFirstOrThrowArgs>(args?: SelectSubset<T, HighlightedPositionFindFirstOrThrowArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HighlightedPositions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightedPositionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HighlightedPositions
+     * const highlightedPositions = await prisma.highlightedPosition.findMany()
+     * 
+     * // Get first 10 HighlightedPositions
+     * const highlightedPositions = await prisma.highlightedPosition.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const highlightedPositionWithIdOnly = await prisma.highlightedPosition.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HighlightedPositionFindManyArgs>(args?: SelectSubset<T, HighlightedPositionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HighlightedPosition.
+     * @param {HighlightedPositionCreateArgs} args - Arguments to create a HighlightedPosition.
+     * @example
+     * // Create one HighlightedPosition
+     * const HighlightedPosition = await prisma.highlightedPosition.create({
+     *   data: {
+     *     // ... data to create a HighlightedPosition
+     *   }
+     * })
+     * 
+     */
+    create<T extends HighlightedPositionCreateArgs>(args: SelectSubset<T, HighlightedPositionCreateArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HighlightedPositions.
+     * @param {HighlightedPositionCreateManyArgs} args - Arguments to create many HighlightedPositions.
+     * @example
+     * // Create many HighlightedPositions
+     * const highlightedPosition = await prisma.highlightedPosition.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HighlightedPositionCreateManyArgs>(args?: SelectSubset<T, HighlightedPositionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a HighlightedPosition.
+     * @param {HighlightedPositionDeleteArgs} args - Arguments to delete one HighlightedPosition.
+     * @example
+     * // Delete one HighlightedPosition
+     * const HighlightedPosition = await prisma.highlightedPosition.delete({
+     *   where: {
+     *     // ... filter to delete one HighlightedPosition
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HighlightedPositionDeleteArgs>(args: SelectSubset<T, HighlightedPositionDeleteArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HighlightedPosition.
+     * @param {HighlightedPositionUpdateArgs} args - Arguments to update one HighlightedPosition.
+     * @example
+     * // Update one HighlightedPosition
+     * const highlightedPosition = await prisma.highlightedPosition.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HighlightedPositionUpdateArgs>(args: SelectSubset<T, HighlightedPositionUpdateArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HighlightedPositions.
+     * @param {HighlightedPositionDeleteManyArgs} args - Arguments to filter HighlightedPositions to delete.
+     * @example
+     * // Delete a few HighlightedPositions
+     * const { count } = await prisma.highlightedPosition.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HighlightedPositionDeleteManyArgs>(args?: SelectSubset<T, HighlightedPositionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HighlightedPositions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightedPositionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HighlightedPositions
+     * const highlightedPosition = await prisma.highlightedPosition.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HighlightedPositionUpdateManyArgs>(args: SelectSubset<T, HighlightedPositionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one HighlightedPosition.
+     * @param {HighlightedPositionUpsertArgs} args - Arguments to update or create a HighlightedPosition.
+     * @example
+     * // Update or create a HighlightedPosition
+     * const highlightedPosition = await prisma.highlightedPosition.upsert({
+     *   create: {
+     *     // ... data to create a HighlightedPosition
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HighlightedPosition we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HighlightedPositionUpsertArgs>(args: SelectSubset<T, HighlightedPositionUpsertArgs<ExtArgs>>): Prisma__HighlightedPositionClient<$Result.GetResult<Prisma.$HighlightedPositionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HighlightedPositions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightedPositionCountArgs} args - Arguments to filter HighlightedPositions to count.
+     * @example
+     * // Count the number of HighlightedPositions
+     * const count = await prisma.highlightedPosition.count({
+     *   where: {
+     *     // ... the filter for the HighlightedPositions we want to count
+     *   }
+     * })
+    **/
+    count<T extends HighlightedPositionCountArgs>(
+      args?: Subset<T, HighlightedPositionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HighlightedPositionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HighlightedPosition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightedPositionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HighlightedPositionAggregateArgs>(args: Subset<T, HighlightedPositionAggregateArgs>): Prisma.PrismaPromise<GetHighlightedPositionAggregateType<T>>
+
+    /**
+     * Group by HighlightedPosition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightedPositionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HighlightedPositionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HighlightedPositionGroupByArgs['orderBy'] }
+        : { orderBy?: HighlightedPositionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HighlightedPositionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHighlightedPositionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HighlightedPosition model
+   */
+  readonly fields: HighlightedPositionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HighlightedPosition.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HighlightedPositionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    about<T extends HighlightedPosition$aboutArgs<ExtArgs> = {}>(args?: Subset<T, HighlightedPosition$aboutArgs<ExtArgs>>): Prisma__AboutClient<$Result.GetResult<Prisma.$AboutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HighlightedPosition model
+   */
+  interface HighlightedPositionFieldRefs {
+    readonly id: FieldRef<"HighlightedPosition", 'Int'>
+    readonly title: FieldRef<"HighlightedPosition", 'String'>
+    readonly company: FieldRef<"HighlightedPosition", 'String'>
+    readonly aboutId: FieldRef<"HighlightedPosition", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HighlightedPosition findUnique
+   */
+  export type HighlightedPositionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightedPosition to fetch.
+     */
+    where: HighlightedPositionWhereUniqueInput
+  }
+
+  /**
+   * HighlightedPosition findUniqueOrThrow
+   */
+  export type HighlightedPositionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightedPosition to fetch.
+     */
+    where: HighlightedPositionWhereUniqueInput
+  }
+
+  /**
+   * HighlightedPosition findFirst
+   */
+  export type HighlightedPositionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightedPosition to fetch.
+     */
+    where?: HighlightedPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightedPositions to fetch.
+     */
+    orderBy?: HighlightedPositionOrderByWithRelationInput | HighlightedPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HighlightedPositions.
+     */
+    cursor?: HighlightedPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightedPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightedPositions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HighlightedPositions.
+     */
+    distinct?: HighlightedPositionScalarFieldEnum | HighlightedPositionScalarFieldEnum[]
+  }
+
+  /**
+   * HighlightedPosition findFirstOrThrow
+   */
+  export type HighlightedPositionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightedPosition to fetch.
+     */
+    where?: HighlightedPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightedPositions to fetch.
+     */
+    orderBy?: HighlightedPositionOrderByWithRelationInput | HighlightedPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HighlightedPositions.
+     */
+    cursor?: HighlightedPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightedPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightedPositions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HighlightedPositions.
+     */
+    distinct?: HighlightedPositionScalarFieldEnum | HighlightedPositionScalarFieldEnum[]
+  }
+
+  /**
+   * HighlightedPosition findMany
+   */
+  export type HighlightedPositionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightedPositions to fetch.
+     */
+    where?: HighlightedPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightedPositions to fetch.
+     */
+    orderBy?: HighlightedPositionOrderByWithRelationInput | HighlightedPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HighlightedPositions.
+     */
+    cursor?: HighlightedPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightedPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightedPositions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HighlightedPositions.
+     */
+    distinct?: HighlightedPositionScalarFieldEnum | HighlightedPositionScalarFieldEnum[]
+  }
+
+  /**
+   * HighlightedPosition create
+   */
+  export type HighlightedPositionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HighlightedPosition.
+     */
+    data: XOR<HighlightedPositionCreateInput, HighlightedPositionUncheckedCreateInput>
+  }
+
+  /**
+   * HighlightedPosition createMany
+   */
+  export type HighlightedPositionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HighlightedPositions.
+     */
+    data: HighlightedPositionCreateManyInput | HighlightedPositionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HighlightedPosition update
+   */
+  export type HighlightedPositionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HighlightedPosition.
+     */
+    data: XOR<HighlightedPositionUpdateInput, HighlightedPositionUncheckedUpdateInput>
+    /**
+     * Choose, which HighlightedPosition to update.
+     */
+    where: HighlightedPositionWhereUniqueInput
+  }
+
+  /**
+   * HighlightedPosition updateMany
+   */
+  export type HighlightedPositionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HighlightedPositions.
+     */
+    data: XOR<HighlightedPositionUpdateManyMutationInput, HighlightedPositionUncheckedUpdateManyInput>
+    /**
+     * Filter which HighlightedPositions to update
+     */
+    where?: HighlightedPositionWhereInput
+    /**
+     * Limit how many HighlightedPositions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HighlightedPosition upsert
+   */
+  export type HighlightedPositionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HighlightedPosition to update in case it exists.
+     */
+    where: HighlightedPositionWhereUniqueInput
+    /**
+     * In case the HighlightedPosition found by the `where` argument doesn't exist, create a new HighlightedPosition with this data.
+     */
+    create: XOR<HighlightedPositionCreateInput, HighlightedPositionUncheckedCreateInput>
+    /**
+     * In case the HighlightedPosition was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HighlightedPositionUpdateInput, HighlightedPositionUncheckedUpdateInput>
+  }
+
+  /**
+   * HighlightedPosition delete
+   */
+  export type HighlightedPositionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+    /**
+     * Filter which HighlightedPosition to delete.
+     */
+    where: HighlightedPositionWhereUniqueInput
+  }
+
+  /**
+   * HighlightedPosition deleteMany
+   */
+  export type HighlightedPositionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HighlightedPositions to delete
+     */
+    where?: HighlightedPositionWhereInput
+    /**
+     * Limit how many HighlightedPositions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HighlightedPosition.about
+   */
+  export type HighlightedPosition$aboutArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the About
+     */
+    select?: AboutSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the About
+     */
+    omit?: AboutOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+    where?: AboutWhereInput
+  }
+
+  /**
+   * HighlightedPosition without action
+   */
+  export type HighlightedPositionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightedPosition
+     */
+    select?: HighlightedPositionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightedPosition
+     */
+    omit?: HighlightedPositionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightedPositionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Activity
+   */
+
+  export type AggregateActivity = {
+    _count: ActivityCountAggregateOutputType | null
+    _avg: ActivityAvgAggregateOutputType | null
+    _sum: ActivitySumAggregateOutputType | null
+    _min: ActivityMinAggregateOutputType | null
+    _max: ActivityMaxAggregateOutputType | null
+  }
+
+  export type ActivityAvgAggregateOutputType = {
+    id: number | null
+    aboutId: number | null
+  }
+
+  export type ActivitySumAggregateOutputType = {
+    id: number | null
+    aboutId: number | null
+  }
+
+  export type ActivityMinAggregateOutputType = {
+    id: number | null
+    label: string | null
+    icon: string | null
+    aboutId: number | null
+  }
+
+  export type ActivityMaxAggregateOutputType = {
+    id: number | null
+    label: string | null
+    icon: string | null
+    aboutId: number | null
+  }
+
+  export type ActivityCountAggregateOutputType = {
+    id: number
+    label: number
+    icon: number
+    aboutId: number
+    _all: number
+  }
+
+
+  export type ActivityAvgAggregateInputType = {
+    id?: true
+    aboutId?: true
+  }
+
+  export type ActivitySumAggregateInputType = {
+    id?: true
+    aboutId?: true
+  }
+
+  export type ActivityMinAggregateInputType = {
+    id?: true
+    label?: true
+    icon?: true
+    aboutId?: true
+  }
+
+  export type ActivityMaxAggregateInputType = {
+    id?: true
+    label?: true
+    icon?: true
+    aboutId?: true
+  }
+
+  export type ActivityCountAggregateInputType = {
+    id?: true
+    label?: true
+    icon?: true
+    aboutId?: true
+    _all?: true
+  }
+
+  export type ActivityAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Activity to aggregate.
+     */
+    where?: ActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Activities to fetch.
+     */
+    orderBy?: ActivityOrderByWithRelationInput | ActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Activities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Activities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Activities
+    **/
+    _count?: true | ActivityCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ActivityAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ActivitySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ActivityMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ActivityMaxAggregateInputType
+  }
+
+  export type GetActivityAggregateType<T extends ActivityAggregateArgs> = {
+        [P in keyof T & keyof AggregateActivity]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateActivity[P]>
+      : GetScalarType<T[P], AggregateActivity[P]>
+  }
+
+
+
+
+  export type ActivityGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ActivityWhereInput
+    orderBy?: ActivityOrderByWithAggregationInput | ActivityOrderByWithAggregationInput[]
+    by: ActivityScalarFieldEnum[] | ActivityScalarFieldEnum
+    having?: ActivityScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ActivityCountAggregateInputType | true
+    _avg?: ActivityAvgAggregateInputType
+    _sum?: ActivitySumAggregateInputType
+    _min?: ActivityMinAggregateInputType
+    _max?: ActivityMaxAggregateInputType
+  }
+
+  export type ActivityGroupByOutputType = {
+    id: number
+    label: string
+    icon: string
+    aboutId: number | null
+    _count: ActivityCountAggregateOutputType | null
+    _avg: ActivityAvgAggregateOutputType | null
+    _sum: ActivitySumAggregateOutputType | null
+    _min: ActivityMinAggregateOutputType | null
+    _max: ActivityMaxAggregateOutputType | null
+  }
+
+  type GetActivityGroupByPayload<T extends ActivityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ActivityGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ActivityGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ActivityGroupByOutputType[P]>
+            : GetScalarType<T[P], ActivityGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ActivitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    icon?: boolean
+    aboutId?: boolean
+    about?: boolean | Activity$aboutArgs<ExtArgs>
+  }, ExtArgs["result"]["activity"]>
+
+
+
+  export type ActivitySelectScalar = {
+    id?: boolean
+    label?: boolean
+    icon?: boolean
+    aboutId?: boolean
+  }
+
+  export type ActivityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "icon" | "aboutId", ExtArgs["result"]["activity"]>
+  export type ActivityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    about?: boolean | Activity$aboutArgs<ExtArgs>
+  }
+
+  export type $ActivityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Activity"
+    objects: {
+      about: Prisma.$AboutPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      label: string
+      icon: string
+      aboutId: number | null
+    }, ExtArgs["result"]["activity"]>
+    composites: {}
+  }
+
+  type ActivityGetPayload<S extends boolean | null | undefined | ActivityDefaultArgs> = $Result.GetResult<Prisma.$ActivityPayload, S>
+
+  type ActivityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ActivityFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ActivityCountAggregateInputType | true
+    }
+
+  export interface ActivityDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Activity'], meta: { name: 'Activity' } }
+    /**
+     * Find zero or one Activity that matches the filter.
+     * @param {ActivityFindUniqueArgs} args - Arguments to find a Activity
+     * @example
+     * // Get one Activity
+     * const activity = await prisma.activity.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ActivityFindUniqueArgs>(args: SelectSubset<T, ActivityFindUniqueArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Activity that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ActivityFindUniqueOrThrowArgs} args - Arguments to find a Activity
+     * @example
+     * // Get one Activity
+     * const activity = await prisma.activity.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ActivityFindUniqueOrThrowArgs>(args: SelectSubset<T, ActivityFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Activity that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivityFindFirstArgs} args - Arguments to find a Activity
+     * @example
+     * // Get one Activity
+     * const activity = await prisma.activity.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ActivityFindFirstArgs>(args?: SelectSubset<T, ActivityFindFirstArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Activity that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivityFindFirstOrThrowArgs} args - Arguments to find a Activity
+     * @example
+     * // Get one Activity
+     * const activity = await prisma.activity.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ActivityFindFirstOrThrowArgs>(args?: SelectSubset<T, ActivityFindFirstOrThrowArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Activities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Activities
+     * const activities = await prisma.activity.findMany()
+     * 
+     * // Get first 10 Activities
+     * const activities = await prisma.activity.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const activityWithIdOnly = await prisma.activity.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ActivityFindManyArgs>(args?: SelectSubset<T, ActivityFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Activity.
+     * @param {ActivityCreateArgs} args - Arguments to create a Activity.
+     * @example
+     * // Create one Activity
+     * const Activity = await prisma.activity.create({
+     *   data: {
+     *     // ... data to create a Activity
+     *   }
+     * })
+     * 
+     */
+    create<T extends ActivityCreateArgs>(args: SelectSubset<T, ActivityCreateArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Activities.
+     * @param {ActivityCreateManyArgs} args - Arguments to create many Activities.
+     * @example
+     * // Create many Activities
+     * const activity = await prisma.activity.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ActivityCreateManyArgs>(args?: SelectSubset<T, ActivityCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Activity.
+     * @param {ActivityDeleteArgs} args - Arguments to delete one Activity.
+     * @example
+     * // Delete one Activity
+     * const Activity = await prisma.activity.delete({
+     *   where: {
+     *     // ... filter to delete one Activity
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ActivityDeleteArgs>(args: SelectSubset<T, ActivityDeleteArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Activity.
+     * @param {ActivityUpdateArgs} args - Arguments to update one Activity.
+     * @example
+     * // Update one Activity
+     * const activity = await prisma.activity.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ActivityUpdateArgs>(args: SelectSubset<T, ActivityUpdateArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Activities.
+     * @param {ActivityDeleteManyArgs} args - Arguments to filter Activities to delete.
+     * @example
+     * // Delete a few Activities
+     * const { count } = await prisma.activity.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ActivityDeleteManyArgs>(args?: SelectSubset<T, ActivityDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Activities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Activities
+     * const activity = await prisma.activity.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ActivityUpdateManyArgs>(args: SelectSubset<T, ActivityUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Activity.
+     * @param {ActivityUpsertArgs} args - Arguments to update or create a Activity.
+     * @example
+     * // Update or create a Activity
+     * const activity = await prisma.activity.upsert({
+     *   create: {
+     *     // ... data to create a Activity
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Activity we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ActivityUpsertArgs>(args: SelectSubset<T, ActivityUpsertArgs<ExtArgs>>): Prisma__ActivityClient<$Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Activities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivityCountArgs} args - Arguments to filter Activities to count.
+     * @example
+     * // Count the number of Activities
+     * const count = await prisma.activity.count({
+     *   where: {
+     *     // ... the filter for the Activities we want to count
+     *   }
+     * })
+    **/
+    count<T extends ActivityCountArgs>(
+      args?: Subset<T, ActivityCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ActivityCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Activity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ActivityAggregateArgs>(args: Subset<T, ActivityAggregateArgs>): Prisma.PrismaPromise<GetActivityAggregateType<T>>
+
+    /**
+     * Group by Activity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ActivityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ActivityGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ActivityGroupByArgs['orderBy'] }
+        : { orderBy?: ActivityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ActivityGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetActivityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Activity model
+   */
+  readonly fields: ActivityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Activity.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ActivityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    about<T extends Activity$aboutArgs<ExtArgs> = {}>(args?: Subset<T, Activity$aboutArgs<ExtArgs>>): Prisma__AboutClient<$Result.GetResult<Prisma.$AboutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Activity model
+   */
+  interface ActivityFieldRefs {
+    readonly id: FieldRef<"Activity", 'Int'>
+    readonly label: FieldRef<"Activity", 'String'>
+    readonly icon: FieldRef<"Activity", 'String'>
+    readonly aboutId: FieldRef<"Activity", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Activity findUnique
+   */
+  export type ActivityFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which Activity to fetch.
+     */
+    where: ActivityWhereUniqueInput
+  }
+
+  /**
+   * Activity findUniqueOrThrow
+   */
+  export type ActivityFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which Activity to fetch.
+     */
+    where: ActivityWhereUniqueInput
+  }
+
+  /**
+   * Activity findFirst
+   */
+  export type ActivityFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which Activity to fetch.
+     */
+    where?: ActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Activities to fetch.
+     */
+    orderBy?: ActivityOrderByWithRelationInput | ActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Activities.
+     */
+    cursor?: ActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Activities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Activities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Activities.
+     */
+    distinct?: ActivityScalarFieldEnum | ActivityScalarFieldEnum[]
+  }
+
+  /**
+   * Activity findFirstOrThrow
+   */
+  export type ActivityFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which Activity to fetch.
+     */
+    where?: ActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Activities to fetch.
+     */
+    orderBy?: ActivityOrderByWithRelationInput | ActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Activities.
+     */
+    cursor?: ActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Activities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Activities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Activities.
+     */
+    distinct?: ActivityScalarFieldEnum | ActivityScalarFieldEnum[]
+  }
+
+  /**
+   * Activity findMany
+   */
+  export type ActivityFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * Filter, which Activities to fetch.
+     */
+    where?: ActivityWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Activities to fetch.
+     */
+    orderBy?: ActivityOrderByWithRelationInput | ActivityOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Activities.
+     */
+    cursor?: ActivityWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Activities from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Activities.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Activities.
+     */
+    distinct?: ActivityScalarFieldEnum | ActivityScalarFieldEnum[]
+  }
+
+  /**
+   * Activity create
+   */
+  export type ActivityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Activity.
+     */
+    data: XOR<ActivityCreateInput, ActivityUncheckedCreateInput>
+  }
+
+  /**
+   * Activity createMany
+   */
+  export type ActivityCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Activities.
+     */
+    data: ActivityCreateManyInput | ActivityCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Activity update
+   */
+  export type ActivityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Activity.
+     */
+    data: XOR<ActivityUpdateInput, ActivityUncheckedUpdateInput>
+    /**
+     * Choose, which Activity to update.
+     */
+    where: ActivityWhereUniqueInput
+  }
+
+  /**
+   * Activity updateMany
+   */
+  export type ActivityUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Activities.
+     */
+    data: XOR<ActivityUpdateManyMutationInput, ActivityUncheckedUpdateManyInput>
+    /**
+     * Filter which Activities to update
+     */
+    where?: ActivityWhereInput
+    /**
+     * Limit how many Activities to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Activity upsert
+   */
+  export type ActivityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Activity to update in case it exists.
+     */
+    where: ActivityWhereUniqueInput
+    /**
+     * In case the Activity found by the `where` argument doesn't exist, create a new Activity with this data.
+     */
+    create: XOR<ActivityCreateInput, ActivityUncheckedCreateInput>
+    /**
+     * In case the Activity was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ActivityUpdateInput, ActivityUncheckedUpdateInput>
+  }
+
+  /**
+   * Activity delete
+   */
+  export type ActivityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
+    /**
+     * Filter which Activity to delete.
+     */
+    where: ActivityWhereUniqueInput
+  }
+
+  /**
+   * Activity deleteMany
+   */
+  export type ActivityDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Activities to delete
+     */
+    where?: ActivityWhereInput
+    /**
+     * Limit how many Activities to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Activity.about
+   */
+  export type Activity$aboutArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the About
+     */
+    select?: AboutSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the About
+     */
+    omit?: AboutOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AboutInclude<ExtArgs> | null
+    where?: AboutWhereInput
+  }
+
+  /**
+   * Activity without action
+   */
+  export type ActivityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Activity
+     */
+    select?: ActivitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Activity
+     */
+    omit?: ActivityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ActivityInclude<ExtArgs> | null
   }
 
 
@@ -8143,7 +10454,10 @@ export namespace Prisma {
     title: 'title',
     subtitle: 'subtitle',
     description: 'description',
-    imageUrl: 'imageUrl',
+    yearsOfExperience: 'yearsOfExperience',
+    countries: 'countries',
+    award: 'award',
+    profile: 'profile',
     updatedAt: 'updatedAt'
   };
 
@@ -8152,12 +10466,33 @@ export namespace Prisma {
 
   export const AboutScalarFieldEnum: {
     id: 'id',
-    content: 'content',
-    resumeUrl: 'resumeUrl',
+    title: 'title',
+    description: 'description',
+    philosophy: 'philosophy',
     updatedAt: 'updatedAt'
   };
 
   export type AboutScalarFieldEnum = (typeof AboutScalarFieldEnum)[keyof typeof AboutScalarFieldEnum]
+
+
+  export const HighlightedPositionScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    company: 'company',
+    aboutId: 'aboutId'
+  };
+
+  export type HighlightedPositionScalarFieldEnum = (typeof HighlightedPositionScalarFieldEnum)[keyof typeof HighlightedPositionScalarFieldEnum]
+
+
+  export const ActivityScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    icon: 'icon',
+    aboutId: 'aboutId'
+  };
+
+  export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
 
 
   export const ExperienceScalarFieldEnum: {
@@ -8244,18 +10579,38 @@ export namespace Prisma {
     title: 'title',
     subtitle: 'subtitle',
     description: 'description',
-    imageUrl: 'imageUrl'
+    yearsOfExperience: 'yearsOfExperience',
+    countries: 'countries',
+    award: 'award',
+    profile: 'profile'
   };
 
   export type HeroOrderByRelevanceFieldEnum = (typeof HeroOrderByRelevanceFieldEnum)[keyof typeof HeroOrderByRelevanceFieldEnum]
 
 
   export const AboutOrderByRelevanceFieldEnum: {
-    content: 'content',
-    resumeUrl: 'resumeUrl'
+    title: 'title',
+    description: 'description',
+    philosophy: 'philosophy'
   };
 
   export type AboutOrderByRelevanceFieldEnum = (typeof AboutOrderByRelevanceFieldEnum)[keyof typeof AboutOrderByRelevanceFieldEnum]
+
+
+  export const HighlightedPositionOrderByRelevanceFieldEnum: {
+    title: 'title',
+    company: 'company'
+  };
+
+  export type HighlightedPositionOrderByRelevanceFieldEnum = (typeof HighlightedPositionOrderByRelevanceFieldEnum)[keyof typeof HighlightedPositionOrderByRelevanceFieldEnum]
+
+
+  export const ActivityOrderByRelevanceFieldEnum: {
+    label: 'label',
+    icon: 'icon'
+  };
+
+  export type ActivityOrderByRelevanceFieldEnum = (typeof ActivityOrderByRelevanceFieldEnum)[keyof typeof ActivityOrderByRelevanceFieldEnum]
 
 
   export const ExperienceOrderByRelevanceFieldEnum: {
@@ -8407,7 +10762,10 @@ export namespace Prisma {
     title?: StringFilter<"Hero"> | string
     subtitle?: StringNullableFilter<"Hero"> | string | null
     description?: StringNullableFilter<"Hero"> | string | null
-    imageUrl?: StringNullableFilter<"Hero"> | string | null
+    yearsOfExperience?: StringNullableFilter<"Hero"> | string | null
+    countries?: StringNullableFilter<"Hero"> | string | null
+    award?: StringNullableFilter<"Hero"> | string | null
+    profile?: StringNullableFilter<"Hero"> | string | null
     updatedAt?: DateTimeFilter<"Hero"> | Date | string
   }
 
@@ -8416,7 +10774,10 @@ export namespace Prisma {
     title?: SortOrder
     subtitle?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
-    imageUrl?: SortOrderInput | SortOrder
+    yearsOfExperience?: SortOrderInput | SortOrder
+    countries?: SortOrderInput | SortOrder
+    award?: SortOrderInput | SortOrder
+    profile?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
     _relevance?: HeroOrderByRelevanceInput
   }
@@ -8429,7 +10790,10 @@ export namespace Prisma {
     title?: StringFilter<"Hero"> | string
     subtitle?: StringNullableFilter<"Hero"> | string | null
     description?: StringNullableFilter<"Hero"> | string | null
-    imageUrl?: StringNullableFilter<"Hero"> | string | null
+    yearsOfExperience?: StringNullableFilter<"Hero"> | string | null
+    countries?: StringNullableFilter<"Hero"> | string | null
+    award?: StringNullableFilter<"Hero"> | string | null
+    profile?: StringNullableFilter<"Hero"> | string | null
     updatedAt?: DateTimeFilter<"Hero"> | Date | string
   }, "id">
 
@@ -8438,7 +10802,10 @@ export namespace Prisma {
     title?: SortOrder
     subtitle?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
-    imageUrl?: SortOrderInput | SortOrder
+    yearsOfExperience?: SortOrderInput | SortOrder
+    countries?: SortOrderInput | SortOrder
+    award?: SortOrderInput | SortOrder
+    profile?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
     _count?: HeroCountOrderByAggregateInput
     _avg?: HeroAvgOrderByAggregateInput
@@ -8455,7 +10822,10 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Hero"> | string
     subtitle?: StringNullableWithAggregatesFilter<"Hero"> | string | null
     description?: StringNullableWithAggregatesFilter<"Hero"> | string | null
-    imageUrl?: StringNullableWithAggregatesFilter<"Hero"> | string | null
+    yearsOfExperience?: StringNullableWithAggregatesFilter<"Hero"> | string | null
+    countries?: StringNullableWithAggregatesFilter<"Hero"> | string | null
+    award?: StringNullableWithAggregatesFilter<"Hero"> | string | null
+    profile?: StringNullableWithAggregatesFilter<"Hero"> | string | null
     updatedAt?: DateTimeWithAggregatesFilter<"Hero"> | Date | string
   }
 
@@ -8464,16 +10834,22 @@ export namespace Prisma {
     OR?: AboutWhereInput[]
     NOT?: AboutWhereInput | AboutWhereInput[]
     id?: IntFilter<"About"> | number
-    content?: StringFilter<"About"> | string
-    resumeUrl?: StringNullableFilter<"About"> | string | null
+    title?: StringFilter<"About"> | string
+    description?: StringFilter<"About"> | string
+    philosophy?: StringFilter<"About"> | string
     updatedAt?: DateTimeFilter<"About"> | Date | string
+    highlightedPositions?: HighlightedPositionListRelationFilter
+    activities?: ActivityListRelationFilter
   }
 
   export type AboutOrderByWithRelationInput = {
     id?: SortOrder
-    content?: SortOrder
-    resumeUrl?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    philosophy?: SortOrder
     updatedAt?: SortOrder
+    highlightedPositions?: HighlightedPositionOrderByRelationAggregateInput
+    activities?: ActivityOrderByRelationAggregateInput
     _relevance?: AboutOrderByRelevanceInput
   }
 
@@ -8482,15 +10858,19 @@ export namespace Prisma {
     AND?: AboutWhereInput | AboutWhereInput[]
     OR?: AboutWhereInput[]
     NOT?: AboutWhereInput | AboutWhereInput[]
-    content?: StringFilter<"About"> | string
-    resumeUrl?: StringNullableFilter<"About"> | string | null
+    title?: StringFilter<"About"> | string
+    description?: StringFilter<"About"> | string
+    philosophy?: StringFilter<"About"> | string
     updatedAt?: DateTimeFilter<"About"> | Date | string
+    highlightedPositions?: HighlightedPositionListRelationFilter
+    activities?: ActivityListRelationFilter
   }, "id">
 
   export type AboutOrderByWithAggregationInput = {
     id?: SortOrder
-    content?: SortOrder
-    resumeUrl?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    philosophy?: SortOrder
     updatedAt?: SortOrder
     _count?: AboutCountOrderByAggregateInput
     _avg?: AboutAvgOrderByAggregateInput
@@ -8504,9 +10884,116 @@ export namespace Prisma {
     OR?: AboutScalarWhereWithAggregatesInput[]
     NOT?: AboutScalarWhereWithAggregatesInput | AboutScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"About"> | number
-    content?: StringWithAggregatesFilter<"About"> | string
-    resumeUrl?: StringNullableWithAggregatesFilter<"About"> | string | null
+    title?: StringWithAggregatesFilter<"About"> | string
+    description?: StringWithAggregatesFilter<"About"> | string
+    philosophy?: StringWithAggregatesFilter<"About"> | string
     updatedAt?: DateTimeWithAggregatesFilter<"About"> | Date | string
+  }
+
+  export type HighlightedPositionWhereInput = {
+    AND?: HighlightedPositionWhereInput | HighlightedPositionWhereInput[]
+    OR?: HighlightedPositionWhereInput[]
+    NOT?: HighlightedPositionWhereInput | HighlightedPositionWhereInput[]
+    id?: IntFilter<"HighlightedPosition"> | number
+    title?: StringFilter<"HighlightedPosition"> | string
+    company?: StringFilter<"HighlightedPosition"> | string
+    aboutId?: IntNullableFilter<"HighlightedPosition"> | number | null
+    about?: XOR<AboutNullableScalarRelationFilter, AboutWhereInput> | null
+  }
+
+  export type HighlightedPositionOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    company?: SortOrder
+    aboutId?: SortOrderInput | SortOrder
+    about?: AboutOrderByWithRelationInput
+    _relevance?: HighlightedPositionOrderByRelevanceInput
+  }
+
+  export type HighlightedPositionWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: HighlightedPositionWhereInput | HighlightedPositionWhereInput[]
+    OR?: HighlightedPositionWhereInput[]
+    NOT?: HighlightedPositionWhereInput | HighlightedPositionWhereInput[]
+    title?: StringFilter<"HighlightedPosition"> | string
+    company?: StringFilter<"HighlightedPosition"> | string
+    aboutId?: IntNullableFilter<"HighlightedPosition"> | number | null
+    about?: XOR<AboutNullableScalarRelationFilter, AboutWhereInput> | null
+  }, "id">
+
+  export type HighlightedPositionOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    company?: SortOrder
+    aboutId?: SortOrderInput | SortOrder
+    _count?: HighlightedPositionCountOrderByAggregateInput
+    _avg?: HighlightedPositionAvgOrderByAggregateInput
+    _max?: HighlightedPositionMaxOrderByAggregateInput
+    _min?: HighlightedPositionMinOrderByAggregateInput
+    _sum?: HighlightedPositionSumOrderByAggregateInput
+  }
+
+  export type HighlightedPositionScalarWhereWithAggregatesInput = {
+    AND?: HighlightedPositionScalarWhereWithAggregatesInput | HighlightedPositionScalarWhereWithAggregatesInput[]
+    OR?: HighlightedPositionScalarWhereWithAggregatesInput[]
+    NOT?: HighlightedPositionScalarWhereWithAggregatesInput | HighlightedPositionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"HighlightedPosition"> | number
+    title?: StringWithAggregatesFilter<"HighlightedPosition"> | string
+    company?: StringWithAggregatesFilter<"HighlightedPosition"> | string
+    aboutId?: IntNullableWithAggregatesFilter<"HighlightedPosition"> | number | null
+  }
+
+  export type ActivityWhereInput = {
+    AND?: ActivityWhereInput | ActivityWhereInput[]
+    OR?: ActivityWhereInput[]
+    NOT?: ActivityWhereInput | ActivityWhereInput[]
+    id?: IntFilter<"Activity"> | number
+    label?: StringFilter<"Activity"> | string
+    icon?: StringFilter<"Activity"> | string
+    aboutId?: IntNullableFilter<"Activity"> | number | null
+    about?: XOR<AboutNullableScalarRelationFilter, AboutWhereInput> | null
+  }
+
+  export type ActivityOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    icon?: SortOrder
+    aboutId?: SortOrderInput | SortOrder
+    about?: AboutOrderByWithRelationInput
+    _relevance?: ActivityOrderByRelevanceInput
+  }
+
+  export type ActivityWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ActivityWhereInput | ActivityWhereInput[]
+    OR?: ActivityWhereInput[]
+    NOT?: ActivityWhereInput | ActivityWhereInput[]
+    label?: StringFilter<"Activity"> | string
+    icon?: StringFilter<"Activity"> | string
+    aboutId?: IntNullableFilter<"Activity"> | number | null
+    about?: XOR<AboutNullableScalarRelationFilter, AboutWhereInput> | null
+  }, "id">
+
+  export type ActivityOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    icon?: SortOrder
+    aboutId?: SortOrderInput | SortOrder
+    _count?: ActivityCountOrderByAggregateInput
+    _avg?: ActivityAvgOrderByAggregateInput
+    _max?: ActivityMaxOrderByAggregateInput
+    _min?: ActivityMinOrderByAggregateInput
+    _sum?: ActivitySumOrderByAggregateInput
+  }
+
+  export type ActivityScalarWhereWithAggregatesInput = {
+    AND?: ActivityScalarWhereWithAggregatesInput | ActivityScalarWhereWithAggregatesInput[]
+    OR?: ActivityScalarWhereWithAggregatesInput[]
+    NOT?: ActivityScalarWhereWithAggregatesInput | ActivityScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Activity"> | number
+    label?: StringWithAggregatesFilter<"Activity"> | string
+    icon?: StringWithAggregatesFilter<"Activity"> | string
+    aboutId?: IntNullableWithAggregatesFilter<"Activity"> | number | null
   }
 
   export type ExperienceWhereInput = {
@@ -8855,7 +11342,10 @@ export namespace Prisma {
     title: string
     subtitle?: string | null
     description?: string | null
-    imageUrl?: string | null
+    yearsOfExperience?: string | null
+    countries?: string | null
+    award?: string | null
+    profile?: string | null
     updatedAt?: Date | string
   }
 
@@ -8864,7 +11354,10 @@ export namespace Prisma {
     title: string
     subtitle?: string | null
     description?: string | null
-    imageUrl?: string | null
+    yearsOfExperience?: string | null
+    countries?: string | null
+    award?: string | null
+    profile?: string | null
     updatedAt?: Date | string
   }
 
@@ -8873,7 +11366,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     subtitle?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    countries?: NullableStringFieldUpdateOperationsInput | string | null
+    award?: NullableStringFieldUpdateOperationsInput | string | null
+    profile?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8882,7 +11378,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     subtitle?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    countries?: NullableStringFieldUpdateOperationsInput | string | null
+    award?: NullableStringFieldUpdateOperationsInput | string | null
+    profile?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8891,7 +11390,10 @@ export namespace Prisma {
     title: string
     subtitle?: string | null
     description?: string | null
-    imageUrl?: string | null
+    yearsOfExperience?: string | null
+    countries?: string | null
+    award?: string | null
+    profile?: string | null
     updatedAt?: Date | string
   }
 
@@ -8900,7 +11402,10 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     subtitle?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    countries?: NullableStringFieldUpdateOperationsInput | string | null
+    award?: NullableStringFieldUpdateOperationsInput | string | null
+    profile?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8909,57 +11414,165 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     subtitle?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    countries?: NullableStringFieldUpdateOperationsInput | string | null
+    award?: NullableStringFieldUpdateOperationsInput | string | null
+    profile?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AboutCreateInput = {
     id?: number
-    content: string
-    resumeUrl?: string | null
+    title: string
+    description: string
+    philosophy: string
     updatedAt?: Date | string
+    highlightedPositions?: HighlightedPositionCreateNestedManyWithoutAboutInput
+    activities?: ActivityCreateNestedManyWithoutAboutInput
   }
 
   export type AboutUncheckedCreateInput = {
     id?: number
-    content: string
-    resumeUrl?: string | null
+    title: string
+    description: string
+    philosophy: string
     updatedAt?: Date | string
+    highlightedPositions?: HighlightedPositionUncheckedCreateNestedManyWithoutAboutInput
+    activities?: ActivityUncheckedCreateNestedManyWithoutAboutInput
   }
 
   export type AboutUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    highlightedPositions?: HighlightedPositionUpdateManyWithoutAboutNestedInput
+    activities?: ActivityUpdateManyWithoutAboutNestedInput
   }
 
   export type AboutUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    highlightedPositions?: HighlightedPositionUncheckedUpdateManyWithoutAboutNestedInput
+    activities?: ActivityUncheckedUpdateManyWithoutAboutNestedInput
   }
 
   export type AboutCreateManyInput = {
     id?: number
-    content: string
-    resumeUrl?: string | null
+    title: string
+    description: string
+    philosophy: string
     updatedAt?: Date | string
   }
 
   export type AboutUpdateManyMutationInput = {
     id?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AboutUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    content?: StringFieldUpdateOperationsInput | string
-    resumeUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightedPositionCreateInput = {
+    title: string
+    company: string
+    about?: AboutCreateNestedOneWithoutHighlightedPositionsInput
+  }
+
+  export type HighlightedPositionUncheckedCreateInput = {
+    id?: number
+    title: string
+    company: string
+    aboutId?: number | null
+  }
+
+  export type HighlightedPositionUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    about?: AboutUpdateOneWithoutHighlightedPositionsNestedInput
+  }
+
+  export type HighlightedPositionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    aboutId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type HighlightedPositionCreateManyInput = {
+    id?: number
+    title: string
+    company: string
+    aboutId?: number | null
+  }
+
+  export type HighlightedPositionUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HighlightedPositionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    aboutId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ActivityCreateInput = {
+    label: string
+    icon: string
+    about?: AboutCreateNestedOneWithoutActivitiesInput
+  }
+
+  export type ActivityUncheckedCreateInput = {
+    id?: number
+    label: string
+    icon: string
+    aboutId?: number | null
+  }
+
+  export type ActivityUpdateInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    about?: AboutUpdateOneWithoutActivitiesNestedInput
+  }
+
+  export type ActivityUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    aboutId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type ActivityCreateManyInput = {
+    id?: number
+    label: string
+    icon: string
+    aboutId?: number | null
+  }
+
+  export type ActivityUpdateManyMutationInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActivityUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    aboutId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ExperienceCreateInput = {
@@ -9432,7 +12045,10 @@ export namespace Prisma {
     title?: SortOrder
     subtitle?: SortOrder
     description?: SortOrder
-    imageUrl?: SortOrder
+    yearsOfExperience?: SortOrder
+    countries?: SortOrder
+    award?: SortOrder
+    profile?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -9445,7 +12061,10 @@ export namespace Prisma {
     title?: SortOrder
     subtitle?: SortOrder
     description?: SortOrder
-    imageUrl?: SortOrder
+    yearsOfExperience?: SortOrder
+    countries?: SortOrder
+    award?: SortOrder
+    profile?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -9454,12 +12073,35 @@ export namespace Prisma {
     title?: SortOrder
     subtitle?: SortOrder
     description?: SortOrder
-    imageUrl?: SortOrder
+    yearsOfExperience?: SortOrder
+    countries?: SortOrder
+    award?: SortOrder
+    profile?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type HeroSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type HighlightedPositionListRelationFilter = {
+    every?: HighlightedPositionWhereInput
+    some?: HighlightedPositionWhereInput
+    none?: HighlightedPositionWhereInput
+  }
+
+  export type ActivityListRelationFilter = {
+    every?: ActivityWhereInput
+    some?: ActivityWhereInput
+    none?: ActivityWhereInput
+  }
+
+  export type HighlightedPositionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ActivityOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type AboutOrderByRelevanceInput = {
@@ -9470,8 +12112,9 @@ export namespace Prisma {
 
   export type AboutCountOrderByAggregateInput = {
     id?: SortOrder
-    content?: SortOrder
-    resumeUrl?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    philosophy?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -9481,20 +12124,128 @@ export namespace Prisma {
 
   export type AboutMaxOrderByAggregateInput = {
     id?: SortOrder
-    content?: SortOrder
-    resumeUrl?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    philosophy?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type AboutMinOrderByAggregateInput = {
     id?: SortOrder
-    content?: SortOrder
-    resumeUrl?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    philosophy?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type AboutSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type AboutNullableScalarRelationFilter = {
+    is?: AboutWhereInput | null
+    isNot?: AboutWhereInput | null
+  }
+
+  export type HighlightedPositionOrderByRelevanceInput = {
+    fields: HighlightedPositionOrderByRelevanceFieldEnum | HighlightedPositionOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type HighlightedPositionCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    company?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type HighlightedPositionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type HighlightedPositionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    company?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type HighlightedPositionMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    company?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type HighlightedPositionSumOrderByAggregateInput = {
+    id?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type ActivityOrderByRelevanceInput = {
+    fields: ActivityOrderByRelevanceFieldEnum | ActivityOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ActivityCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    icon?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type ActivityAvgOrderByAggregateInput = {
+    id?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type ActivityMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    icon?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type ActivityMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    icon?: SortOrder
+    aboutId?: SortOrder
+  }
+
+  export type ActivitySumOrderByAggregateInput = {
+    id?: SortOrder
+    aboutId?: SortOrder
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -9647,17 +12398,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type EventNullableScalarRelationFilter = {
     is?: EventWhereInput | null
     isNot?: EventWhereInput | null
@@ -9704,22 +12444,6 @@ export namespace Prisma {
   export type GallerySumOrderByAggregateInput = {
     id?: SortOrder
     eventId?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type ContactOrderByRelevanceInput = {
@@ -9786,6 +12510,130 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type HighlightedPositionCreateNestedManyWithoutAboutInput = {
+    create?: XOR<HighlightedPositionCreateWithoutAboutInput, HighlightedPositionUncheckedCreateWithoutAboutInput> | HighlightedPositionCreateWithoutAboutInput[] | HighlightedPositionUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: HighlightedPositionCreateOrConnectWithoutAboutInput | HighlightedPositionCreateOrConnectWithoutAboutInput[]
+    createMany?: HighlightedPositionCreateManyAboutInputEnvelope
+    connect?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+  }
+
+  export type ActivityCreateNestedManyWithoutAboutInput = {
+    create?: XOR<ActivityCreateWithoutAboutInput, ActivityUncheckedCreateWithoutAboutInput> | ActivityCreateWithoutAboutInput[] | ActivityUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: ActivityCreateOrConnectWithoutAboutInput | ActivityCreateOrConnectWithoutAboutInput[]
+    createMany?: ActivityCreateManyAboutInputEnvelope
+    connect?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+  }
+
+  export type HighlightedPositionUncheckedCreateNestedManyWithoutAboutInput = {
+    create?: XOR<HighlightedPositionCreateWithoutAboutInput, HighlightedPositionUncheckedCreateWithoutAboutInput> | HighlightedPositionCreateWithoutAboutInput[] | HighlightedPositionUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: HighlightedPositionCreateOrConnectWithoutAboutInput | HighlightedPositionCreateOrConnectWithoutAboutInput[]
+    createMany?: HighlightedPositionCreateManyAboutInputEnvelope
+    connect?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+  }
+
+  export type ActivityUncheckedCreateNestedManyWithoutAboutInput = {
+    create?: XOR<ActivityCreateWithoutAboutInput, ActivityUncheckedCreateWithoutAboutInput> | ActivityCreateWithoutAboutInput[] | ActivityUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: ActivityCreateOrConnectWithoutAboutInput | ActivityCreateOrConnectWithoutAboutInput[]
+    createMany?: ActivityCreateManyAboutInputEnvelope
+    connect?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+  }
+
+  export type HighlightedPositionUpdateManyWithoutAboutNestedInput = {
+    create?: XOR<HighlightedPositionCreateWithoutAboutInput, HighlightedPositionUncheckedCreateWithoutAboutInput> | HighlightedPositionCreateWithoutAboutInput[] | HighlightedPositionUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: HighlightedPositionCreateOrConnectWithoutAboutInput | HighlightedPositionCreateOrConnectWithoutAboutInput[]
+    upsert?: HighlightedPositionUpsertWithWhereUniqueWithoutAboutInput | HighlightedPositionUpsertWithWhereUniqueWithoutAboutInput[]
+    createMany?: HighlightedPositionCreateManyAboutInputEnvelope
+    set?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    disconnect?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    delete?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    connect?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    update?: HighlightedPositionUpdateWithWhereUniqueWithoutAboutInput | HighlightedPositionUpdateWithWhereUniqueWithoutAboutInput[]
+    updateMany?: HighlightedPositionUpdateManyWithWhereWithoutAboutInput | HighlightedPositionUpdateManyWithWhereWithoutAboutInput[]
+    deleteMany?: HighlightedPositionScalarWhereInput | HighlightedPositionScalarWhereInput[]
+  }
+
+  export type ActivityUpdateManyWithoutAboutNestedInput = {
+    create?: XOR<ActivityCreateWithoutAboutInput, ActivityUncheckedCreateWithoutAboutInput> | ActivityCreateWithoutAboutInput[] | ActivityUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: ActivityCreateOrConnectWithoutAboutInput | ActivityCreateOrConnectWithoutAboutInput[]
+    upsert?: ActivityUpsertWithWhereUniqueWithoutAboutInput | ActivityUpsertWithWhereUniqueWithoutAboutInput[]
+    createMany?: ActivityCreateManyAboutInputEnvelope
+    set?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    disconnect?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    delete?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    connect?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    update?: ActivityUpdateWithWhereUniqueWithoutAboutInput | ActivityUpdateWithWhereUniqueWithoutAboutInput[]
+    updateMany?: ActivityUpdateManyWithWhereWithoutAboutInput | ActivityUpdateManyWithWhereWithoutAboutInput[]
+    deleteMany?: ActivityScalarWhereInput | ActivityScalarWhereInput[]
+  }
+
+  export type HighlightedPositionUncheckedUpdateManyWithoutAboutNestedInput = {
+    create?: XOR<HighlightedPositionCreateWithoutAboutInput, HighlightedPositionUncheckedCreateWithoutAboutInput> | HighlightedPositionCreateWithoutAboutInput[] | HighlightedPositionUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: HighlightedPositionCreateOrConnectWithoutAboutInput | HighlightedPositionCreateOrConnectWithoutAboutInput[]
+    upsert?: HighlightedPositionUpsertWithWhereUniqueWithoutAboutInput | HighlightedPositionUpsertWithWhereUniqueWithoutAboutInput[]
+    createMany?: HighlightedPositionCreateManyAboutInputEnvelope
+    set?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    disconnect?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    delete?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    connect?: HighlightedPositionWhereUniqueInput | HighlightedPositionWhereUniqueInput[]
+    update?: HighlightedPositionUpdateWithWhereUniqueWithoutAboutInput | HighlightedPositionUpdateWithWhereUniqueWithoutAboutInput[]
+    updateMany?: HighlightedPositionUpdateManyWithWhereWithoutAboutInput | HighlightedPositionUpdateManyWithWhereWithoutAboutInput[]
+    deleteMany?: HighlightedPositionScalarWhereInput | HighlightedPositionScalarWhereInput[]
+  }
+
+  export type ActivityUncheckedUpdateManyWithoutAboutNestedInput = {
+    create?: XOR<ActivityCreateWithoutAboutInput, ActivityUncheckedCreateWithoutAboutInput> | ActivityCreateWithoutAboutInput[] | ActivityUncheckedCreateWithoutAboutInput[]
+    connectOrCreate?: ActivityCreateOrConnectWithoutAboutInput | ActivityCreateOrConnectWithoutAboutInput[]
+    upsert?: ActivityUpsertWithWhereUniqueWithoutAboutInput | ActivityUpsertWithWhereUniqueWithoutAboutInput[]
+    createMany?: ActivityCreateManyAboutInputEnvelope
+    set?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    disconnect?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    delete?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    connect?: ActivityWhereUniqueInput | ActivityWhereUniqueInput[]
+    update?: ActivityUpdateWithWhereUniqueWithoutAboutInput | ActivityUpdateWithWhereUniqueWithoutAboutInput[]
+    updateMany?: ActivityUpdateManyWithWhereWithoutAboutInput | ActivityUpdateManyWithWhereWithoutAboutInput[]
+    deleteMany?: ActivityScalarWhereInput | ActivityScalarWhereInput[]
+  }
+
+  export type AboutCreateNestedOneWithoutHighlightedPositionsInput = {
+    create?: XOR<AboutCreateWithoutHighlightedPositionsInput, AboutUncheckedCreateWithoutHighlightedPositionsInput>
+    connectOrCreate?: AboutCreateOrConnectWithoutHighlightedPositionsInput
+    connect?: AboutWhereUniqueInput
+  }
+
+  export type AboutUpdateOneWithoutHighlightedPositionsNestedInput = {
+    create?: XOR<AboutCreateWithoutHighlightedPositionsInput, AboutUncheckedCreateWithoutHighlightedPositionsInput>
+    connectOrCreate?: AboutCreateOrConnectWithoutHighlightedPositionsInput
+    upsert?: AboutUpsertWithoutHighlightedPositionsInput
+    disconnect?: AboutWhereInput | boolean
+    delete?: AboutWhereInput | boolean
+    connect?: AboutWhereUniqueInput
+    update?: XOR<XOR<AboutUpdateToOneWithWhereWithoutHighlightedPositionsInput, AboutUpdateWithoutHighlightedPositionsInput>, AboutUncheckedUpdateWithoutHighlightedPositionsInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type AboutCreateNestedOneWithoutActivitiesInput = {
+    create?: XOR<AboutCreateWithoutActivitiesInput, AboutUncheckedCreateWithoutActivitiesInput>
+    connectOrCreate?: AboutCreateOrConnectWithoutActivitiesInput
+    connect?: AboutWhereUniqueInput
+  }
+
+  export type AboutUpdateOneWithoutActivitiesNestedInput = {
+    create?: XOR<AboutCreateWithoutActivitiesInput, AboutUncheckedCreateWithoutActivitiesInput>
+    connectOrCreate?: AboutCreateOrConnectWithoutActivitiesInput
+    upsert?: AboutUpsertWithoutActivitiesInput
+    disconnect?: AboutWhereInput | boolean
+    delete?: AboutWhereInput | boolean
+    connect?: AboutWhereUniqueInput
+    update?: XOR<XOR<AboutUpdateToOneWithWhereWithoutActivitiesInput, AboutUpdateWithoutActivitiesInput>, AboutUncheckedUpdateWithoutActivitiesInput>
+  }
+
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
@@ -9850,14 +12698,6 @@ export namespace Prisma {
     delete?: EventWhereInput | boolean
     connect?: EventWhereUniqueInput
     update?: XOR<XOR<EventUpdateToOneWithWhereWithoutGalleryImagesInput, EventUpdateWithoutGalleryImagesInput>, EventUncheckedUpdateWithoutGalleryImagesInput>
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10000,6 +12840,33 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -10038,31 +12905,202 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+  export type HighlightedPositionCreateWithoutAboutInput = {
+    title: string
+    company: string
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type HighlightedPositionUncheckedCreateWithoutAboutInput = {
+    id?: number
+    title: string
+    company: string
+  }
+
+  export type HighlightedPositionCreateOrConnectWithoutAboutInput = {
+    where: HighlightedPositionWhereUniqueInput
+    create: XOR<HighlightedPositionCreateWithoutAboutInput, HighlightedPositionUncheckedCreateWithoutAboutInput>
+  }
+
+  export type HighlightedPositionCreateManyAboutInputEnvelope = {
+    data: HighlightedPositionCreateManyAboutInput | HighlightedPositionCreateManyAboutInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ActivityCreateWithoutAboutInput = {
+    label: string
+    icon: string
+  }
+
+  export type ActivityUncheckedCreateWithoutAboutInput = {
+    id?: number
+    label: string
+    icon: string
+  }
+
+  export type ActivityCreateOrConnectWithoutAboutInput = {
+    where: ActivityWhereUniqueInput
+    create: XOR<ActivityCreateWithoutAboutInput, ActivityUncheckedCreateWithoutAboutInput>
+  }
+
+  export type ActivityCreateManyAboutInputEnvelope = {
+    data: ActivityCreateManyAboutInput | ActivityCreateManyAboutInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type HighlightedPositionUpsertWithWhereUniqueWithoutAboutInput = {
+    where: HighlightedPositionWhereUniqueInput
+    update: XOR<HighlightedPositionUpdateWithoutAboutInput, HighlightedPositionUncheckedUpdateWithoutAboutInput>
+    create: XOR<HighlightedPositionCreateWithoutAboutInput, HighlightedPositionUncheckedCreateWithoutAboutInput>
+  }
+
+  export type HighlightedPositionUpdateWithWhereUniqueWithoutAboutInput = {
+    where: HighlightedPositionWhereUniqueInput
+    data: XOR<HighlightedPositionUpdateWithoutAboutInput, HighlightedPositionUncheckedUpdateWithoutAboutInput>
+  }
+
+  export type HighlightedPositionUpdateManyWithWhereWithoutAboutInput = {
+    where: HighlightedPositionScalarWhereInput
+    data: XOR<HighlightedPositionUpdateManyMutationInput, HighlightedPositionUncheckedUpdateManyWithoutAboutInput>
+  }
+
+  export type HighlightedPositionScalarWhereInput = {
+    AND?: HighlightedPositionScalarWhereInput | HighlightedPositionScalarWhereInput[]
+    OR?: HighlightedPositionScalarWhereInput[]
+    NOT?: HighlightedPositionScalarWhereInput | HighlightedPositionScalarWhereInput[]
+    id?: IntFilter<"HighlightedPosition"> | number
+    title?: StringFilter<"HighlightedPosition"> | string
+    company?: StringFilter<"HighlightedPosition"> | string
+    aboutId?: IntNullableFilter<"HighlightedPosition"> | number | null
+  }
+
+  export type ActivityUpsertWithWhereUniqueWithoutAboutInput = {
+    where: ActivityWhereUniqueInput
+    update: XOR<ActivityUpdateWithoutAboutInput, ActivityUncheckedUpdateWithoutAboutInput>
+    create: XOR<ActivityCreateWithoutAboutInput, ActivityUncheckedCreateWithoutAboutInput>
+  }
+
+  export type ActivityUpdateWithWhereUniqueWithoutAboutInput = {
+    where: ActivityWhereUniqueInput
+    data: XOR<ActivityUpdateWithoutAboutInput, ActivityUncheckedUpdateWithoutAboutInput>
+  }
+
+  export type ActivityUpdateManyWithWhereWithoutAboutInput = {
+    where: ActivityScalarWhereInput
+    data: XOR<ActivityUpdateManyMutationInput, ActivityUncheckedUpdateManyWithoutAboutInput>
+  }
+
+  export type ActivityScalarWhereInput = {
+    AND?: ActivityScalarWhereInput | ActivityScalarWhereInput[]
+    OR?: ActivityScalarWhereInput[]
+    NOT?: ActivityScalarWhereInput | ActivityScalarWhereInput[]
+    id?: IntFilter<"Activity"> | number
+    label?: StringFilter<"Activity"> | string
+    icon?: StringFilter<"Activity"> | string
+    aboutId?: IntNullableFilter<"Activity"> | number | null
+  }
+
+  export type AboutCreateWithoutHighlightedPositionsInput = {
+    id?: number
+    title: string
+    description: string
+    philosophy: string
+    updatedAt?: Date | string
+    activities?: ActivityCreateNestedManyWithoutAboutInput
+  }
+
+  export type AboutUncheckedCreateWithoutHighlightedPositionsInput = {
+    id?: number
+    title: string
+    description: string
+    philosophy: string
+    updatedAt?: Date | string
+    activities?: ActivityUncheckedCreateNestedManyWithoutAboutInput
+  }
+
+  export type AboutCreateOrConnectWithoutHighlightedPositionsInput = {
+    where: AboutWhereUniqueInput
+    create: XOR<AboutCreateWithoutHighlightedPositionsInput, AboutUncheckedCreateWithoutHighlightedPositionsInput>
+  }
+
+  export type AboutUpsertWithoutHighlightedPositionsInput = {
+    update: XOR<AboutUpdateWithoutHighlightedPositionsInput, AboutUncheckedUpdateWithoutHighlightedPositionsInput>
+    create: XOR<AboutCreateWithoutHighlightedPositionsInput, AboutUncheckedCreateWithoutHighlightedPositionsInput>
+    where?: AboutWhereInput
+  }
+
+  export type AboutUpdateToOneWithWhereWithoutHighlightedPositionsInput = {
+    where?: AboutWhereInput
+    data: XOR<AboutUpdateWithoutHighlightedPositionsInput, AboutUncheckedUpdateWithoutHighlightedPositionsInput>
+  }
+
+  export type AboutUpdateWithoutHighlightedPositionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activities?: ActivityUpdateManyWithoutAboutNestedInput
+  }
+
+  export type AboutUncheckedUpdateWithoutHighlightedPositionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    activities?: ActivityUncheckedUpdateManyWithoutAboutNestedInput
+  }
+
+  export type AboutCreateWithoutActivitiesInput = {
+    id?: number
+    title: string
+    description: string
+    philosophy: string
+    updatedAt?: Date | string
+    highlightedPositions?: HighlightedPositionCreateNestedManyWithoutAboutInput
+  }
+
+  export type AboutUncheckedCreateWithoutActivitiesInput = {
+    id?: number
+    title: string
+    description: string
+    philosophy: string
+    updatedAt?: Date | string
+    highlightedPositions?: HighlightedPositionUncheckedCreateNestedManyWithoutAboutInput
+  }
+
+  export type AboutCreateOrConnectWithoutActivitiesInput = {
+    where: AboutWhereUniqueInput
+    create: XOR<AboutCreateWithoutActivitiesInput, AboutUncheckedCreateWithoutActivitiesInput>
+  }
+
+  export type AboutUpsertWithoutActivitiesInput = {
+    update: XOR<AboutUpdateWithoutActivitiesInput, AboutUncheckedUpdateWithoutActivitiesInput>
+    create: XOR<AboutCreateWithoutActivitiesInput, AboutUncheckedCreateWithoutActivitiesInput>
+    where?: AboutWhereInput
+  }
+
+  export type AboutUpdateToOneWithWhereWithoutActivitiesInput = {
+    where?: AboutWhereInput
+    data: XOR<AboutUpdateWithoutActivitiesInput, AboutUncheckedUpdateWithoutActivitiesInput>
+  }
+
+  export type AboutUpdateWithoutActivitiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    highlightedPositions?: HighlightedPositionUpdateManyWithoutAboutNestedInput
+  }
+
+  export type AboutUncheckedUpdateWithoutActivitiesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    philosophy?: StringFieldUpdateOperationsInput | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    highlightedPositions?: HighlightedPositionUncheckedUpdateManyWithoutAboutNestedInput
   }
 
   export type GalleryCreateWithoutEventInput = {
@@ -10174,6 +13212,52 @@ export namespace Prisma {
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightedPositionCreateManyAboutInput = {
+    id?: number
+    title: string
+    company: string
+  }
+
+  export type ActivityCreateManyAboutInput = {
+    id?: number
+    label: string
+    icon: string
+  }
+
+  export type HighlightedPositionUpdateWithoutAboutInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HighlightedPositionUncheckedUpdateWithoutAboutInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type HighlightedPositionUncheckedUpdateManyWithoutAboutInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActivityUpdateWithoutAboutInput = {
+    label?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActivityUncheckedUpdateWithoutAboutInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ActivityUncheckedUpdateManyWithoutAboutInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    label?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
   }
 
   export type GalleryCreateManyEventInput = {

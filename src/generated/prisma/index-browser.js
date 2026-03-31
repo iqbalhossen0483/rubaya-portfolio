@@ -134,15 +134,33 @@ exports.Prisma.HeroScalarFieldEnum = {
   title: 'title',
   subtitle: 'subtitle',
   description: 'description',
-  imageUrl: 'imageUrl',
+  yearsOfExperience: 'yearsOfExperience',
+  countries: 'countries',
+  award: 'award',
+  profile: 'profile',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.AboutScalarFieldEnum = {
   id: 'id',
-  content: 'content',
-  resumeUrl: 'resumeUrl',
+  title: 'title',
+  description: 'description',
+  philosophy: 'philosophy',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.HighlightedPositionScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  company: 'company',
+  aboutId: 'aboutId'
+};
+
+exports.Prisma.ActivityScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  icon: 'icon',
+  aboutId: 'aboutId'
 };
 
 exports.Prisma.ExperienceScalarFieldEnum = {
@@ -208,12 +226,26 @@ exports.Prisma.HeroOrderByRelevanceFieldEnum = {
   title: 'title',
   subtitle: 'subtitle',
   description: 'description',
-  imageUrl: 'imageUrl'
+  yearsOfExperience: 'yearsOfExperience',
+  countries: 'countries',
+  award: 'award',
+  profile: 'profile'
 };
 
 exports.Prisma.AboutOrderByRelevanceFieldEnum = {
-  content: 'content',
-  resumeUrl: 'resumeUrl'
+  title: 'title',
+  description: 'description',
+  philosophy: 'philosophy'
+};
+
+exports.Prisma.HighlightedPositionOrderByRelevanceFieldEnum = {
+  title: 'title',
+  company: 'company'
+};
+
+exports.Prisma.ActivityOrderByRelevanceFieldEnum = {
+  label: 'label',
+  icon: 'icon'
 };
 
 exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
@@ -247,6 +279,8 @@ exports.Prisma.ModelName = {
   AdminUser: 'AdminUser',
   Hero: 'Hero',
   About: 'About',
+  HighlightedPosition: 'HighlightedPosition',
+  Activity: 'Activity',
   Experience: 'Experience',
   Event: 'Event',
   Gallery: 'Gallery',
