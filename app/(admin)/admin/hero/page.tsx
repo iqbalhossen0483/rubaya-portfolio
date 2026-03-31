@@ -2,6 +2,7 @@
 
 import Button from "@/components/utils/Button";
 import FileInput from "@/components/utils/FileInput";
+import ImageViewer from "@/components/utils/ImageViewer";
 import Input from "@/components/utils/Input";
 import Spinner from "@/components/utils/Spinner";
 import Textarea from "@/components/utils/Textarea";
@@ -10,7 +11,7 @@ import { HeroFormValues, heroSchema } from "@/lib/validations/content.schema";
 import { useGetHeroQuery, useUpdateHeroMutation } from "@/store/api/baseApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function HeroAdminPage() {
@@ -21,6 +22,7 @@ export default function HeroAdminPage() {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<HeroFormValues>({
     resolver: zodResolver(heroSchema),
@@ -31,7 +33,7 @@ export default function HeroAdminPage() {
       yearsOfExperience: "",
       countries: "",
       award: "",
-      profile: undefined,
+      profile: "",
     },
   });
 
@@ -45,18 +47,21 @@ export default function HeroAdminPage() {
         yearsOfExperience: heroRes.data.yearsOfExperience || "",
         countries: heroRes.data.countries || "",
         award: heroRes.data.award || "",
-        profile: heroRes.data.profile || undefined,
+        profile: heroRes.data.profile || "",
       });
     }
   }, [heroRes, reset]);
 
+  const profileImage = useWatch({ control, name: "profile" });
+
   const onSubmit = async (data: HeroFormValues) => {
     try {
+      console.log(data);
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
         if (value) {
-          if (key === "profile" && value instanceof FileList) {
-            formData.append(key, value[0]);
+          if (key === "profile" && value instanceof File) {
+            formData.append(key, value);
           } else {
             formData.append(key, value as string);
           }
@@ -136,12 +141,21 @@ export default function HeroAdminPage() {
           error={errors.award?.message}
         />
 
-        <FileInput
-          id="profile"
-          label="Hero Profile Image"
-          {...register("profile")}
-          error={errors.profile?.message as string}
+        <Controller
+          control={control}
+          name="profile"
+          render={({ field, fieldState: { error } }) => (
+            <FileInput
+              id="profile"
+              label="Hero Profile Image"
+              onChange={(e) => field.onChange(e.target.files?.[0])}
+              error={error?.message}
+            />
+          )}
         />
+
+        {/* preview profile image */}
+        <ImageViewer url={profileImage} />
 
         <div className="pt-4 flex justify-end">
           <Button

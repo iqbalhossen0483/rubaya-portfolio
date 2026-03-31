@@ -1,42 +1,50 @@
 import { z } from "zod";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
-const ACCEPTED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-];
+const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
+const fileSchema = z
+  .any()
+  .transform((value) => {
+    if (typeof window !== "undefined" && value?.[0]) {
+      return value[0];
+    }
+    return value;
+  })
+  .refine(
+    (value) =>
+      typeof value === "string" ||
+      value instanceof File ||
+      value === null ||
+      value === undefined,
+    {
+      message: "Invalid file input",
+    },
+  )
+  .refine((value) => {
+    if (typeof value === "string") return true;
+    if (!(value instanceof File)) return true;
+
+    return ACCEPTED_IMAGE_TYPES.includes(value.type);
+  }, "Only .jpg, .jpeg and .png formats are supported.")
+  .refine((value) => {
+    if (!(value instanceof File)) return true;
+
+    return value.size <= MAX_FILE_SIZE;
+  }, "Max file size is 2MB.");
+
+const profileSchema = z.union([
+  fileSchema,
+  z.url("Please provide a valid URL"),
+]);
 
 export const heroSchema = z.object({
   title: z.string().min(1, "Title is required"),
-  subtitle: z.string().optional().nullable(),
-  description: z.string().optional().nullable(),
-  yearsOfExperience: z.string().optional().nullable(),
-  countries: z.string().optional().nullable(),
-  award: z.string().optional().nullable(),
-  profile: z
-    .any()
-    .refine(
-      (files) =>
-        files?.length == 1
-          ? ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type)
-          : true,
-      "Only .jpg, .jpeg, .png and .webp formats are supported.",
-    )
-    .refine(
-      (files) =>
-        files?.length == 1 ? files?.[0]?.size <= MAX_FILE_SIZE : true,
-      `Max file size is 2MB.`,
-    )
-    .optional()
-    .nullable(),
-});
-
-export const aboutSchema = z.object({
-  content: z.string().min(1, "Content is required"),
-  resumeUrl: z.url("Must be a valid URL").optional().nullable(),
+  subtitle: z.string().min(1, "Subtitle is required"),
+  description: z.string().min(1, "Description is required"),
+  yearsOfExperience: z.string().min(1, "Years of experience is required"),
+  countries: z.string().min(1, "Countries is required"),
+  award: z.string().min(1, "Award is required"),
+  profile: profileSchema,
 });
 
 export type HeroFormValues = z.infer<typeof heroSchema>;
-export type AboutFormValues = z.infer<typeof aboutSchema>;
