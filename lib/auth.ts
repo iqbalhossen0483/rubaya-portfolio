@@ -1,7 +1,5 @@
-import bcrypt from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import prisma from "./prisma";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -16,27 +14,36 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const user = await prisma.adminUser.findUnique({
-          where: { username: credentials.username },
-        });
+        const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000";
 
-        if (!user) {
+        try {
+          const res = await fetch(`${baseUrl}/api/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: credentials.username,
+              password: credentials.password,
+            }),
+          });
+
+          const data = await res.json();
+
+          if (res.ok && data.user) {
+            // Include token so it can be passed to jwt callback
+            return {
+              id: data.user.id.toString(),
+              name: data.user.name,
+              token: data.token,
+            } as any;
+          }
+
+          return null;
+        } catch (error) {
+          console.error("Auth API Error:", error);
           return null;
         }
-
-        const isPasswordValid = await bcrypt.compare(
-          credentials.password,
-          user.passwordHash,
-        );
-
-        if (!isPasswordValid) {
-          return null;
-        }
-
-        return {
-          id: user.id.toString(),
-          name: user.username,
-        } as any;
       },
     }),
   ],
@@ -51,6 +58,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = Number(user.id);
+        token.accessToken = (user as any).token;
       }
       return token;
     },
@@ -58,6 +66,7 @@ export const authOptions: NextAuthOptions = {
       if (token && session.user) {
         session.user.name = token.name;
         session.user.id = Number(token.id);
+        session.accessToken = token.accessToken;
       }
       return session;
     },
