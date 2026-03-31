@@ -19,17 +19,15 @@ export default function AdminDashboard() {
         </Typography>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card className="bg-background-main border-border-custom">
-          <Typography variant="h4" className="text-accent mb-2">
-            Quick Actions
-          </Typography>
-          <Typography variant="body2" className="text-text-mid">
-            Use the sidebar to navigate and update your portfolio content
-            securely.
-          </Typography>
-        </Card>
-      </div>
+      <Card className="bg-background-main border-border-custom p-4">
+        <Typography variant="h4" className="text-accent mb-2">
+          Quick Actions
+        </Typography>
+        <Typography variant="body2" className="text-text-mid">
+          Use the sidebar to navigate and update your portfolio content
+          securely.
+        </Typography>
+      </Card>
     </div>
   );
 }
