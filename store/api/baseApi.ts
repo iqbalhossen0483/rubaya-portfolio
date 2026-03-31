@@ -6,5 +6,21 @@ export const baseApi = createApi({
     baseUrl: "/api",
   }),
   tagTypes: ["Hero", "Experience", "Events", "Gallery", "About", "Contact"],
-  endpoints: () => ({}),
+  endpoints: (builder) => ({
+    // Hero Endpoints
+    getHero: builder.query<{ success: boolean; data: any }, void>({
+      query: () => "/hero",
+      providesTags: ["Hero"],
+    }),
+    updateHero: builder.mutation<{ success: boolean; data: any }, any>({
+      query: (data) => ({
+        url: "/hero",
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["Hero"],
+    }),
+  }),
 });
+
+export const { useGetHeroQuery, useUpdateHeroMutation } = baseApi;

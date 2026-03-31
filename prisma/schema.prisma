@@ -21,7 +21,7 @@ model Hero {
   title       String
   subtitle    String?
   description String?  @db.Text
-  imageUrl    String?
+  profile     String?
   updatedAt   DateTime @default(now()) @updatedAt
 }
 
