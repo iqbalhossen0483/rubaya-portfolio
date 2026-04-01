@@ -5,6 +5,7 @@ import {
   Activity,
   Briefcase,
   CalendarDays,
+  CircleArrowOutUpRight,
   Image as ImageIcon,
   LayoutDashboard,
   LogOut,
@@ -50,9 +51,18 @@ export default function AdminSidebar({ isOpen, onClose }: Props) {
           <Typography variant="h4" className="text-text-head mb-1">
             Admin Panel
           </Typography>
-          <Typography variant="body2" className="text-text-light">
-            Manage Portfolio
-          </Typography>
+          <div className="flex items-center">
+            <Typography variant="body2" className="text-text-light">
+              Manage Portfolio
+            </Typography>
+            <Link
+              href="/"
+              className="ml-2 text-text-light hover:text-accent cursor-pointer flex items-center gap-1"
+            >
+              <span className="text-sm">Visit Site</span>
+              <CircleArrowOutUpRight size={15} />
+            </Link>
+          </div>
         </div>
         <button className="lg:hidden" onClick={onClose}>
           <X size={24} />
