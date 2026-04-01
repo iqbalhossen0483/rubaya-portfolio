@@ -242,96 +242,20 @@ exports.Prisma.NullableJsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
-};
-
-exports.Prisma.AdminUserOrderByRelevanceFieldEnum = {
-  name: 'name',
-  username: 'username',
-  passwordHash: 'passwordHash'
-};
-
-exports.Prisma.HeroOrderByRelevanceFieldEnum = {
-  title: 'title',
-  subtitle: 'subtitle',
-  description: 'description',
-  yearsOfExperience: 'yearsOfExperience',
-  countries: 'countries',
-  award: 'award',
-  profile: 'profile'
-};
-
-exports.Prisma.AboutOrderByRelevanceFieldEnum = {
-  title: 'title',
-  description: 'description',
-  philosophy: 'philosophy'
-};
-
-exports.Prisma.HighlightedPositionOrderByRelevanceFieldEnum = {
-  title: 'title',
-  company: 'company'
-};
-
-exports.Prisma.ActivityOrderByRelevanceFieldEnum = {
-  label: 'label',
-  icon: 'icon'
-};
-
-exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
-  company: 'company',
-  role: 'role',
-  description: 'description'
-};
-
-exports.Prisma.EventOrderByRelevanceFieldEnum = {
-  title: 'title',
-  role: 'role',
-  location: 'location',
-  description: 'description',
-  coverImage: 'coverImage'
-};
-
-exports.Prisma.GalleryOrderByRelevanceFieldEnum = {
-  image: 'image',
-  caption: 'caption'
-};
-
-exports.Prisma.ImpactOrderByRelevanceFieldEnum = {
-  image: 'image',
-  title: 'title',
-  description: 'description'
-};
-
-exports.Prisma.AwardOrderByRelevanceFieldEnum = {
-  image: 'image',
-  title: 'title',
-  description: 'description',
-  time_to_receipt: 'time_to_receipt'
-};
-
-exports.Prisma.ContactOrderByRelevanceFieldEnum = {
-  email: 'email',
-  phone: 'phone',
-  location: 'location',
-  linkedin_url: 'linkedin_url'
 };
 
 exports.Prisma.JsonNullValueFilter = {
   DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
-};
-
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
-};
-
-exports.Prisma.SettingOrderByRelevanceFieldEnum = {
-  site_brand_name: 'site_brand_name',
-  copyright_text: 'copyright_text'
 };
 
 
