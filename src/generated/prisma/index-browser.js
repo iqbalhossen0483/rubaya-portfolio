@@ -196,13 +196,22 @@ exports.Prisma.GalleryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ContactScalarFieldEnum = {
+exports.Prisma.ImpactScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  phone: 'phone',
-  linkedin: 'linkedin',
-  github: 'github',
-  twitter: 'twitter',
+  image: 'image',
+  title: 'title',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AwardScalarFieldEnum = {
+  id: 'id',
+  image: 'image',
+  title: 'title',
+  description: 'description',
+  time_to_receipt: 'time_to_receipt',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
@@ -267,12 +276,17 @@ exports.Prisma.GalleryOrderByRelevanceFieldEnum = {
   caption: 'caption'
 };
 
-exports.Prisma.ContactOrderByRelevanceFieldEnum = {
-  email: 'email',
-  phone: 'phone',
-  linkedin: 'linkedin',
-  github: 'github',
-  twitter: 'twitter'
+exports.Prisma.ImpactOrderByRelevanceFieldEnum = {
+  image: 'image',
+  title: 'title',
+  description: 'description'
+};
+
+exports.Prisma.AwardOrderByRelevanceFieldEnum = {
+  image: 'image',
+  title: 'title',
+  description: 'description',
+  time_to_receipt: 'time_to_receipt'
 };
 
 
@@ -285,7 +299,8 @@ exports.Prisma.ModelName = {
   Experience: 'Experience',
   Event: 'Event',
   Gallery: 'Gallery',
-  Contact: 'Contact'
+  Impact: 'Impact',
+  Award: 'Award'
 };
 
 /**

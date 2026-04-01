@@ -54,10 +54,15 @@ export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
  */
 export type Gallery = $Result.DefaultSelection<Prisma.$GalleryPayload>
 /**
- * Model Contact
+ * Model Impact
  * 
  */
-export type Contact = $Result.DefaultSelection<Prisma.$ContactPayload>
+export type Impact = $Result.DefaultSelection<Prisma.$ImpactPayload>
+/**
+ * Model Award
+ * 
+ */
+export type Award = $Result.DefaultSelection<Prisma.$AwardPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -261,14 +266,24 @@ export class PrismaClient<
   get gallery(): Prisma.GalleryDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.contact`: Exposes CRUD operations for the **Contact** model.
+   * `prisma.impact`: Exposes CRUD operations for the **Impact** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Contacts
-    * const contacts = await prisma.contact.findMany()
+    * // Fetch zero or more Impacts
+    * const impacts = await prisma.impact.findMany()
     * ```
     */
-  get contact(): Prisma.ContactDelegate<ExtArgs, ClientOptions>;
+  get impact(): Prisma.ImpactDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.award`: Exposes CRUD operations for the **Award** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Awards
+    * const awards = await prisma.award.findMany()
+    * ```
+    */
+  get award(): Prisma.AwardDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -711,7 +726,8 @@ export namespace Prisma {
     Experience: 'Experience',
     Event: 'Event',
     Gallery: 'Gallery',
-    Contact: 'Contact'
+    Impact: 'Impact',
+    Award: 'Award'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -727,7 +743,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "adminUser" | "hero" | "about" | "highlightedPosition" | "activity" | "experience" | "event" | "gallery" | "contact"
+      modelProps: "adminUser" | "hero" | "about" | "highlightedPosition" | "activity" | "experience" | "event" | "gallery" | "impact" | "award"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1259,69 +1275,135 @@ export namespace Prisma {
           }
         }
       }
-      Contact: {
-        payload: Prisma.$ContactPayload<ExtArgs>
-        fields: Prisma.ContactFieldRefs
+      Impact: {
+        payload: Prisma.$ImpactPayload<ExtArgs>
+        fields: Prisma.ImpactFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ContactFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
+            args: Prisma.ImpactFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ContactFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.ImpactFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload>
           }
           findFirst: {
-            args: Prisma.ContactFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload> | null
+            args: Prisma.ImpactFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ContactFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.ImpactFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload>
           }
           findMany: {
-            args: Prisma.ContactFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>[]
+            args: Prisma.ImpactFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload>[]
           }
           create: {
-            args: Prisma.ContactCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.ImpactCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload>
           }
           createMany: {
-            args: Prisma.ContactCreateManyArgs<ExtArgs>
+            args: Prisma.ImpactCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.ContactDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.ImpactDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload>
           }
           update: {
-            args: Prisma.ContactUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.ImpactUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload>
           }
           deleteMany: {
-            args: Prisma.ContactDeleteManyArgs<ExtArgs>
+            args: Prisma.ImpactDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ContactUpdateManyArgs<ExtArgs>
+            args: Prisma.ImpactUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.ContactUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ContactPayload>
+            args: Prisma.ImpactUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ImpactPayload>
           }
           aggregate: {
-            args: Prisma.ContactAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateContact>
+            args: Prisma.ImpactAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateImpact>
           }
           groupBy: {
-            args: Prisma.ContactGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ContactGroupByOutputType>[]
+            args: Prisma.ImpactGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ImpactGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ContactCountArgs<ExtArgs>
-            result: $Utils.Optional<ContactCountAggregateOutputType> | number
+            args: Prisma.ImpactCountArgs<ExtArgs>
+            result: $Utils.Optional<ImpactCountAggregateOutputType> | number
+          }
+        }
+      }
+      Award: {
+        payload: Prisma.$AwardPayload<ExtArgs>
+        fields: Prisma.AwardFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AwardFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AwardFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          findFirst: {
+            args: Prisma.AwardFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AwardFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          findMany: {
+            args: Prisma.AwardFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>[]
+          }
+          create: {
+            args: Prisma.AwardCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          createMany: {
+            args: Prisma.AwardCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AwardDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          update: {
+            args: Prisma.AwardUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          deleteMany: {
+            args: Prisma.AwardDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AwardUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AwardUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AwardPayload>
+          }
+          aggregate: {
+            args: Prisma.AwardAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAward>
+          }
+          groupBy: {
+            args: Prisma.AwardGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AwardGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AwardCountArgs<ExtArgs>
+            result: $Utils.Optional<AwardCountAggregateOutputType> | number
           }
         }
       }
@@ -1441,7 +1523,8 @@ export namespace Prisma {
     experience?: ExperienceOmit
     event?: EventOmit
     gallery?: GalleryOmit
-    contact?: ContactOmit
+    impact?: ImpactOmit
+    award?: AwardOmit
   }
 
   /* Types for Logging */
@@ -9307,383 +9390,373 @@ export namespace Prisma {
 
 
   /**
-   * Model Contact
+   * Model Impact
    */
 
-  export type AggregateContact = {
-    _count: ContactCountAggregateOutputType | null
-    _avg: ContactAvgAggregateOutputType | null
-    _sum: ContactSumAggregateOutputType | null
-    _min: ContactMinAggregateOutputType | null
-    _max: ContactMaxAggregateOutputType | null
+  export type AggregateImpact = {
+    _count: ImpactCountAggregateOutputType | null
+    _avg: ImpactAvgAggregateOutputType | null
+    _sum: ImpactSumAggregateOutputType | null
+    _min: ImpactMinAggregateOutputType | null
+    _max: ImpactMaxAggregateOutputType | null
   }
 
-  export type ContactAvgAggregateOutputType = {
+  export type ImpactAvgAggregateOutputType = {
     id: number | null
   }
 
-  export type ContactSumAggregateOutputType = {
+  export type ImpactSumAggregateOutputType = {
     id: number | null
   }
 
-  export type ContactMinAggregateOutputType = {
+  export type ImpactMinAggregateOutputType = {
     id: number | null
-    email: string | null
-    phone: string | null
-    linkedin: string | null
-    github: string | null
-    twitter: string | null
+    image: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type ContactMaxAggregateOutputType = {
+  export type ImpactMaxAggregateOutputType = {
     id: number | null
-    email: string | null
-    phone: string | null
-    linkedin: string | null
-    github: string | null
-    twitter: string | null
+    image: string | null
+    title: string | null
+    description: string | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type ContactCountAggregateOutputType = {
+  export type ImpactCountAggregateOutputType = {
     id: number
-    email: number
-    phone: number
-    linkedin: number
-    github: number
-    twitter: number
+    image: number
+    title: number
+    description: number
+    createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type ContactAvgAggregateInputType = {
+  export type ImpactAvgAggregateInputType = {
     id?: true
   }
 
-  export type ContactSumAggregateInputType = {
+  export type ImpactSumAggregateInputType = {
     id?: true
   }
 
-  export type ContactMinAggregateInputType = {
+  export type ImpactMinAggregateInputType = {
     id?: true
-    email?: true
-    phone?: true
-    linkedin?: true
-    github?: true
-    twitter?: true
+    image?: true
+    title?: true
+    description?: true
+    createdAt?: true
     updatedAt?: true
   }
 
-  export type ContactMaxAggregateInputType = {
+  export type ImpactMaxAggregateInputType = {
     id?: true
-    email?: true
-    phone?: true
-    linkedin?: true
-    github?: true
-    twitter?: true
+    image?: true
+    title?: true
+    description?: true
+    createdAt?: true
     updatedAt?: true
   }
 
-  export type ContactCountAggregateInputType = {
+  export type ImpactCountAggregateInputType = {
     id?: true
-    email?: true
-    phone?: true
-    linkedin?: true
-    github?: true
-    twitter?: true
+    image?: true
+    title?: true
+    description?: true
+    createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type ContactAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Contact to aggregate.
+     * Filter which Impact to aggregate.
      */
-    where?: ContactWhereInput
+    where?: ImpactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of Impacts to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: ImpactOrderByWithRelationInput | ImpactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: ImpactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` Impacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` Impacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Contacts
+     * Count returned Impacts
     **/
-    _count?: true | ContactCountAggregateInputType
+    _count?: true | ImpactCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: ContactAvgAggregateInputType
+    _avg?: ImpactAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: ContactSumAggregateInputType
+    _sum?: ImpactSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ContactMinAggregateInputType
+    _min?: ImpactMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ContactMaxAggregateInputType
+    _max?: ImpactMaxAggregateInputType
   }
 
-  export type GetContactAggregateType<T extends ContactAggregateArgs> = {
-        [P in keyof T & keyof AggregateContact]: P extends '_count' | 'count'
+  export type GetImpactAggregateType<T extends ImpactAggregateArgs> = {
+        [P in keyof T & keyof AggregateImpact]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateContact[P]>
-      : GetScalarType<T[P], AggregateContact[P]>
+        : GetScalarType<T[P], AggregateImpact[P]>
+      : GetScalarType<T[P], AggregateImpact[P]>
   }
 
 
 
 
-  export type ContactGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ContactWhereInput
-    orderBy?: ContactOrderByWithAggregationInput | ContactOrderByWithAggregationInput[]
-    by: ContactScalarFieldEnum[] | ContactScalarFieldEnum
-    having?: ContactScalarWhereWithAggregatesInput
+  export type ImpactGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ImpactWhereInput
+    orderBy?: ImpactOrderByWithAggregationInput | ImpactOrderByWithAggregationInput[]
+    by: ImpactScalarFieldEnum[] | ImpactScalarFieldEnum
+    having?: ImpactScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ContactCountAggregateInputType | true
-    _avg?: ContactAvgAggregateInputType
-    _sum?: ContactSumAggregateInputType
-    _min?: ContactMinAggregateInputType
-    _max?: ContactMaxAggregateInputType
+    _count?: ImpactCountAggregateInputType | true
+    _avg?: ImpactAvgAggregateInputType
+    _sum?: ImpactSumAggregateInputType
+    _min?: ImpactMinAggregateInputType
+    _max?: ImpactMaxAggregateInputType
   }
 
-  export type ContactGroupByOutputType = {
+  export type ImpactGroupByOutputType = {
     id: number
-    email: string
-    phone: string | null
-    linkedin: string | null
-    github: string | null
-    twitter: string | null
+    image: string
+    title: string
+    description: string
+    createdAt: Date
     updatedAt: Date
-    _count: ContactCountAggregateOutputType | null
-    _avg: ContactAvgAggregateOutputType | null
-    _sum: ContactSumAggregateOutputType | null
-    _min: ContactMinAggregateOutputType | null
-    _max: ContactMaxAggregateOutputType | null
+    _count: ImpactCountAggregateOutputType | null
+    _avg: ImpactAvgAggregateOutputType | null
+    _sum: ImpactSumAggregateOutputType | null
+    _min: ImpactMinAggregateOutputType | null
+    _max: ImpactMaxAggregateOutputType | null
   }
 
-  type GetContactGroupByPayload<T extends ContactGroupByArgs> = Prisma.PrismaPromise<
+  type GetImpactGroupByPayload<T extends ImpactGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ContactGroupByOutputType, T['by']> &
+      PickEnumerable<ImpactGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ContactGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ImpactGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ContactGroupByOutputType[P]>
-            : GetScalarType<T[P], ContactGroupByOutputType[P]>
+              : GetScalarType<T[P], ImpactGroupByOutputType[P]>
+            : GetScalarType<T[P], ImpactGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ContactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ImpactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    email?: boolean
-    phone?: boolean
-    linkedin?: boolean
-    github?: boolean
-    twitter?: boolean
+    image?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["contact"]>
+  }, ExtArgs["result"]["impact"]>
 
 
 
-  export type ContactSelectScalar = {
+  export type ImpactSelectScalar = {
     id?: boolean
-    email?: boolean
-    phone?: boolean
-    linkedin?: boolean
-    github?: boolean
-    twitter?: boolean
+    image?: boolean
+    title?: boolean
+    description?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ContactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "phone" | "linkedin" | "github" | "twitter" | "updatedAt", ExtArgs["result"]["contact"]>
+  export type ImpactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "title" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["impact"]>
 
-  export type $ContactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Contact"
+  export type $ImpactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Impact"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      email: string
-      phone: string | null
-      linkedin: string | null
-      github: string | null
-      twitter: string | null
+      image: string
+      title: string
+      description: string
+      createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["contact"]>
+    }, ExtArgs["result"]["impact"]>
     composites: {}
   }
 
-  type ContactGetPayload<S extends boolean | null | undefined | ContactDefaultArgs> = $Result.GetResult<Prisma.$ContactPayload, S>
+  type ImpactGetPayload<S extends boolean | null | undefined | ImpactDefaultArgs> = $Result.GetResult<Prisma.$ImpactPayload, S>
 
-  type ContactCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ContactFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ContactCountAggregateInputType | true
+  type ImpactCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ImpactFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ImpactCountAggregateInputType | true
     }
 
-  export interface ContactDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Contact'], meta: { name: 'Contact' } }
+  export interface ImpactDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Impact'], meta: { name: 'Impact' } }
     /**
-     * Find zero or one Contact that matches the filter.
-     * @param {ContactFindUniqueArgs} args - Arguments to find a Contact
+     * Find zero or one Impact that matches the filter.
+     * @param {ImpactFindUniqueArgs} args - Arguments to find a Impact
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findUnique({
+     * // Get one Impact
+     * const impact = await prisma.impact.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ContactFindUniqueArgs>(args: SelectSubset<T, ContactFindUniqueArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ImpactFindUniqueArgs>(args: SelectSubset<T, ImpactFindUniqueArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Contact that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Impact that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ContactFindUniqueOrThrowArgs} args - Arguments to find a Contact
+     * @param {ImpactFindUniqueOrThrowArgs} args - Arguments to find a Impact
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findUniqueOrThrow({
+     * // Get one Impact
+     * const impact = await prisma.impact.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ContactFindUniqueOrThrowArgs>(args: SelectSubset<T, ContactFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ImpactFindUniqueOrThrowArgs>(args: SelectSubset<T, ImpactFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Contact that matches the filter.
+     * Find the first Impact that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactFindFirstArgs} args - Arguments to find a Contact
+     * @param {ImpactFindFirstArgs} args - Arguments to find a Impact
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findFirst({
+     * // Get one Impact
+     * const impact = await prisma.impact.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ContactFindFirstArgs>(args?: SelectSubset<T, ContactFindFirstArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ImpactFindFirstArgs>(args?: SelectSubset<T, ImpactFindFirstArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Contact that matches the filter or
+     * Find the first Impact that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactFindFirstOrThrowArgs} args - Arguments to find a Contact
+     * @param {ImpactFindFirstOrThrowArgs} args - Arguments to find a Impact
      * @example
-     * // Get one Contact
-     * const contact = await prisma.contact.findFirstOrThrow({
+     * // Get one Impact
+     * const impact = await prisma.impact.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ContactFindFirstOrThrowArgs>(args?: SelectSubset<T, ContactFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ImpactFindFirstOrThrowArgs>(args?: SelectSubset<T, ImpactFindFirstOrThrowArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Contacts that matches the filter.
+     * Find zero or more Impacts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ImpactFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Contacts
-     * const contacts = await prisma.contact.findMany()
+     * // Get all Impacts
+     * const impacts = await prisma.impact.findMany()
      * 
-     * // Get first 10 Contacts
-     * const contacts = await prisma.contact.findMany({ take: 10 })
+     * // Get first 10 Impacts
+     * const impacts = await prisma.impact.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const contactWithIdOnly = await prisma.contact.findMany({ select: { id: true } })
+     * const impactWithIdOnly = await prisma.impact.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ContactFindManyArgs>(args?: SelectSubset<T, ContactFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ImpactFindManyArgs>(args?: SelectSubset<T, ImpactFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Contact.
-     * @param {ContactCreateArgs} args - Arguments to create a Contact.
+     * Create a Impact.
+     * @param {ImpactCreateArgs} args - Arguments to create a Impact.
      * @example
-     * // Create one Contact
-     * const Contact = await prisma.contact.create({
+     * // Create one Impact
+     * const Impact = await prisma.impact.create({
      *   data: {
-     *     // ... data to create a Contact
+     *     // ... data to create a Impact
      *   }
      * })
      * 
      */
-    create<T extends ContactCreateArgs>(args: SelectSubset<T, ContactCreateArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ImpactCreateArgs>(args: SelectSubset<T, ImpactCreateArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Contacts.
-     * @param {ContactCreateManyArgs} args - Arguments to create many Contacts.
+     * Create many Impacts.
+     * @param {ImpactCreateManyArgs} args - Arguments to create many Impacts.
      * @example
-     * // Create many Contacts
-     * const contact = await prisma.contact.createMany({
+     * // Create many Impacts
+     * const impact = await prisma.impact.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ContactCreateManyArgs>(args?: SelectSubset<T, ContactCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ImpactCreateManyArgs>(args?: SelectSubset<T, ImpactCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Contact.
-     * @param {ContactDeleteArgs} args - Arguments to delete one Contact.
+     * Delete a Impact.
+     * @param {ImpactDeleteArgs} args - Arguments to delete one Impact.
      * @example
-     * // Delete one Contact
-     * const Contact = await prisma.contact.delete({
+     * // Delete one Impact
+     * const Impact = await prisma.impact.delete({
      *   where: {
-     *     // ... filter to delete one Contact
+     *     // ... filter to delete one Impact
      *   }
      * })
      * 
      */
-    delete<T extends ContactDeleteArgs>(args: SelectSubset<T, ContactDeleteArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ImpactDeleteArgs>(args: SelectSubset<T, ImpactDeleteArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Contact.
-     * @param {ContactUpdateArgs} args - Arguments to update one Contact.
+     * Update one Impact.
+     * @param {ImpactUpdateArgs} args - Arguments to update one Impact.
      * @example
-     * // Update one Contact
-     * const contact = await prisma.contact.update({
+     * // Update one Impact
+     * const impact = await prisma.impact.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9693,30 +9766,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ContactUpdateArgs>(args: SelectSubset<T, ContactUpdateArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ImpactUpdateArgs>(args: SelectSubset<T, ImpactUpdateArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Contacts.
-     * @param {ContactDeleteManyArgs} args - Arguments to filter Contacts to delete.
+     * Delete zero or more Impacts.
+     * @param {ImpactDeleteManyArgs} args - Arguments to filter Impacts to delete.
      * @example
-     * // Delete a few Contacts
-     * const { count } = await prisma.contact.deleteMany({
+     * // Delete a few Impacts
+     * const { count } = await prisma.impact.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ContactDeleteManyArgs>(args?: SelectSubset<T, ContactDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ImpactDeleteManyArgs>(args?: SelectSubset<T, ImpactDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Contacts.
+     * Update zero or more Impacts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ImpactUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Contacts
-     * const contact = await prisma.contact.updateMany({
+     * // Update many Impacts
+     * const impact = await prisma.impact.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9726,56 +9799,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ContactUpdateManyArgs>(args: SelectSubset<T, ContactUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ImpactUpdateManyArgs>(args: SelectSubset<T, ImpactUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Contact.
-     * @param {ContactUpsertArgs} args - Arguments to update or create a Contact.
+     * Create or update one Impact.
+     * @param {ImpactUpsertArgs} args - Arguments to update or create a Impact.
      * @example
-     * // Update or create a Contact
-     * const contact = await prisma.contact.upsert({
+     * // Update or create a Impact
+     * const impact = await prisma.impact.upsert({
      *   create: {
-     *     // ... data to create a Contact
+     *     // ... data to create a Impact
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Contact we want to update
+     *     // ... the filter for the Impact we want to update
      *   }
      * })
      */
-    upsert<T extends ContactUpsertArgs>(args: SelectSubset<T, ContactUpsertArgs<ExtArgs>>): Prisma__ContactClient<$Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ImpactUpsertArgs>(args: SelectSubset<T, ImpactUpsertArgs<ExtArgs>>): Prisma__ImpactClient<$Result.GetResult<Prisma.$ImpactPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Contacts.
+     * Count the number of Impacts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactCountArgs} args - Arguments to filter Contacts to count.
+     * @param {ImpactCountArgs} args - Arguments to filter Impacts to count.
      * @example
-     * // Count the number of Contacts
-     * const count = await prisma.contact.count({
+     * // Count the number of Impacts
+     * const count = await prisma.impact.count({
      *   where: {
-     *     // ... the filter for the Contacts we want to count
+     *     // ... the filter for the Impacts we want to count
      *   }
      * })
     **/
-    count<T extends ContactCountArgs>(
-      args?: Subset<T, ContactCountArgs>,
+    count<T extends ImpactCountArgs>(
+      args?: Subset<T, ImpactCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ContactCountAggregateOutputType>
+          : GetScalarType<T['select'], ImpactCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Contact.
+     * Allows you to perform aggregations operations on a Impact.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ImpactAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -9795,13 +9868,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ContactAggregateArgs>(args: Subset<T, ContactAggregateArgs>): Prisma.PrismaPromise<GetContactAggregateType<T>>
+    aggregate<T extends ImpactAggregateArgs>(args: Subset<T, ImpactAggregateArgs>): Prisma.PrismaPromise<GetImpactAggregateType<T>>
 
     /**
-     * Group by Contact.
+     * Group by Impact.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ContactGroupByArgs} args - Group by arguments.
+     * @param {ImpactGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -9816,14 +9889,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ContactGroupByArgs,
+      T extends ImpactGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ContactGroupByArgs['orderBy'] }
-        : { orderBy?: ContactGroupByArgs['orderBy'] },
+        ? { orderBy: ImpactGroupByArgs['orderBy'] }
+        : { orderBy?: ImpactGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9872,20 +9945,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ContactGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContactGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ImpactGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetImpactGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Contact model
+   * Fields of the Impact model
    */
-  readonly fields: ContactFieldRefs;
+  readonly fields: ImpactFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Contact.
+   * The delegate class that acts as a "Promise-like" for Impact.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ContactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ImpactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9913,339 +9986,1281 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Contact model
+   * Fields of the Impact model
    */
-  interface ContactFieldRefs {
-    readonly id: FieldRef<"Contact", 'Int'>
-    readonly email: FieldRef<"Contact", 'String'>
-    readonly phone: FieldRef<"Contact", 'String'>
-    readonly linkedin: FieldRef<"Contact", 'String'>
-    readonly github: FieldRef<"Contact", 'String'>
-    readonly twitter: FieldRef<"Contact", 'String'>
-    readonly updatedAt: FieldRef<"Contact", 'DateTime'>
+  interface ImpactFieldRefs {
+    readonly id: FieldRef<"Impact", 'Int'>
+    readonly image: FieldRef<"Impact", 'String'>
+    readonly title: FieldRef<"Impact", 'String'>
+    readonly description: FieldRef<"Impact", 'String'>
+    readonly createdAt: FieldRef<"Impact", 'DateTime'>
+    readonly updatedAt: FieldRef<"Impact", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Contact findUnique
+   * Impact findUnique
    */
-  export type ContactFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Filter, which Impact to fetch.
      */
-    where: ContactWhereUniqueInput
+    where: ImpactWhereUniqueInput
   }
 
   /**
-   * Contact findUniqueOrThrow
+   * Impact findUniqueOrThrow
    */
-  export type ContactFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Filter, which Impact to fetch.
      */
-    where: ContactWhereUniqueInput
+    where: ImpactWhereUniqueInput
   }
 
   /**
-   * Contact findFirst
+   * Impact findFirst
    */
-  export type ContactFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Filter, which Impact to fetch.
      */
-    where?: ContactWhereInput
+    where?: ImpactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of Impacts to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: ImpactOrderByWithRelationInput | ImpactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Contacts.
+     * Sets the position for searching for Impacts.
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: ImpactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` Impacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` Impacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Contacts.
+     * Filter by unique combinations of Impacts.
      */
-    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
+    distinct?: ImpactScalarFieldEnum | ImpactScalarFieldEnum[]
   }
 
   /**
-   * Contact findFirstOrThrow
+   * Impact findFirstOrThrow
    */
-  export type ContactFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * Filter, which Contact to fetch.
+     * Filter, which Impact to fetch.
      */
-    where?: ContactWhereInput
+    where?: ImpactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of Impacts to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: ImpactOrderByWithRelationInput | ImpactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Contacts.
+     * Sets the position for searching for Impacts.
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: ImpactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` Impacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` Impacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Contacts.
+     * Filter by unique combinations of Impacts.
      */
-    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
+    distinct?: ImpactScalarFieldEnum | ImpactScalarFieldEnum[]
   }
 
   /**
-   * Contact findMany
+   * Impact findMany
    */
-  export type ContactFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * Filter, which Contacts to fetch.
+     * Filter, which Impacts to fetch.
      */
-    where?: ContactWhereInput
+    where?: ImpactWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Contacts to fetch.
+     * Determine the order of Impacts to fetch.
      */
-    orderBy?: ContactOrderByWithRelationInput | ContactOrderByWithRelationInput[]
+    orderBy?: ImpactOrderByWithRelationInput | ImpactOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Contacts.
+     * Sets the position for listing Impacts.
      */
-    cursor?: ContactWhereUniqueInput
+    cursor?: ImpactWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Contacts from the position of the cursor.
+     * Take `±n` Impacts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Contacts.
+     * Skip the first `n` Impacts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Contacts.
+     * Filter by unique combinations of Impacts.
      */
-    distinct?: ContactScalarFieldEnum | ContactScalarFieldEnum[]
+    distinct?: ImpactScalarFieldEnum | ImpactScalarFieldEnum[]
   }
 
   /**
-   * Contact create
+   * Impact create
    */
-  export type ContactCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * The data needed to create a Contact.
+     * The data needed to create a Impact.
      */
-    data: XOR<ContactCreateInput, ContactUncheckedCreateInput>
+    data: XOR<ImpactCreateInput, ImpactUncheckedCreateInput>
   }
 
   /**
-   * Contact createMany
+   * Impact createMany
    */
-  export type ContactCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Contacts.
+     * The data used to create many Impacts.
      */
-    data: ContactCreateManyInput | ContactCreateManyInput[]
+    data: ImpactCreateManyInput | ImpactCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Contact update
+   * Impact update
    */
-  export type ContactUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * The data needed to update a Contact.
+     * The data needed to update a Impact.
      */
-    data: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
+    data: XOR<ImpactUpdateInput, ImpactUncheckedUpdateInput>
     /**
-     * Choose, which Contact to update.
+     * Choose, which Impact to update.
      */
-    where: ContactWhereUniqueInput
+    where: ImpactWhereUniqueInput
   }
 
   /**
-   * Contact updateMany
+   * Impact updateMany
    */
-  export type ContactUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Contacts.
+     * The data used to update Impacts.
      */
-    data: XOR<ContactUpdateManyMutationInput, ContactUncheckedUpdateManyInput>
+    data: XOR<ImpactUpdateManyMutationInput, ImpactUncheckedUpdateManyInput>
     /**
-     * Filter which Contacts to update
+     * Filter which Impacts to update
      */
-    where?: ContactWhereInput
+    where?: ImpactWhereInput
     /**
-     * Limit how many Contacts to update.
+     * Limit how many Impacts to update.
      */
     limit?: number
   }
 
   /**
-   * Contact upsert
+   * Impact upsert
    */
-  export type ContactUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * The filter to search for the Contact to update in case it exists.
+     * The filter to search for the Impact to update in case it exists.
      */
-    where: ContactWhereUniqueInput
+    where: ImpactWhereUniqueInput
     /**
-     * In case the Contact found by the `where` argument doesn't exist, create a new Contact with this data.
+     * In case the Impact found by the `where` argument doesn't exist, create a new Impact with this data.
      */
-    create: XOR<ContactCreateInput, ContactUncheckedCreateInput>
+    create: XOR<ImpactCreateInput, ImpactUncheckedCreateInput>
     /**
-     * In case the Contact was found with the provided `where` argument, update it with this data.
+     * In case the Impact was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ContactUpdateInput, ContactUncheckedUpdateInput>
+    update: XOR<ImpactUpdateInput, ImpactUncheckedUpdateInput>
   }
 
   /**
-   * Contact delete
+   * Impact delete
    */
-  export type ContactDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
     /**
-     * Filter which Contact to delete.
+     * Filter which Impact to delete.
      */
-    where: ContactWhereUniqueInput
+    where: ImpactWhereUniqueInput
   }
 
   /**
-   * Contact deleteMany
+   * Impact deleteMany
    */
-  export type ContactDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Contacts to delete
+     * Filter which Impacts to delete
      */
-    where?: ContactWhereInput
+    where?: ImpactWhereInput
     /**
-     * Limit how many Contacts to delete.
+     * Limit how many Impacts to delete.
      */
     limit?: number
   }
 
   /**
-   * Contact without action
+   * Impact without action
    */
-  export type ContactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ImpactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Contact
+     * Select specific fields to fetch from the Impact
      */
-    select?: ContactSelect<ExtArgs> | null
+    select?: ImpactSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Contact
+     * Omit specific fields from the Impact
      */
-    omit?: ContactOmit<ExtArgs> | null
+    omit?: ImpactOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Award
+   */
+
+  export type AggregateAward = {
+    _count: AwardCountAggregateOutputType | null
+    _avg: AwardAvgAggregateOutputType | null
+    _sum: AwardSumAggregateOutputType | null
+    _min: AwardMinAggregateOutputType | null
+    _max: AwardMaxAggregateOutputType | null
+  }
+
+  export type AwardAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type AwardSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type AwardMinAggregateOutputType = {
+    id: number | null
+    image: string | null
+    title: string | null
+    description: string | null
+    time_to_receipt: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AwardMaxAggregateOutputType = {
+    id: number | null
+    image: string | null
+    title: string | null
+    description: string | null
+    time_to_receipt: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AwardCountAggregateOutputType = {
+    id: number
+    image: number
+    title: number
+    description: number
+    time_to_receipt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AwardAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type AwardSumAggregateInputType = {
+    id?: true
+  }
+
+  export type AwardMinAggregateInputType = {
+    id?: true
+    image?: true
+    title?: true
+    description?: true
+    time_to_receipt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AwardMaxAggregateInputType = {
+    id?: true
+    image?: true
+    title?: true
+    description?: true
+    time_to_receipt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AwardCountAggregateInputType = {
+    id?: true
+    image?: true
+    title?: true
+    description?: true
+    time_to_receipt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AwardAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Award to aggregate.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Awards
+    **/
+    _count?: true | AwardCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AwardAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AwardSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AwardMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AwardMaxAggregateInputType
+  }
+
+  export type GetAwardAggregateType<T extends AwardAggregateArgs> = {
+        [P in keyof T & keyof AggregateAward]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAward[P]>
+      : GetScalarType<T[P], AggregateAward[P]>
+  }
+
+
+
+
+  export type AwardGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AwardWhereInput
+    orderBy?: AwardOrderByWithAggregationInput | AwardOrderByWithAggregationInput[]
+    by: AwardScalarFieldEnum[] | AwardScalarFieldEnum
+    having?: AwardScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AwardCountAggregateInputType | true
+    _avg?: AwardAvgAggregateInputType
+    _sum?: AwardSumAggregateInputType
+    _min?: AwardMinAggregateInputType
+    _max?: AwardMaxAggregateInputType
+  }
+
+  export type AwardGroupByOutputType = {
+    id: number
+    image: string
+    title: string
+    description: string
+    time_to_receipt: string
+    createdAt: Date
+    updatedAt: Date
+    _count: AwardCountAggregateOutputType | null
+    _avg: AwardAvgAggregateOutputType | null
+    _sum: AwardSumAggregateOutputType | null
+    _min: AwardMinAggregateOutputType | null
+    _max: AwardMaxAggregateOutputType | null
+  }
+
+  type GetAwardGroupByPayload<T extends AwardGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AwardGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AwardGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AwardGroupByOutputType[P]>
+            : GetScalarType<T[P], AwardGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AwardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    image?: boolean
+    title?: boolean
+    description?: boolean
+    time_to_receipt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["award"]>
+
+
+
+  export type AwardSelectScalar = {
+    id?: boolean
+    image?: boolean
+    title?: boolean
+    description?: boolean
+    time_to_receipt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AwardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "title" | "description" | "time_to_receipt" | "createdAt" | "updatedAt", ExtArgs["result"]["award"]>
+
+  export type $AwardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Award"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      image: string
+      title: string
+      description: string
+      time_to_receipt: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["award"]>
+    composites: {}
+  }
+
+  type AwardGetPayload<S extends boolean | null | undefined | AwardDefaultArgs> = $Result.GetResult<Prisma.$AwardPayload, S>
+
+  type AwardCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AwardFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AwardCountAggregateInputType | true
+    }
+
+  export interface AwardDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Award'], meta: { name: 'Award' } }
+    /**
+     * Find zero or one Award that matches the filter.
+     * @param {AwardFindUniqueArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AwardFindUniqueArgs>(args: SelectSubset<T, AwardFindUniqueArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Award that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AwardFindUniqueOrThrowArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AwardFindUniqueOrThrowArgs>(args: SelectSubset<T, AwardFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Award that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardFindFirstArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AwardFindFirstArgs>(args?: SelectSubset<T, AwardFindFirstArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Award that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardFindFirstOrThrowArgs} args - Arguments to find a Award
+     * @example
+     * // Get one Award
+     * const award = await prisma.award.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AwardFindFirstOrThrowArgs>(args?: SelectSubset<T, AwardFindFirstOrThrowArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Awards that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Awards
+     * const awards = await prisma.award.findMany()
+     * 
+     * // Get first 10 Awards
+     * const awards = await prisma.award.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const awardWithIdOnly = await prisma.award.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AwardFindManyArgs>(args?: SelectSubset<T, AwardFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Award.
+     * @param {AwardCreateArgs} args - Arguments to create a Award.
+     * @example
+     * // Create one Award
+     * const Award = await prisma.award.create({
+     *   data: {
+     *     // ... data to create a Award
+     *   }
+     * })
+     * 
+     */
+    create<T extends AwardCreateArgs>(args: SelectSubset<T, AwardCreateArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Awards.
+     * @param {AwardCreateManyArgs} args - Arguments to create many Awards.
+     * @example
+     * // Create many Awards
+     * const award = await prisma.award.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AwardCreateManyArgs>(args?: SelectSubset<T, AwardCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Award.
+     * @param {AwardDeleteArgs} args - Arguments to delete one Award.
+     * @example
+     * // Delete one Award
+     * const Award = await prisma.award.delete({
+     *   where: {
+     *     // ... filter to delete one Award
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AwardDeleteArgs>(args: SelectSubset<T, AwardDeleteArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Award.
+     * @param {AwardUpdateArgs} args - Arguments to update one Award.
+     * @example
+     * // Update one Award
+     * const award = await prisma.award.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AwardUpdateArgs>(args: SelectSubset<T, AwardUpdateArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Awards.
+     * @param {AwardDeleteManyArgs} args - Arguments to filter Awards to delete.
+     * @example
+     * // Delete a few Awards
+     * const { count } = await prisma.award.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AwardDeleteManyArgs>(args?: SelectSubset<T, AwardDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Awards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Awards
+     * const award = await prisma.award.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AwardUpdateManyArgs>(args: SelectSubset<T, AwardUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Award.
+     * @param {AwardUpsertArgs} args - Arguments to update or create a Award.
+     * @example
+     * // Update or create a Award
+     * const award = await prisma.award.upsert({
+     *   create: {
+     *     // ... data to create a Award
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Award we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AwardUpsertArgs>(args: SelectSubset<T, AwardUpsertArgs<ExtArgs>>): Prisma__AwardClient<$Result.GetResult<Prisma.$AwardPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Awards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardCountArgs} args - Arguments to filter Awards to count.
+     * @example
+     * // Count the number of Awards
+     * const count = await prisma.award.count({
+     *   where: {
+     *     // ... the filter for the Awards we want to count
+     *   }
+     * })
+    **/
+    count<T extends AwardCountArgs>(
+      args?: Subset<T, AwardCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AwardCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Award.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AwardAggregateArgs>(args: Subset<T, AwardAggregateArgs>): Prisma.PrismaPromise<GetAwardAggregateType<T>>
+
+    /**
+     * Group by Award.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AwardGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AwardGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AwardGroupByArgs['orderBy'] }
+        : { orderBy?: AwardGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AwardGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAwardGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Award model
+   */
+  readonly fields: AwardFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Award.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AwardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Award model
+   */
+  interface AwardFieldRefs {
+    readonly id: FieldRef<"Award", 'Int'>
+    readonly image: FieldRef<"Award", 'String'>
+    readonly title: FieldRef<"Award", 'String'>
+    readonly description: FieldRef<"Award", 'String'>
+    readonly time_to_receipt: FieldRef<"Award", 'String'>
+    readonly createdAt: FieldRef<"Award", 'DateTime'>
+    readonly updatedAt: FieldRef<"Award", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Award findUnique
+   */
+  export type AwardFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award findUniqueOrThrow
+   */
+  export type AwardFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award findFirst
+   */
+  export type AwardFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Awards.
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Awards.
+     */
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * Award findFirstOrThrow
+   */
+  export type AwardFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Filter, which Award to fetch.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Awards.
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Awards.
+     */
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * Award findMany
+   */
+  export type AwardFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Filter, which Awards to fetch.
+     */
+    where?: AwardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Awards to fetch.
+     */
+    orderBy?: AwardOrderByWithRelationInput | AwardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Awards.
+     */
+    cursor?: AwardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Awards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Awards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Awards.
+     */
+    distinct?: AwardScalarFieldEnum | AwardScalarFieldEnum[]
+  }
+
+  /**
+   * Award create
+   */
+  export type AwardCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Award.
+     */
+    data: XOR<AwardCreateInput, AwardUncheckedCreateInput>
+  }
+
+  /**
+   * Award createMany
+   */
+  export type AwardCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Awards.
+     */
+    data: AwardCreateManyInput | AwardCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Award update
+   */
+  export type AwardUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Award.
+     */
+    data: XOR<AwardUpdateInput, AwardUncheckedUpdateInput>
+    /**
+     * Choose, which Award to update.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award updateMany
+   */
+  export type AwardUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Awards.
+     */
+    data: XOR<AwardUpdateManyMutationInput, AwardUncheckedUpdateManyInput>
+    /**
+     * Filter which Awards to update
+     */
+    where?: AwardWhereInput
+    /**
+     * Limit how many Awards to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Award upsert
+   */
+  export type AwardUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Award to update in case it exists.
+     */
+    where: AwardWhereUniqueInput
+    /**
+     * In case the Award found by the `where` argument doesn't exist, create a new Award with this data.
+     */
+    create: XOR<AwardCreateInput, AwardUncheckedCreateInput>
+    /**
+     * In case the Award was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AwardUpdateInput, AwardUncheckedUpdateInput>
+  }
+
+  /**
+   * Award delete
+   */
+  export type AwardDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
+    /**
+     * Filter which Award to delete.
+     */
+    where: AwardWhereUniqueInput
+  }
+
+  /**
+   * Award deleteMany
+   */
+  export type AwardDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Awards to delete
+     */
+    where?: AwardWhereInput
+    /**
+     * Limit how many Awards to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Award without action
+   */
+  export type AwardDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Award
+     */
+    select?: AwardSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Award
+     */
+    omit?: AwardOmit<ExtArgs> | null
   }
 
 
@@ -10363,17 +11378,29 @@ export namespace Prisma {
   export type GalleryScalarFieldEnum = (typeof GalleryScalarFieldEnum)[keyof typeof GalleryScalarFieldEnum]
 
 
-  export const ContactScalarFieldEnum: {
+  export const ImpactScalarFieldEnum: {
     id: 'id',
-    email: 'email',
-    phone: 'phone',
-    linkedin: 'linkedin',
-    github: 'github',
-    twitter: 'twitter',
+    image: 'image',
+    title: 'title',
+    description: 'description',
+    createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
+  export type ImpactScalarFieldEnum = (typeof ImpactScalarFieldEnum)[keyof typeof ImpactScalarFieldEnum]
+
+
+  export const AwardScalarFieldEnum: {
+    id: 'id',
+    image: 'image',
+    title: 'title',
+    description: 'description',
+    time_to_receipt: 'time_to_receipt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AwardScalarFieldEnum = (typeof AwardScalarFieldEnum)[keyof typeof AwardScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10467,15 +11494,23 @@ export namespace Prisma {
   export type GalleryOrderByRelevanceFieldEnum = (typeof GalleryOrderByRelevanceFieldEnum)[keyof typeof GalleryOrderByRelevanceFieldEnum]
 
 
-  export const ContactOrderByRelevanceFieldEnum: {
-    email: 'email',
-    phone: 'phone',
-    linkedin: 'linkedin',
-    github: 'github',
-    twitter: 'twitter'
+  export const ImpactOrderByRelevanceFieldEnum: {
+    image: 'image',
+    title: 'title',
+    description: 'description'
   };
 
-  export type ContactOrderByRelevanceFieldEnum = (typeof ContactOrderByRelevanceFieldEnum)[keyof typeof ContactOrderByRelevanceFieldEnum]
+  export type ImpactOrderByRelevanceFieldEnum = (typeof ImpactOrderByRelevanceFieldEnum)[keyof typeof ImpactOrderByRelevanceFieldEnum]
+
+
+  export const AwardOrderByRelevanceFieldEnum: {
+    image: 'image',
+    title: 'title',
+    description: 'description',
+    time_to_receipt: 'time_to_receipt'
+  };
+
+  export type AwardOrderByRelevanceFieldEnum = (typeof AwardOrderByRelevanceFieldEnum)[keyof typeof AwardOrderByRelevanceFieldEnum]
 
 
   /**
@@ -11033,69 +12068,129 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
   }
 
-  export type ContactWhereInput = {
-    AND?: ContactWhereInput | ContactWhereInput[]
-    OR?: ContactWhereInput[]
-    NOT?: ContactWhereInput | ContactWhereInput[]
-    id?: IntFilter<"Contact"> | number
-    email?: StringFilter<"Contact"> | string
-    phone?: StringNullableFilter<"Contact"> | string | null
-    linkedin?: StringNullableFilter<"Contact"> | string | null
-    github?: StringNullableFilter<"Contact"> | string | null
-    twitter?: StringNullableFilter<"Contact"> | string | null
-    updatedAt?: DateTimeFilter<"Contact"> | Date | string
+  export type ImpactWhereInput = {
+    AND?: ImpactWhereInput | ImpactWhereInput[]
+    OR?: ImpactWhereInput[]
+    NOT?: ImpactWhereInput | ImpactWhereInput[]
+    id?: IntFilter<"Impact"> | number
+    image?: StringFilter<"Impact"> | string
+    title?: StringFilter<"Impact"> | string
+    description?: StringFilter<"Impact"> | string
+    createdAt?: DateTimeFilter<"Impact"> | Date | string
+    updatedAt?: DateTimeFilter<"Impact"> | Date | string
   }
 
-  export type ContactOrderByWithRelationInput = {
+  export type ImpactOrderByWithRelationInput = {
     id?: SortOrder
-    email?: SortOrder
-    phone?: SortOrderInput | SortOrder
-    linkedin?: SortOrderInput | SortOrder
-    github?: SortOrderInput | SortOrder
-    twitter?: SortOrderInput | SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
-    _relevance?: ContactOrderByRelevanceInput
+    _relevance?: ImpactOrderByRelevanceInput
   }
 
-  export type ContactWhereUniqueInput = Prisma.AtLeast<{
+  export type ImpactWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: ContactWhereInput | ContactWhereInput[]
-    OR?: ContactWhereInput[]
-    NOT?: ContactWhereInput | ContactWhereInput[]
-    email?: StringFilter<"Contact"> | string
-    phone?: StringNullableFilter<"Contact"> | string | null
-    linkedin?: StringNullableFilter<"Contact"> | string | null
-    github?: StringNullableFilter<"Contact"> | string | null
-    twitter?: StringNullableFilter<"Contact"> | string | null
-    updatedAt?: DateTimeFilter<"Contact"> | Date | string
+    AND?: ImpactWhereInput | ImpactWhereInput[]
+    OR?: ImpactWhereInput[]
+    NOT?: ImpactWhereInput | ImpactWhereInput[]
+    image?: StringFilter<"Impact"> | string
+    title?: StringFilter<"Impact"> | string
+    description?: StringFilter<"Impact"> | string
+    createdAt?: DateTimeFilter<"Impact"> | Date | string
+    updatedAt?: DateTimeFilter<"Impact"> | Date | string
   }, "id">
 
-  export type ContactOrderByWithAggregationInput = {
+  export type ImpactOrderByWithAggregationInput = {
     id?: SortOrder
-    email?: SortOrder
-    phone?: SortOrderInput | SortOrder
-    linkedin?: SortOrderInput | SortOrder
-    github?: SortOrderInput | SortOrder
-    twitter?: SortOrderInput | SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: ContactCountOrderByAggregateInput
-    _avg?: ContactAvgOrderByAggregateInput
-    _max?: ContactMaxOrderByAggregateInput
-    _min?: ContactMinOrderByAggregateInput
-    _sum?: ContactSumOrderByAggregateInput
+    _count?: ImpactCountOrderByAggregateInput
+    _avg?: ImpactAvgOrderByAggregateInput
+    _max?: ImpactMaxOrderByAggregateInput
+    _min?: ImpactMinOrderByAggregateInput
+    _sum?: ImpactSumOrderByAggregateInput
   }
 
-  export type ContactScalarWhereWithAggregatesInput = {
-    AND?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
-    OR?: ContactScalarWhereWithAggregatesInput[]
-    NOT?: ContactScalarWhereWithAggregatesInput | ContactScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Contact"> | number
-    email?: StringWithAggregatesFilter<"Contact"> | string
-    phone?: StringNullableWithAggregatesFilter<"Contact"> | string | null
-    linkedin?: StringNullableWithAggregatesFilter<"Contact"> | string | null
-    github?: StringNullableWithAggregatesFilter<"Contact"> | string | null
-    twitter?: StringNullableWithAggregatesFilter<"Contact"> | string | null
-    updatedAt?: DateTimeWithAggregatesFilter<"Contact"> | Date | string
+  export type ImpactScalarWhereWithAggregatesInput = {
+    AND?: ImpactScalarWhereWithAggregatesInput | ImpactScalarWhereWithAggregatesInput[]
+    OR?: ImpactScalarWhereWithAggregatesInput[]
+    NOT?: ImpactScalarWhereWithAggregatesInput | ImpactScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Impact"> | number
+    image?: StringWithAggregatesFilter<"Impact"> | string
+    title?: StringWithAggregatesFilter<"Impact"> | string
+    description?: StringWithAggregatesFilter<"Impact"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Impact"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Impact"> | Date | string
+  }
+
+  export type AwardWhereInput = {
+    AND?: AwardWhereInput | AwardWhereInput[]
+    OR?: AwardWhereInput[]
+    NOT?: AwardWhereInput | AwardWhereInput[]
+    id?: IntFilter<"Award"> | number
+    image?: StringFilter<"Award"> | string
+    title?: StringFilter<"Award"> | string
+    description?: StringFilter<"Award"> | string
+    time_to_receipt?: StringFilter<"Award"> | string
+    createdAt?: DateTimeFilter<"Award"> | Date | string
+    updatedAt?: DateTimeFilter<"Award"> | Date | string
+  }
+
+  export type AwardOrderByWithRelationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    time_to_receipt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: AwardOrderByRelevanceInput
+  }
+
+  export type AwardWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: AwardWhereInput | AwardWhereInput[]
+    OR?: AwardWhereInput[]
+    NOT?: AwardWhereInput | AwardWhereInput[]
+    image?: StringFilter<"Award"> | string
+    title?: StringFilter<"Award"> | string
+    description?: StringFilter<"Award"> | string
+    time_to_receipt?: StringFilter<"Award"> | string
+    createdAt?: DateTimeFilter<"Award"> | Date | string
+    updatedAt?: DateTimeFilter<"Award"> | Date | string
+  }, "id">
+
+  export type AwardOrderByWithAggregationInput = {
+    id?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    time_to_receipt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AwardCountOrderByAggregateInput
+    _avg?: AwardAvgOrderByAggregateInput
+    _max?: AwardMaxOrderByAggregateInput
+    _min?: AwardMinOrderByAggregateInput
+    _sum?: AwardSumOrderByAggregateInput
+  }
+
+  export type AwardScalarWhereWithAggregatesInput = {
+    AND?: AwardScalarWhereWithAggregatesInput | AwardScalarWhereWithAggregatesInput[]
+    OR?: AwardScalarWhereWithAggregatesInput[]
+    NOT?: AwardScalarWhereWithAggregatesInput | AwardScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Award"> | number
+    image?: StringWithAggregatesFilter<"Award"> | string
+    title?: StringWithAggregatesFilter<"Award"> | string
+    description?: StringWithAggregatesFilter<"Award"> | string
+    time_to_receipt?: StringWithAggregatesFilter<"Award"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Award"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Award"> | Date | string
   }
 
   export type AdminUserCreateInput = {
@@ -11618,73 +12713,130 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ContactCreateInput = {
-    id?: number
-    email: string
-    phone?: string | null
-    linkedin?: string | null
-    github?: string | null
-    twitter?: string | null
+  export type ImpactCreateInput = {
+    image: string
+    title: string
+    description: string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type ContactUncheckedCreateInput = {
+  export type ImpactUncheckedCreateInput = {
     id?: number
-    email: string
-    phone?: string | null
-    linkedin?: string | null
-    github?: string | null
-    twitter?: string | null
+    image: string
+    title: string
+    description: string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type ContactUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedin?: NullableStringFieldUpdateOperationsInput | string | null
-    github?: NullableStringFieldUpdateOperationsInput | string | null
-    twitter?: NullableStringFieldUpdateOperationsInput | string | null
+  export type ImpactUpdateInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ContactUncheckedUpdateInput = {
+  export type ImpactUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedin?: NullableStringFieldUpdateOperationsInput | string | null
-    github?: NullableStringFieldUpdateOperationsInput | string | null
-    twitter?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ContactCreateManyInput = {
+  export type ImpactCreateManyInput = {
     id?: number
-    email: string
-    phone?: string | null
-    linkedin?: string | null
-    github?: string | null
-    twitter?: string | null
+    image: string
+    title: string
+    description: string
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type ContactUpdateManyMutationInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedin?: NullableStringFieldUpdateOperationsInput | string | null
-    github?: NullableStringFieldUpdateOperationsInput | string | null
-    twitter?: NullableStringFieldUpdateOperationsInput | string | null
+  export type ImpactUpdateManyMutationInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ContactUncheckedUpdateManyInput = {
+  export type ImpactUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: NullableStringFieldUpdateOperationsInput | string | null
-    linkedin?: NullableStringFieldUpdateOperationsInput | string | null
-    github?: NullableStringFieldUpdateOperationsInput | string | null
-    twitter?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardCreateInput = {
+    image: string
+    title: string
+    description: string
+    time_to_receipt: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AwardUncheckedCreateInput = {
+    id?: number
+    image: string
+    title: string
+    description: string
+    time_to_receipt: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AwardUpdateInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    time_to_receipt?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    time_to_receipt?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardCreateManyInput = {
+    id?: number
+    image: string
+    title: string
+    description: string
+    time_to_receipt: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AwardUpdateManyMutationInput = {
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    time_to_receipt?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AwardUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    image?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    time_to_receipt?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12247,47 +13399,88 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type ContactOrderByRelevanceInput = {
-    fields: ContactOrderByRelevanceFieldEnum | ContactOrderByRelevanceFieldEnum[]
+  export type ImpactOrderByRelevanceInput = {
+    fields: ImpactOrderByRelevanceFieldEnum | ImpactOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type ContactCountOrderByAggregateInput = {
+  export type ImpactCountOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    linkedin?: SortOrder
-    github?: SortOrder
-    twitter?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type ContactAvgOrderByAggregateInput = {
+  export type ImpactAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type ContactMaxOrderByAggregateInput = {
+  export type ImpactMaxOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    linkedin?: SortOrder
-    github?: SortOrder
-    twitter?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type ContactMinOrderByAggregateInput = {
+  export type ImpactMinOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    linkedin?: SortOrder
-    github?: SortOrder
-    twitter?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type ContactSumOrderByAggregateInput = {
+  export type ImpactSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type AwardOrderByRelevanceInput = {
+    fields: AwardOrderByRelevanceFieldEnum | AwardOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type AwardCountOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    time_to_receipt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AwardAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type AwardMaxOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    time_to_receipt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AwardMinOrderByAggregateInput = {
+    id?: SortOrder
+    image?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    time_to_receipt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AwardSumOrderByAggregateInput = {
     id?: SortOrder
   }
 

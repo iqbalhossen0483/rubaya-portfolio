@@ -5,7 +5,16 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "/api",
   }),
-  tagTypes: ["Hero", "Experience", "Events", "Gallery", "About", "Contact"],
+  tagTypes: [
+    "Hero",
+    "Experience",
+    "Events",
+    "Gallery",
+    "About",
+    "Contact",
+    "Impact",
+    "Award",
+  ],
   endpoints: (builder) => ({
     // Hero Endpoints
     getHero: builder.query<{ success: boolean; data: any }, void>({

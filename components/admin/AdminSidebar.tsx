@@ -2,6 +2,7 @@
 
 import Typography from "@/components/utils/Typography";
 import {
+  Activity,
   Briefcase,
   CalendarDays,
   Image as ImageIcon,
@@ -9,6 +10,7 @@ import {
   LogOut,
   MessageSquare,
   Settings,
+  Trophy,
   User,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
@@ -20,8 +22,10 @@ const navItems = [
   { name: "Hero", href: "/admin/hero", icon: User },
   { name: "About", href: "/admin/about", icon: User },
   { name: "Experience", href: "/admin/experience", icon: Briefcase },
+  { name: "Impact", href: "/admin/impact", icon: Activity },
   { name: "Events", href: "/admin/event", icon: CalendarDays },
   { name: "Gallery", href: "/admin/gallery", icon: ImageIcon },
+  { name: "Award", href: "/admin/award", icon: Trophy },
   { name: "Contact", href: "/admin/contact", icon: MessageSquare },
   { name: "Settings", href: "/admin/settings", icon: Settings },
 ];

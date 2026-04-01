@@ -1,0 +1,127 @@
+"use client";
+
+import Button from "@/components/utils/Button";
+import FileInput from "@/components/utils/FileInput";
+import ImageViewer from "@/components/utils/ImageViewer";
+import Input from "@/components/utils/Input";
+import Textarea from "@/components/utils/Textarea";
+import { ImpactInput, impactSchema } from "@/lib/validations/impact.schema";
+import { Impact } from "@/src/generated/prisma/client";
+import {
+  useCreateImpactMutation,
+  useUpdateImpactMutation,
+} from "@/store/api/impactApi";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm, useWatch } from "react-hook-form";
+import { toast } from "react-toastify";
+
+interface ImpactFormProps {
+  initialData?: Impact;
+  onSuccess?: () => void;
+  onCancel?: () => void;
+}
+
+export default function ImpactForm({
+  initialData,
+  onSuccess,
+  onCancel,
+}: ImpactFormProps) {
+  const isEditing = !!initialData;
+
+  const [createImpact, { isLoading: isCreating }] = useCreateImpactMutation();
+  const [updateImpact, { isLoading: isUpdating }] = useUpdateImpactMutation();
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ImpactInput>({
+    resolver: zodResolver(impactSchema),
+    defaultValues: {
+      title: initialData?.title || "",
+      description: initialData?.description || "",
+      image: initialData?.image || "",
+    },
+  });
+
+  const image = useWatch({ control, name: "image" });
+
+  const onSubmit = async (data: ImpactInput) => {
+    try {
+      const formData = new FormData();
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+
+      if (data.image) {
+        formData.append("image", data.image as any);
+      }
+
+      if (isEditing && initialData) {
+        await updateImpact({
+          id: Number(initialData.id),
+          data: formData,
+        }).unwrap();
+        toast.success("Impact item updated successfully!");
+      } else {
+        await createImpact(formData).unwrap();
+        toast.success("Impact item created successfully!");
+      }
+      onSuccess?.();
+    } catch (error: any) {
+      toast.error(
+        error?.data?.message || "Something went wrong, please try again later",
+      );
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <Input
+        label="Title"
+        {...register("title")}
+        error={errors.title?.message}
+        placeholder="e.g. Environmental Impact"
+      />
+
+      <Textarea
+        label="Description"
+        {...register("description")}
+        error={errors.description?.message}
+        rows={4}
+        placeholder="Details about the impact..."
+      />
+
+      <Controller
+        name="image"
+        control={control}
+        render={({ field: { onChange } }) => (
+          <FileInput
+            label="Image"
+            onChange={(e) => onChange(e.target.files?.[0] || null)}
+            error={errors.image?.message as string}
+            accept="image/*"
+          />
+        )}
+      />
+
+      <ImageViewer url={image} height={300} width={300} />
+
+      <div className="flex gap-4 justify-end">
+        {onCancel && (
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={onCancel}
+            disabled={isCreating || isUpdating}
+          >
+            Cancel
+          </Button>
+        )}
+        <Button type="submit" isLoading={isCreating || isUpdating}>
+          {isEditing ? "Update Impact Item" : "Create Impact Item"}
+        </Button>
+      </div>
+    </form>
+  );
+}
