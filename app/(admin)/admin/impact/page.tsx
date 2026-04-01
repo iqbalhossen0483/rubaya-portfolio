@@ -64,7 +64,10 @@ export default function ImpactPage() {
         <Typography variant="h5" className="mb-6">
           Section Description
         </Typography>
-        <SectionDescriptionForm section="impact" />
+        <SectionDescriptionForm
+          section="impact_section_description"
+          title="Section description"
+        />
       </Card>
       <div className="flex justify-between items-center">
         <Typography variant="h3" className="mb-0 text-text-head">

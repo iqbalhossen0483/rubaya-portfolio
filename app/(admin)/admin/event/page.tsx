@@ -63,7 +63,10 @@ export default function EventPage() {
         <Typography variant="h5" className="mb-6">
           Section Description
         </Typography>
-        <SectionDescriptionForm section="event" />
+        <SectionDescriptionForm
+          section="event_section_description"
+          title="Section description"
+        />
       </Card>
       <div className="flex justify-between items-center">
         <Typography variant="h3" className="mb-0 text-text-head">
@@ -120,7 +123,7 @@ export default function EventPage() {
                   </div>
                 </div>
                 <Typography variant="subtitle2" className="mb-2">
-                  {(event as any).role}
+                  {event.role}
                 </Typography>
                 <Typography variant="body2" className="mb-2">
                   {new Date(event.date).toLocaleDateString()} • {event.location}

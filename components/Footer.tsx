@@ -1,6 +1,28 @@
 import Typography from "./utils/Typography";
 
-export default function Footer() {
+async function getSettings() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/settings`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch settings");
+  }
+
+  return res.json();
+}
+
+export default async function Footer() {
+  let settings;
+  try {
+    const data = await getSettings();
+    settings = data.data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  console.log(settings);
+
   return (
     <footer className="bg-background-dark p-[1.8rem_5rem] flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
       <Typography
@@ -8,8 +30,7 @@ export default function Footer() {
         component="p"
         className="text-accent-muted font-normal"
       >
-        © {new Date().getFullYear()} Rubaya Nasrin Shejuti — Climate &
-        Development Professional
+        {settings?.copy_write_text || `sdfsd`}
       </Typography>
       <Typography
         variant="caption"

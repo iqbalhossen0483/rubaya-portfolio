@@ -16,11 +16,16 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 interface SectionDescriptionFormProps {
-  section: "contact" | "impact" | "event";
+  section:
+    | "contact_section_description"
+    | "impact_section_description"
+    | "event_section_description";
+  title: string;
 }
 
 export default function SectionDescriptionForm({
   section,
+  title,
 }: SectionDescriptionFormProps) {
   const { data: settingsRes } = useGetSettingsQuery();
   const [updateSettings, { isLoading: isUpdating }] =
@@ -38,9 +43,11 @@ export default function SectionDescriptionForm({
   useEffect(() => {
     if (settingsRes?.data) {
       setValue(
-        `${section}_section_description`,
-        settingsRes.data.section_titles[`${section}_section_description`] || "",
+        `section_description.${section}`,
+        settingsRes.data.section_description?.[section] || "",
       );
+      setValue("site_brand_name", settingsRes.data.site_brand_name || "");
+      setValue("copyright_text", settingsRes.data.copyright_text || "");
     }
   }, [settingsRes, setValue, section]);
 
@@ -57,13 +64,11 @@ export default function SectionDescriptionForm({
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 mb-6">
       <Textarea
-        id={`${section}_section_description`}
-        label={`${
-          section.charAt(0).toUpperCase() + section.slice(1)
-        } Section Description`}
+        id={`${section}`}
+        label={title}
         placeholder={`Enter description for ${section} section`}
-        {...register(`${section}_section_description`)}
-        error={errors[`${section}_section_description`]?.message as string}
+        {...register(`section_description.${section}`)}
+        error={errors.section_description?.[section]?.message as string}
       />
       <div className="pt-4 flex justify-end">
         <Button

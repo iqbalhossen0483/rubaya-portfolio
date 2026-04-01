@@ -12,22 +12,23 @@ export const POST = withErrorHandler(async (req: Request) => {
   const body = await req.json();
   const data = generalSettingsSchema.parse(body);
 
+  const existingSettings = await prisma.setting.findUnique({
+    where: { id: 1 },
+  });
+
   const settings = await prisma.setting.upsert({
     where: { id: 1 },
     update: {
       ...data,
-      section_titles: {
-        engagement: "Engagement",
-        impact: "Impact",
-        get_in_touch: "Get in Touch",
+      section_description: {
+        ...((existingSettings?.section_description as object) || {}),
+        ...data.section_description,
       },
     },
     create: {
       ...data,
-      section_titles: {
-        engagement: "Engagement",
-        impact: "Impact",
-        get_in_touch: "Get in Touch",
+      section_description: {
+        ...data.section_description,
       },
     },
   });

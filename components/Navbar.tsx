@@ -1,9 +1,11 @@
 "use client";
 
+import { useGetSettingsQuery } from "@/store/api/settingsApi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const { data } = useGetSettingsQuery();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -14,6 +16,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const siteBrandName = data?.data?.site_brand_name || "Rubaya Nasrin";
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-7 lg:px-16 py-4 bg-[rgba(246,248,246,0.96)] backdrop-blur-[10px] border-b border-border-custom transition-shadow duration-300 ${
@@ -21,7 +25,8 @@ export default function Navbar() {
       }`}
     >
       <div className="font-serif text-[1.1rem] font-bold text-accent tracking-[0.01em]">
-        Rubaya <span className="italic font-light">Nasrin</span>
+        {siteBrandName.split(" ")[0]}{" "}
+        <span className="italic font-light">{siteBrandName.split(" ")[1]}</span>
       </div>
       <ul className="hidden md:flex gap-6 lg:gap-10 list-none">
         {["about", "experience", "events", "gallery", "impact", "contact"].map(

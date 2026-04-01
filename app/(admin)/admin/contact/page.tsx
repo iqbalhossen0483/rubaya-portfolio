@@ -74,7 +74,10 @@ export default function ContactAdminPage() {
         </Typography>
       </div>
 
-      <SectionDescriptionForm section="contact" />
+      <SectionDescriptionForm
+        section="contact_section_description"
+        title="Section description"
+      />
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
         <Input

@@ -3,9 +3,13 @@ import { z } from "zod";
 export const generalSettingsSchema = z.object({
   site_brand_name: z.string().min(1, "Site brand name is required"),
   copyright_text: z.string().min(1, "Copyright text is required"),
-  contact_section_description: z.string().optional(),
-  impact_section_description: z.string().optional(),
-  event_section_description: z.string().optional(),
+  section_description: z
+    .object({
+      contact_section_description: z.string().optional(),
+      impact_section_description: z.string().optional(),
+      event_section_description: z.string().optional(),
+    })
+    .optional(),
 });
 
 export type GeneralSettingsInput = z.infer<typeof generalSettingsSchema>;

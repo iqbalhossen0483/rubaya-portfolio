@@ -228,7 +228,7 @@ exports.Prisma.SettingScalarFieldEnum = {
   id: 'id',
   site_brand_name: 'site_brand_name',
   copyright_text: 'copyright_text',
-  section_titles: 'section_titles',
+  section_description: 'section_description',
   updatedAt: 'updatedAt'
 };
 
@@ -237,7 +237,8 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.JsonNullValueInput = {
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
