@@ -21,8 +21,6 @@ export default async function Footer() {
     console.error(error);
   }
 
-  console.log(settings);
-
   return (
     <footer className="bg-background-dark p-[1.8rem_5rem] flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
       <Typography
@@ -30,7 +28,7 @@ export default async function Footer() {
         component="p"
         className="text-accent-muted font-normal"
       >
-        {settings?.copy_write_text || `sdfsd`}
+        {settings?.copyright_text || `Rubaya Nasrin Shejuti `}
       </Typography>
       <Typography
         variant="caption"

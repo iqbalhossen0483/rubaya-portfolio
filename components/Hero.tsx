@@ -3,7 +3,32 @@ import Transition from "./Transition";
 import Button from "./utils/Button";
 import Typography from "./utils/Typography";
 
-export default function Hero() {
+async function getHeroData() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/hero`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch hero data");
+  }
+
+  return res.json();
+}
+
+export default async function Hero() {
+  let heroData;
+  try {
+    const data = await getHeroData();
+    heroData = data.data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  const heroTitle = heroData?.title?.split(" ");
+  const yearsOfExperience = heroData?.yearsOfExperience?.split(" ")?.[0];
+  const countries = heroData?.countries?.split(" ")?.[0];
+  const award = heroData?.award?.split(" ")?.[0];
+
   return (
     <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2 relative overflow-hidden">
       {/* Background layer */}
@@ -27,11 +52,11 @@ export default function Hero() {
         </Transition>
         <Transition>
           <Typography variant="h1" className="mb-2">
-            Rubaya
+            {heroTitle[0]}
             <br />
-            Nasrin
+            {heroTitle[1]}
             <em className="italic font-light text-accent block mt-1">
-              Shejuti
+              {heroTitle[2]}
             </em>
           </Typography>
         </Transition>
@@ -40,7 +65,7 @@ export default function Hero() {
             variant="body2"
             className="font-normal tracking-widest uppercase mb-[1.8rem] leading-[1.9]"
           >
-            Climate Change Adaptation · Environmental Research · Disaster Risk
+            {heroData?.subtitle}
           </Typography>
         </Transition>
         <Transition>
@@ -48,9 +73,7 @@ export default function Hero() {
             variant="subtitle1"
             className="text-text-mid max-w-105 mb-10"
           >
-            Building climate resilience and supporting sustainable development
-            initiatives — combining academic rigor with field experience across
-            South Asia.
+            {heroData?.description}
           </Typography>
         </Transition>
         <Transition>
@@ -79,7 +102,7 @@ export default function Hero() {
               }}
             >
               <Image
-                src="/profile.jpg"
+                src={heroData?.profile}
                 alt="Rubaya Nasrin"
                 width={320}
                 height={400}
@@ -88,12 +111,10 @@ export default function Hero() {
             </div>
             <div className="absolute -bottom-4.5 -left-7 bg-gold-pale border-2 border-gold px-[1.4rem] py-4 rounded-[3px]">
               <div className="font-serif text-[2rem] font-bold text-gold leading-none">
-                8+
+                {yearsOfExperience}
               </div>
-              <div className="text-[0.72rem] font-bold tracking-[0.07em] uppercase text-text-mid mt-1">
-                Years
-                <br />
-                Experience
+              <div className="text-[0.72rem] font-bold tracking-[0.07em] uppercase text-text-mid mt-1 max-w-20">
+                {heroData?.yearsOfExperience?.replace(yearsOfExperience, "")}
               </div>
             </div>
           </div>
@@ -102,20 +123,20 @@ export default function Hero() {
           <Transition>
             <div className="bg-[rgba(246,248,246,0.97)] px-[1.2rem] py-[0.8rem] border-l-[3px] border-accent rounded-r-[3px] shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
               <div className="font-serif text-[1.7rem] font-bold leading-none">
-                4+
+                {countries}
               </div>
               <div className="text-[0.72rem] font-bold tracking-[0.09em] uppercase text-text-light mt-1">
-                Countries
+                {heroData?.countries?.replace(countries, "")}
               </div>
             </div>
           </Transition>
           <Transition>
             <div className="bg-[rgba(246,248,246,0.97)] px-[1.2rem] py-[0.8rem] border-l-[3px] border-accent rounded-r-[3px] shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
               <div className="font-serif text-[1.7rem] font-bold leading-none">
-                5+
+                {award}
               </div>
               <div className="text-[0.72rem] font-bold tracking-[0.09em] uppercase text-text-light mt-1">
-                Awards
+                {heroData?.award?.replace(award, "")}
               </div>
             </div>
           </Transition>
