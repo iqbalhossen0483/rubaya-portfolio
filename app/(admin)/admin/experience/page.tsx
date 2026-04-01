@@ -9,6 +9,7 @@ import {
   useDeleteExperienceMutation,
   useGetExperiencesQuery,
 } from "@/store/api/experienceApi";
+import { Plus } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import ExperienceForm from "./ExperienceForm";
@@ -56,8 +57,14 @@ export default function ExperienceAdminPage() {
   return (
     <section>
       <div className="flex justify-between items-center mb-6">
-        <Typography variant="h2">Manage Experience</Typography>
-        {!isFormOpen && <Button onClick={handleAddNew}>Add New</Button>}
+        <Typography variant="h3" className="text-text-head">
+          Manage Experience
+        </Typography>
+        {!isFormOpen && (
+          <Button onClick={handleAddNew} icon={<Plus size={18} />}>
+            Add New
+          </Button>
+        )}
       </div>
 
       {isFormOpen ? (

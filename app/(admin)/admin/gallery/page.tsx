@@ -3,6 +3,7 @@
 import Button from "@/components/utils/Button";
 import NoDataFound from "@/components/utils/NoDataFound";
 import Spinner from "@/components/utils/Spinner";
+import Typography from "@/components/utils/Typography";
 import { Gallery } from "@/src/generated/prisma/client";
 import {
   useDeleteGalleryMutation,
@@ -49,9 +50,9 @@ export default function GalleryPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-text-head">
+        <Typography variant="h3" className="mb-0 text-text-head">
           Gallery Management
-        </h1>
+        </Typography>
         {!isFormOpen && (
           <Button
             onClick={() => openForm()}
@@ -64,9 +65,9 @@ export default function GalleryPage() {
 
       {isFormOpen ? (
         <div className="bg-white p-6 rounded-lg shadow-sm">
-          <h2 className="text-xl font-semibold mb-6">
+          <Typography variant="h5" className="mb-6">
             {editingGallery ? "Edit Gallery Item" : "Add New Gallery Item"}
-          </h2>
+          </Typography>
           <GalleryForm
             initialData={editingGallery}
             onSuccess={closeForm}
@@ -92,9 +93,9 @@ export default function GalleryPage() {
                   </div>
                 )}
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-lg font-semibold text-text-head line-clamp-2">
+                  <Typography variant="h6" className="line-clamp-2">
                     {gallery.caption}
-                  </h3>
+                  </Typography>
                   <div className="flex gap-2">
                     <button
                       onClick={() => openForm(gallery)}

@@ -3,6 +3,7 @@
 import Button from "@/components/utils/Button";
 import NoDataFound from "@/components/utils/NoDataFound";
 import Spinner from "@/components/utils/Spinner";
+import Typography from "@/components/utils/Typography";
 import { Event } from "@/src/generated/prisma/client";
 import {
   useDeleteEventMutation,
@@ -48,7 +49,9 @@ export default function EventPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-text-head">Events Management</h1>
+        <Typography variant="h3" className="text-text-head">
+          Events Management
+        </Typography>
         {!isFormOpen && (
           <Button
             onClick={() => openForm()}
@@ -61,9 +64,9 @@ export default function EventPage() {
 
       {isFormOpen ? (
         <div className="bg-white p-6 rounded-lg shadow-sm">
-          <h2 className="text-xl font-semibold mb-6">
+          <Typography variant="h5" className="mb-6">
             {editingEvent ? "Edit Event" : "Add New Event"}
-          </h2>
+          </Typography>
           <EventForm
             initialData={editingEvent}
             onSuccess={closeForm}
@@ -79,9 +82,9 @@ export default function EventPage() {
             >
               <div className="flex-1">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-lg font-semibold text-text-head line-clamp-2">
+                  <Typography variant="h6" className="line-clamp-2">
                     {event.title}
-                  </h3>
+                  </Typography>
                   <div className="flex gap-2">
                     <button
                       onClick={() => openForm(event)}
@@ -99,15 +102,15 @@ export default function EventPage() {
                     </button>
                   </div>
                 </div>
-                <p className="text-sm text-text-light font-medium mb-2">
+                <Typography variant="subtitle2" className="mb-2">
                   {(event as any).role}
-                </p>
-                <p className="text-sm text-text-light mb-2">
+                </Typography>
+                <Typography variant="body2" className="mb-2">
                   {new Date(event.date).toLocaleDateString()} • {event.location}
-                </p>
-                <p className="text-sm text-text-body line-clamp-3 mt-4">
+                </Typography>
+                <Typography variant="body2" className="line-clamp-3 mt-4">
                   {event.description}
-                </p>
+                </Typography>
               </div>
             </div>
           ))}

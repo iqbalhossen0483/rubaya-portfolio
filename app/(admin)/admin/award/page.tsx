@@ -50,7 +50,7 @@ export default function AwardPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <Typography variant="h4" className="mb-0">
+        <Typography variant="h3" className="mb-0 text-text-head">
           Award Management
         </Typography>
         {!isFormOpen && (

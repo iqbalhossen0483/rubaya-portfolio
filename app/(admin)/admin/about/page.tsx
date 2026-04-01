@@ -127,9 +127,14 @@ export default function AboutAdminPage() {
 
   return (
     <section>
-      <Typography variant="h2" className="mb-4">
-        Manage About Section
-      </Typography>
+      <div className="border-b border-border-custom pb-4 mb-6">
+        <Typography variant="h3" className="text-text-head">
+          Manage About Section
+        </Typography>
+        <Typography variant="body2" className="text-text-light mt-1">
+          Update the about section on your portfolio homepage.
+        </Typography>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <Input
           label="Title"
@@ -151,7 +156,7 @@ export default function AboutAdminPage() {
         />
 
         <div>
-          <Typography variant="h3" className="mb-2">
+          <Typography variant="h3" className="mb-2 text-text-head">
             Highlighted Positions
           </Typography>
           {highlightedPositionFields.map((field, index) => (
@@ -187,7 +192,7 @@ export default function AboutAdminPage() {
         </div>
 
         <div>
-          <Typography variant="h3" className="mb-2">
+          <Typography variant="h3" className="mb-2 text-text-head">
             Activities
           </Typography>
           {activityFields.map((field, index) => (
