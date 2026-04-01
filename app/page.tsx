@@ -8,6 +8,7 @@ import Gallery from "../components/Gallery";
 import Hero from "../components/Hero";
 import Impact from "../components/Impact";
 import Navbar from "../components/Navbar";
+
 export default function Home() {
   return (
     <>
