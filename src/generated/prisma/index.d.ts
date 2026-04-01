@@ -8407,7 +8407,7 @@ export namespace Prisma {
 
   export type GalleryMinAggregateOutputType = {
     id: number | null
-    imageUrl: string | null
+    image: string | null
     caption: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8415,7 +8415,7 @@ export namespace Prisma {
 
   export type GalleryMaxAggregateOutputType = {
     id: number | null
-    imageUrl: string | null
+    image: string | null
     caption: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -8423,7 +8423,7 @@ export namespace Prisma {
 
   export type GalleryCountAggregateOutputType = {
     id: number
-    imageUrl: number
+    image: number
     caption: number
     createdAt: number
     updatedAt: number
@@ -8441,7 +8441,7 @@ export namespace Prisma {
 
   export type GalleryMinAggregateInputType = {
     id?: true
-    imageUrl?: true
+    image?: true
     caption?: true
     createdAt?: true
     updatedAt?: true
@@ -8449,7 +8449,7 @@ export namespace Prisma {
 
   export type GalleryMaxAggregateInputType = {
     id?: true
-    imageUrl?: true
+    image?: true
     caption?: true
     createdAt?: true
     updatedAt?: true
@@ -8457,7 +8457,7 @@ export namespace Prisma {
 
   export type GalleryCountAggregateInputType = {
     id?: true
-    imageUrl?: true
+    image?: true
     caption?: true
     createdAt?: true
     updatedAt?: true
@@ -8552,8 +8552,8 @@ export namespace Prisma {
 
   export type GalleryGroupByOutputType = {
     id: number
-    imageUrl: string
-    caption: string | null
+    image: string
+    caption: string
     createdAt: Date
     updatedAt: Date
     _count: GalleryCountAggregateOutputType | null
@@ -8579,7 +8579,7 @@ export namespace Prisma {
 
   export type GallerySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    imageUrl?: boolean
+    image?: boolean
     caption?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8589,21 +8589,21 @@ export namespace Prisma {
 
   export type GallerySelectScalar = {
     id?: boolean
-    imageUrl?: boolean
+    image?: boolean
     caption?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "caption" | "createdAt" | "updatedAt", ExtArgs["result"]["gallery"]>
+  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "caption" | "createdAt" | "updatedAt", ExtArgs["result"]["gallery"]>
 
   export type $GalleryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Gallery"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      imageUrl: string
-      caption: string | null
+      image: string
+      caption: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["gallery"]>
@@ -8976,7 +8976,7 @@ export namespace Prisma {
    */
   interface GalleryFieldRefs {
     readonly id: FieldRef<"Gallery", 'Int'>
-    readonly imageUrl: FieldRef<"Gallery", 'String'>
+    readonly image: FieldRef<"Gallery", 'String'>
     readonly caption: FieldRef<"Gallery", 'String'>
     readonly createdAt: FieldRef<"Gallery", 'DateTime'>
     readonly updatedAt: FieldRef<"Gallery", 'DateTime'>
@@ -10354,7 +10354,7 @@ export namespace Prisma {
 
   export const GalleryScalarFieldEnum: {
     id: 'id',
-    imageUrl: 'imageUrl',
+    image: 'image',
     caption: 'caption',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -10460,7 +10460,7 @@ export namespace Prisma {
 
 
   export const GalleryOrderByRelevanceFieldEnum: {
-    imageUrl: 'imageUrl',
+    image: 'image',
     caption: 'caption'
   };
 
@@ -10983,16 +10983,16 @@ export namespace Prisma {
     OR?: GalleryWhereInput[]
     NOT?: GalleryWhereInput | GalleryWhereInput[]
     id?: IntFilter<"Gallery"> | number
-    imageUrl?: StringFilter<"Gallery"> | string
-    caption?: StringNullableFilter<"Gallery"> | string | null
+    image?: StringFilter<"Gallery"> | string
+    caption?: StringFilter<"Gallery"> | string
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeFilter<"Gallery"> | Date | string
   }
 
   export type GalleryOrderByWithRelationInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
-    caption?: SortOrderInput | SortOrder
+    image?: SortOrder
+    caption?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _relevance?: GalleryOrderByRelevanceInput
@@ -11003,16 +11003,16 @@ export namespace Prisma {
     AND?: GalleryWhereInput | GalleryWhereInput[]
     OR?: GalleryWhereInput[]
     NOT?: GalleryWhereInput | GalleryWhereInput[]
-    imageUrl?: StringFilter<"Gallery"> | string
-    caption?: StringNullableFilter<"Gallery"> | string | null
+    image?: StringFilter<"Gallery"> | string
+    caption?: StringFilter<"Gallery"> | string
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeFilter<"Gallery"> | Date | string
   }, "id">
 
   export type GalleryOrderByWithAggregationInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
-    caption?: SortOrderInput | SortOrder
+    image?: SortOrder
+    caption?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: GalleryCountOrderByAggregateInput
@@ -11027,8 +11027,8 @@ export namespace Prisma {
     OR?: GalleryScalarWhereWithAggregatesInput[]
     NOT?: GalleryScalarWhereWithAggregatesInput | GalleryScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Gallery"> | number
-    imageUrl?: StringWithAggregatesFilter<"Gallery"> | string
-    caption?: StringNullableWithAggregatesFilter<"Gallery"> | string | null
+    image?: StringWithAggregatesFilter<"Gallery"> | string
+    caption?: StringWithAggregatesFilter<"Gallery"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
   }
@@ -11566,54 +11566,54 @@ export namespace Prisma {
   }
 
   export type GalleryCreateInput = {
-    imageUrl: string
-    caption?: string | null
+    image: string
+    caption: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type GalleryUncheckedCreateInput = {
     id?: number
-    imageUrl: string
-    caption?: string | null
+    image: string
+    caption: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type GalleryUpdateInput = {
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    caption?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GalleryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    caption?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GalleryCreateManyInput = {
     id?: number
-    imageUrl: string
-    caption?: string | null
+    image: string
+    caption: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type GalleryUpdateManyMutationInput = {
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    caption?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GalleryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: StringFieldUpdateOperationsInput | string
+    caption?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12217,7 +12217,7 @@ export namespace Prisma {
 
   export type GalleryCountOrderByAggregateInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    image?: SortOrder
     caption?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12229,7 +12229,7 @@ export namespace Prisma {
 
   export type GalleryMaxOrderByAggregateInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    image?: SortOrder
     caption?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12237,7 +12237,7 @@ export namespace Prisma {
 
   export type GalleryMinOrderByAggregateInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    image?: SortOrder
     caption?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder

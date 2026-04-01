@@ -190,7 +190,7 @@ exports.Prisma.EventScalarFieldEnum = {
 
 exports.Prisma.GalleryScalarFieldEnum = {
   id: 'id',
-  imageUrl: 'imageUrl',
+  image: 'image',
   caption: 'caption',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -263,7 +263,7 @@ exports.Prisma.EventOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.GalleryOrderByRelevanceFieldEnum = {
-  imageUrl: 'imageUrl',
+  image: 'image',
   caption: 'caption'
 };
 
