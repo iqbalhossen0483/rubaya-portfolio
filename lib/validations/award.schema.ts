@@ -2,7 +2,12 @@ import { z } from "zod";
 import { validateImageFile } from "./common";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
-const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/svg+xml",
+];
 
 const awardImageSchema = z.union([
   validateImageFile({ MAX_FILE_SIZE, ACCEPTED_IMAGE_TYPES }),

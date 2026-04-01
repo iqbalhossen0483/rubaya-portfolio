@@ -1,60 +1,37 @@
-import {
-  Earth,
-  Globe,
-  GraduationCap,
-  Leaf,
-  Medal,
-  Sprout,
-  Trophy,
-  Zap,
-} from "lucide-react";
+import Image from "next/image";
 import Transition from "./Transition";
 import Card from "./utils/Card";
 import Typography from "./utils/Typography";
 
-export default function Awards() {
-  const awards = [
-    {
-      icon: <Trophy size={24} />,
-      title: "Duke of Edinburgh Gold Award",
-      year: "Recognition",
-    },
-    {
-      icon: <Globe size={24} />,
-      title: "UPG Sustainability Leader",
-      year: "2023",
-    },
-    {
-      icon: <Earth size={24} />,
-      title: "World Food Prize Mentor",
-      year: "2023–2024",
-    },
-    {
-      icon: <Leaf size={24} />,
-      title: "YFU Leader",
-      year: "2025",
-    },
-    {
-      icon: <Zap size={24} />,
-      title: "Solar-Driven Youth Leadership Festival",
-      year: "Selected",
-    },
-    {
-      icon: <GraduationCap size={24} />,
-      title: "SheConnects Honorable Mentor",
-      year: "2025",
-    },
-    {
-      icon: <Medal size={24} />,
-      title: "Biodiversity Summit Panelist",
-      year: "2025",
-    },
-    {
-      icon: <Sprout size={24} />,
-      title: "ICIMOD Climate Camp Mentor",
-      year: "2025",
-    },
-  ];
+type Award = {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+  time_to_receipt: string;
+  createdAt: string;
+  updatedAt: string;
+};
+async function getAwardData() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/award`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch experience data");
+  }
+
+  return res.json();
+}
+
+export default async function Awards() {
+  let awardData;
+  try {
+    const data = await getAwardData();
+    awardData = data;
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <section
@@ -74,26 +51,40 @@ export default function Awards() {
       </Transition>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1.2rem] mt-1">
-        {awards.map((award, i) => (
-          <Transition key={i}>
-            <Card variant="award" className="p-[1.8rem_1.5rem]">
-              <div className="text-[1.5rem] mb-3">{award.icon}</div>
-              <Typography
-                variant="subtitle2"
-                component="div"
-                className="mb-[0.3rem] font-serif leading-[1.35]"
-              >
-                {award.title}
-              </Typography>
-              <Typography
-                variant="caption"
-                className="font-bold tracking-[0.07em] text-accent uppercase"
-              >
-                {award.year}
-              </Typography>
-            </Card>
-          </Transition>
-        ))}
+        {awardData?.length > 0 &&
+          awardData.map((award: Award) => (
+            <Transition key={award.id}>
+              <Card variant="award" className="p-[1.8rem_1.5rem]">
+                <div className="text-[1.5rem] mb-3">
+                  <Image
+                    src={award.image}
+                    alt={award.title}
+                    width={50}
+                    height={50}
+                  />
+                </div>
+                <Typography
+                  variant="subtitle2"
+                  component="div"
+                  className="mb-[0.3rem] font-serif leading-[1.35]"
+                >
+                  {award.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  className="mb-[0.3rem] line-clamp-2"
+                >
+                  {award.description}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  className="font-bold tracking-[0.07em] text-accent uppercase"
+                >
+                  {award.time_to_receipt}
+                </Typography>
+              </Card>
+            </Transition>
+          ))}
       </div>
     </section>
   );
