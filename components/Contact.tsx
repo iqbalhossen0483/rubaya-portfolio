@@ -1,4 +1,4 @@
-import { getContactData, getSettings } from "@/lib/directDatabaseAccess";
+import type { Contact as ContactType, Setting } from "@/types";
 import { Link as LinkIcon, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import Button from "./utils/Button";
@@ -9,18 +9,13 @@ export type SectionDescription = {
   impact_section_description?: string;
 };
 
-export default async function Contact() {
-  let settings;
-  let contactData;
-  try {
-    const settingDataRes = await getSettings();
-    settings = settingDataRes.data;
-    const eventDataRes = await getContactData();
-    contactData = eventDataRes?.data;
-  } catch (error) {
-    throw new Error("Failed to fetch data");
-  }
-
+export default function Contact({
+  contactData,
+  settings,
+}: {
+  contactData: ContactType | null;
+  settings: Setting | null;
+}) {
   return (
     <section
       className="bg-background-dark2 py-16 px-8 lg:py-24 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center relative overflow-hidden"

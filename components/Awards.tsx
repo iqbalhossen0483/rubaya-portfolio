@@ -1,18 +1,10 @@
-import { getAwardData } from "@/lib/directDatabaseAccess";
+import type { Award as AwardType } from "@/types";
 import Image from "next/image";
 import Transition from "./Transition";
 import Card from "./utils/Card";
 import Typography from "./utils/Typography";
 
-export default async function Awards() {
-  let awardData;
-  try {
-    const data = await getAwardData();
-    awardData = data;
-  } catch (error) {
-    throw new Error("Failed to fetch event data");
-  }
-
+export default function Awards({ awardData }: { awardData: AwardType[] }) {
   return (
     <section
       className="bg-background-alt py-16 px-8 lg:py-24 lg:px-20"

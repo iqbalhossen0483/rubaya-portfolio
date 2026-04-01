@@ -1,26 +1,14 @@
-import { getGalleryData } from "@/lib/directDatabaseAccess";
+import type { Gallery as GalleryType } from "@/types";
 import Image from "next/image";
 import Transition from "./Transition";
 import Card from "./utils/Card";
 import Typography from "./utils/Typography";
 
-type GalleryImage = {
-  id: number;
-  image: string;
-  caption: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export default async function Gallery() {
-  let galleryData;
-  try {
-    const data = await getGalleryData();
-    galleryData = data;
-  } catch (error) {
-    throw new Error("Failed to fetch gallery data");
-  }
-
+export default function Gallery({
+  galleryData,
+}: {
+  galleryData: GalleryType[];
+}) {
   const layoutPattern = [
     "md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto", // Large Feature
     "md:col-span-1 md:row-span-2 aspect-[3/4] md:aspect-auto", // Tall Portrait

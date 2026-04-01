@@ -1,16 +1,12 @@
-import { getExperienceData } from "@/lib/directDatabaseAccess";
+import type { Experience as ExperienceType } from "@/types";
 import Transition from "./Transition";
 import Typography from "./utils/Typography";
 
-export default async function Experience() {
-  let experienceData;
-  try {
-    const data = await getExperienceData();
-    experienceData = data;
-  } catch (error) {
-    throw new Error("Failed to fetch experience data");
-  }
-
+export default function Experience({
+  experienceData,
+}: {
+  experienceData: ExperienceType[];
+}) {
   return (
     <section
       className="bg-background-alt py-16 px-8 lg:py-24 lg:px-20"

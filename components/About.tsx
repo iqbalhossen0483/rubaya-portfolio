@@ -1,17 +1,9 @@
-import { getAboutData } from "@/lib/directDatabaseAccess";
+import type { About as AboutType } from "@/types";
 import Image from "next/image";
 import Transition from "./Transition";
 import Typography from "./utils/Typography";
 
-export default async function About() {
-  let aboutData;
-  try {
-    const data = await getAboutData();
-    aboutData = data.data;
-  } catch (error) {
-    throw new Error("Failed to fetch about data");
-  }
-
+export default function About({ aboutData }: { aboutData: AboutType | null }) {
   const aboutTitle = aboutData?.title?.split(" ") || [];
 
   return (

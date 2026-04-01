@@ -1,18 +1,10 @@
-import { getHeroData } from "@/lib/directDatabaseAccess";
+import type { Hero } from "@/types";
 import Image from "next/image";
 import Transition from "./Transition";
 import Button from "./utils/Button";
 import Typography from "./utils/Typography";
 
-export default async function Hero() {
-  let heroData;
-  try {
-    const data = await getHeroData();
-    heroData = data.data;
-  } catch (_err) {
-    throw new Error("Failed to fetch hero data");
-  }
-
+export default function Hero({ heroData }: { heroData: Hero | null }) {
   const heroTitle = heroData?.title?.split(" ") || [];
   const yearsOfExperience = heroData?.yearsOfExperience?.split(" ")?.[0] || "";
   const countries = heroData?.countries?.split(" ")?.[0] || "";

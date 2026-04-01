@@ -1,22 +1,17 @@
-import { getImpactData, getSettings } from "@/lib/directDatabaseAccess";
+import type { Impact as ImpactType, Setting } from "@/types";
 import Image from "next/image";
 import { SectionDescription } from "./Contact";
 import Transition from "./Transition";
 import Card from "./utils/Card";
 import Typography from "./utils/Typography";
 
-export default async function Impact() {
-  let settings;
-  let impactData;
-  try {
-    const settingDataRes = await getSettings();
-    settings = settingDataRes.data;
-    const eventDataRes = await getImpactData();
-    impactData = eventDataRes;
-  } catch (error) {
-    throw new Error("Failed to fetch data");
-  }
-
+export default function Impact({
+  impactData,
+  settings,
+}: {
+  impactData: ImpactType[];
+  settings: Setting | null;
+}) {
   return (
     <section
       className="bg-white py-16 px-8 lg:py-24 lg:px-20 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-20 items-start"

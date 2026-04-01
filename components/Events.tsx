@@ -1,21 +1,17 @@
-import { getEventData, getSettings } from "@/lib/directDatabaseAccess";
+import type { Event as EventType, Setting } from "@/types";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import { SectionDescription } from "./Contact";
 import Transition from "./Transition";
 import Typography from "./utils/Typography";
 
-export default async function Events() {
-  let settings;
-  let eventData;
-  try {
-    const settingDataRes = await getSettings();
-    settings = settingDataRes.data;
-    const eventDataRes = await getEventData();
-    eventData = eventDataRes;
-  } catch (error) {
-    throw new Error("Failed to fetch event data");
-  }
+export default function Events({
+  eventData,
+  settings,
+}: {
+  eventData: EventType[];
+  settings: Setting | null;
+}) {
   const layoutPattern = [
     "md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto", // Large Feature
     "md:col-span-1 md:row-span-2 aspect-[3/4] md:aspect-auto", // Tall Portrait
