@@ -1,39 +1,9 @@
+import { getImpactData, getSettings } from "@/lib/directDatabaseAccess";
 import Image from "next/image";
+import { SectionDescription } from "./Contact";
 import Transition from "./Transition";
 import Card from "./utils/Card";
 import Typography from "./utils/Typography";
-
-type Impact = {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-async function getSettings() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/settings`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch settings");
-  }
-
-  return res.json();
-}
-async function getImpactData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/impact`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch event data");
-  }
-
-  return res.json();
-}
 
 export default async function Impact() {
   let settings;
@@ -44,7 +14,7 @@ export default async function Impact() {
     const eventDataRes = await getImpactData();
     impactData = eventDataRes;
   } catch (error) {
-    console.error(error);
+    throw new Error("Failed to fetch data");
   }
 
   return (
@@ -62,7 +32,10 @@ export default async function Impact() {
             <em className="italic font-light text-accent">Projects</em>
           </Typography>
           <Typography variant="body2" className="mt-4">
-            {settings?.section_description?.impact_section_description}
+            {
+              (settings?.section_description as SectionDescription)
+                ?.impact_section_description
+            }
           </Typography>
         </div>
       </Transition>
@@ -70,7 +43,7 @@ export default async function Impact() {
       <Transition>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {impactData?.length > 0 &&
-            impactData.map((imp: Impact) => (
+            impactData.map((imp) => (
               <Card key={imp.id} variant="elevated" className="p-[2rem_1.8rem]">
                 <div className="text-[1.8rem] mb-4">
                   <Image src={imp.image} width={32} height={32} alt="" />

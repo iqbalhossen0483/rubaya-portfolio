@@ -1,43 +1,9 @@
+import { getEventData, getSettings } from "@/lib/directDatabaseAccess";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
+import { SectionDescription } from "./Contact";
 import Transition from "./Transition";
 import Typography from "./utils/Typography";
-
-type Event = {
-  id: number;
-  title: string;
-  role: string;
-  date: string;
-  location: string;
-  description: string;
-  coverImage: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-async function getSettings() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/settings`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch settings");
-  }
-
-  return res.json();
-}
-
-async function getEventData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/event`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch event data");
-  }
-
-  return res.json();
-}
 
 export default async function Events() {
   let settings;
@@ -48,7 +14,7 @@ export default async function Events() {
     const eventDataRes = await getEventData();
     eventData = eventDataRes;
   } catch (error) {
-    console.error(error);
+    throw new Error("Failed to fetch event data");
   }
   const layoutPattern = [
     "md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto", // Large Feature
@@ -82,14 +48,17 @@ export default async function Events() {
           variant="subtitle1"
           className="text-accent-muted max-w-160 mb-12 relative z-10"
         >
-          {settings?.section_description?.event_section_description}
+          {
+            (settings?.section_description as SectionDescription)
+              ?.event_section_description
+          }
         </Typography>
       </Transition>
 
       <Transition>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] auto-rows-[250px] grid-flow-dense gap-4 relative z-10">
           {eventData?.length > 0 &&
-            eventData.map((evt: Event, i: number) => {
+            eventData.map((evt, i: number) => {
               const dynamicClass = layoutPattern[i % layoutPattern.length];
               return (
                 <div

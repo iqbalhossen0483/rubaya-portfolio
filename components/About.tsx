@@ -1,18 +1,7 @@
+import { getAboutData } from "@/lib/directDatabaseAccess";
 import Image from "next/image";
 import Transition from "./Transition";
 import Typography from "./utils/Typography";
-
-async function getAboutData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/about`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch about data");
-  }
-
-  return res.json();
-}
 
 export default async function About() {
   let aboutData;
@@ -20,10 +9,10 @@ export default async function About() {
     const data = await getAboutData();
     aboutData = data.data;
   } catch (error) {
-    console.error(error);
+    throw new Error("Failed to fetch about data");
   }
 
-  const aboutTitle = aboutData?.title?.split(" ");
+  const aboutTitle = aboutData?.title?.split(" ") || [];
 
   return (
     <section
@@ -45,7 +34,8 @@ export default async function About() {
             {aboutData?.description}
           </Typography>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-[0.8rem] mt-8">
-            {aboutData?.activities?.length > 0 &&
+            {aboutData?.activities &&
+              aboutData?.activities?.length > 0 &&
               aboutData?.activities?.map(
                 (item: { id: number; icon: string; label: string }) => (
                   <div
@@ -84,7 +74,8 @@ export default async function About() {
             </cite>
           </div>
           <div className="grid grid-cols-2 gap-4 mt-4">
-            {aboutData?.highlightedPositions?.length > 0 &&
+            {aboutData?.highlightedPositions &&
+              aboutData?.highlightedPositions?.length > 0 &&
               aboutData.highlightedPositions.map(
                 (
                   item: { id: number; title: string; company: string },

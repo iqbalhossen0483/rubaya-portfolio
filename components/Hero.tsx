@@ -1,33 +1,22 @@
+import { getHeroData } from "@/lib/directDatabaseAccess";
 import Image from "next/image";
 import Transition from "./Transition";
 import Button from "./utils/Button";
 import Typography from "./utils/Typography";
-
-async function getHeroData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/hero`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch hero data");
-  }
-
-  return res.json();
-}
 
 export default async function Hero() {
   let heroData;
   try {
     const data = await getHeroData();
     heroData = data.data;
-  } catch (error) {
-    console.error(error);
+  } catch (_err) {
+    throw new Error("Failed to fetch hero data");
   }
 
-  const heroTitle = heroData?.title?.split(" ");
-  const yearsOfExperience = heroData?.yearsOfExperience?.split(" ")?.[0];
-  const countries = heroData?.countries?.split(" ")?.[0];
-  const award = heroData?.award?.split(" ")?.[0];
+  const heroTitle = heroData?.title?.split(" ") || [];
+  const yearsOfExperience = heroData?.yearsOfExperience?.split(" ")?.[0] || "";
+  const countries = heroData?.countries?.split(" ")?.[0] || "";
+  const award = heroData?.award?.split(" ")?.[0] || "";
 
   return (
     <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2 relative overflow-hidden">
@@ -101,13 +90,15 @@ export default async function Hero() {
                   "polygon(15% 0%, 100% 0%, 100% 80%, 85% 100%, 0% 100%, 0% 20%)",
               }}
             >
-              <Image
-                src={heroData?.profile}
-                alt="Rubaya Nasrin"
-                width={320}
-                height={400}
-                className="w-full h-full object-cover object-top brightness-[0.92] contrast-[1.04] rounded-sm"
-              />
+              {heroData?.profile && (
+                <Image
+                  src={heroData?.profile}
+                  alt="Rubaya Nasrin"
+                  width={320}
+                  height={400}
+                  className="w-full h-full object-cover object-top brightness-[0.92] contrast-[1.04] rounded-sm"
+                />
+              )}
             </div>
             <div className="absolute -bottom-4.5 -left-7 bg-gold-pale border-2 border-gold px-[1.4rem] py-4 rounded-[3px]">
               <div className="font-serif text-[2rem] font-bold text-gold leading-none">

@@ -1,30 +1,6 @@
+import { getExperienceData } from "@/lib/directDatabaseAccess";
 import Transition from "./Transition";
 import Typography from "./utils/Typography";
-
-type Experience = {
-  id: number;
-  company: string;
-  role: string;
-  startDate: string;
-  endDate: string | null;
-  isCurrent: boolean;
-  description: string;
-  order: number;
-  createdAt: string;
-  updatedAt: string;
-};
-
-async function getExperienceData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/experience`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch experience data");
-  }
-
-  return res.json();
-}
 
 export default async function Experience() {
   let experienceData;
@@ -32,7 +8,7 @@ export default async function Experience() {
     const data = await getExperienceData();
     experienceData = data;
   } catch (error) {
-    console.error(error);
+    throw new Error("Failed to fetch experience data");
   }
 
   return (
@@ -54,7 +30,7 @@ export default async function Experience() {
 
       <div className="relative mt-12 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-border-custom max-w-215">
         {experienceData?.length > 0 &&
-          experienceData.map((exp: Experience, i: number) => (
+          experienceData.map((exp, i: number) => (
             <Transition key={i}>
               <div className="grid grid-cols-[auto_1fr] gap-x-[2.2rem] pb-[2.8rem] relative group">
                 <div className="w-3 h-3 bg-white border-[3px] border-accent rounded-full mt-[0.4rem] -ml-1.25 shrink-0 relative z-10 transition-colors duration-200 group-hover:bg-accent -order-1"></div>

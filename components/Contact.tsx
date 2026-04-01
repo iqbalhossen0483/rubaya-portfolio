@@ -1,30 +1,13 @@
+import { getContactData, getSettings } from "@/lib/directDatabaseAccess";
 import { Link as LinkIcon, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import Button from "./utils/Button";
 
-async function getSettings() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/settings`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch settings");
-  }
-
-  return res.json();
-}
-
-async function getContactData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/contact`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch event data");
-  }
-
-  return res.json();
-}
+export type SectionDescription = {
+  contact_section_description?: string;
+  event_section_description?: string;
+  impact_section_description?: string;
+};
 
 export default async function Contact() {
   let settings;
@@ -35,7 +18,7 @@ export default async function Contact() {
     const eventDataRes = await getContactData();
     contactData = eventDataRes?.data;
   } catch (error) {
-    console.error(error);
+    throw new Error("Failed to fetch data");
   }
 
   return (
@@ -57,7 +40,10 @@ export default async function Contact() {
           Together
         </h2>
         <p className="text-[1.05rem] leading-[1.85] text-accent-muted mt-4">
-          {settings?.section_description?.contact_section_description}
+          {
+            (settings?.section_description as SectionDescription)
+              ?.contact_section_description
+          }
         </p>
       </div>
 
@@ -112,7 +98,7 @@ export default async function Contact() {
         </div>
         <div className="self-start mt-[1.2rem]">
           <Link
-            href={contactData.linkedin_url}
+            href={contactData?.linkedin_url || "#"}
             target="_blank"
             referrerPolicy="no-referrer"
           >

@@ -1,3 +1,4 @@
+import { getGalleryData } from "@/lib/directDatabaseAccess";
 import Image from "next/image";
 import Transition from "./Transition";
 import Card from "./utils/Card";
@@ -11,25 +12,13 @@ type GalleryImage = {
   updatedAt: string;
 };
 
-async function getGalleryData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/gallery`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch gallery data");
-  }
-
-  return res.json();
-}
-
 export default async function Gallery() {
   let galleryData;
   try {
     const data = await getGalleryData();
     galleryData = data;
   } catch (error) {
-    console.error(error);
+    throw new Error("Failed to fetch gallery data");
   }
 
   const layoutPattern = [
@@ -58,7 +47,7 @@ export default async function Gallery() {
       <Transition>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(280px,1fr))] auto-rows-[250px] grid-flow-dense gap-4 md:gap-6 mt-10">
           {galleryData?.length > 0 &&
-            galleryData.map((img: GalleryImage, i: number) => {
+            galleryData.map((img, i: number) => {
               const dynamicClass = layoutPattern[i % layoutPattern.length];
               return (
                 <Card

@@ -1,28 +1,8 @@
+import { getAwardData } from "@/lib/directDatabaseAccess";
 import Image from "next/image";
 import Transition from "./Transition";
 import Card from "./utils/Card";
 import Typography from "./utils/Typography";
-
-type Award = {
-  id: number;
-  image: string;
-  title: string;
-  description: string;
-  time_to_receipt: string;
-  createdAt: string;
-  updatedAt: string;
-};
-async function getAwardData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/award`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch experience data");
-  }
-
-  return res.json();
-}
 
 export default async function Awards() {
   let awardData;
@@ -30,7 +10,7 @@ export default async function Awards() {
     const data = await getAwardData();
     awardData = data;
   } catch (error) {
-    console.error(error);
+    throw new Error("Failed to fetch event data");
   }
 
   return (
@@ -52,7 +32,7 @@ export default async function Awards() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1.2rem] mt-1">
         {awardData?.length > 0 &&
-          awardData.map((award: Award) => (
+          awardData.map((award) => (
             <Transition key={award.id}>
               <Card variant="award" className="p-[1.8rem_1.5rem]">
                 <div className="text-[1.5rem] mb-3">

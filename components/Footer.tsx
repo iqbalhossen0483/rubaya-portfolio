@@ -1,16 +1,5 @@
+import { getSettings } from "@/lib/directDatabaseAccess";
 import Typography from "./utils/Typography";
-
-async function getSettings() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/settings`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch settings");
-  }
-
-  return res.json();
-}
 
 export default async function Footer() {
   let settings;
