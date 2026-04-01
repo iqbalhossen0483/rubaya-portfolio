@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { validateImageFile } from "./common";
 
 export const highlightedPositionSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -10,20 +11,13 @@ const ACCEPTED_IMAGE_TYPES = [
   "image/jpeg",
   "image/jpg",
   "image/png",
-  "image/webp",
+  "image/svg+xml",
 ];
 
 // Icon can be either an existing URL string OR a new File upload
 const iconSchema = z.union([
-  z.url("Must be a valid URL"), // existing icon URL
-  z
-    .instanceof(File)
-    .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), {
-      message: "Only .jpg, .jpeg, .png and .webp formats are supported.",
-    })
-    .refine((file) => file.size <= MAX_FILE_SIZE, {
-      message: "Max file size is 500KB.",
-    }),
+  validateImageFile({ MAX_FILE_SIZE, ACCEPTED_IMAGE_TYPES }),
+  z.url("Must be a valid URL"),
 ]);
 
 export const activitySchema = z.object({
@@ -38,3 +32,5 @@ export const aboutSchema = z.object({
   highlightedPositions: z.array(highlightedPositionSchema),
   activities: z.array(activitySchema),
 });
+
+export type AboutFormValues = z.infer<typeof aboutSchema>;

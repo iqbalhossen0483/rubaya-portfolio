@@ -14,18 +14,21 @@ const getFilePreviewUrl = (
 
 type Props = {
   url: string | File | FileList | null;
+  width?: number;
+  height?: number;
+  alt?: string;
 };
 
-const ImageViewer = ({ url }: Props) => {
+const ImageViewer = ({ url, width = 200, height = 200, alt }: Props) => {
   const previewUrl = getFilePreviewUrl(url);
   if (!url || !previewUrl) return null;
   return (
     <div className="flex justify-center">
       <Image
         src={previewUrl}
-        alt="Profile"
-        width={200}
-        height={200}
+        alt={alt || "Image preview"}
+        width={width}
+        height={height}
         className="object-cover"
       />
     </div>

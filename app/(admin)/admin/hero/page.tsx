@@ -51,11 +51,9 @@ export default function HeroAdminPage() {
   }, [heroRes, setValue]);
 
   const profileImage = useWatch({ control, name: "profile" });
-  console.log({ profileImage });
 
   const onSubmit = async (data: HeroFormValues) => {
     try {
-      console.log(data);
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
         if (value) {

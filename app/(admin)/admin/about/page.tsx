@@ -2,20 +2,26 @@
 
 import { useGetAboutQuery, useUpdateAboutMutation } from "@/store/api/aboutApi";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
-import { useFieldArray, useForm } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldArrayWithId,
+  useFieldArray,
+  useForm,
+  UseFormRegister,
+  useWatch,
+} from "react-hook-form";
 import { toast } from "react-toastify";
 
 import Button from "@/components/utils/Button";
 import FileInput from "@/components/utils/FileInput";
+import ImageViewer from "@/components/utils/ImageViewer";
 import Input from "@/components/utils/Input";
 import Spinner from "@/components/utils/Spinner";
 import Textarea from "@/components/utils/Textarea";
 import Typography from "@/components/utils/Typography";
-import { aboutSchemaClient } from "@/lib/validations/about.schema.client";
-import { z } from "zod";
-
-type AboutFormValues = z.infer<typeof aboutSchemaClient>;
+import { AboutFormValues, aboutSchema } from "@/lib/validations/about.schema";
+import { useEffect } from "react";
 
 export default function AboutAdminPage() {
   const { data, isLoading } = useGetAboutQuery();
@@ -35,19 +41,33 @@ export default function AboutAdminPage() {
     control,
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<AboutFormValues>({
-    resolver: zodResolver(aboutSchemaClient),
-    values: {
-      activities: data?.activities || [emptyAcity],
-      highlightedPositions: data?.highlightedPositions || [
-        emptyHighlightedPosition,
-      ],
-      description: data?.description || "",
-      philosophy: data?.philosophy || "",
-      title: data?.title || "",
+    resolver: zodResolver(aboutSchema),
+    defaultValues: {
+      activities: [emptyAcity],
+      highlightedPositions: [emptyHighlightedPosition],
+      description: "",
+      philosophy: "",
+      title: "",
     },
   });
+
+  // Populate form when data loads
+  useEffect(() => {
+    if (data?.data) {
+      setValue("title", data.data.title || "");
+      setValue("description", data.data.description || "");
+      setValue("philosophy", data.data.philosophy || "");
+      setValue("activities", data.data.activities || [emptyAcity]);
+      setValue(
+        "highlightedPositions",
+        data.data.highlightedPositions || [emptyHighlightedPosition],
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, setValue]);
 
   const {
     fields: highlightedPositionFields,
@@ -74,7 +94,7 @@ export default function AboutAdminPage() {
       if (key === "activities") {
         (value as any[]).forEach((activity, index) => {
           formData.append(`activities[${index}].label`, activity.label);
-          formData.append(`activities[${index}].icon`, activity.icon[0]);
+          formData.append(`activities[${index}].icon`, activity.icon);
         });
       } else if (key === "highlightedPositions") {
         (value as any[]).forEach((position, index) => {
@@ -143,13 +163,15 @@ export default function AboutAdminPage() {
                 {...register(`highlightedPositions.${index}.title`)}
                 placeholder="e.g., Program Officer"
               />
-              <Button
-                type="button"
-                size="sm"
-                onClick={() => removeHighlightedPosition(index)}
-              >
-                Remove
-              </Button>
+              {highlightedPositionFields.length > 1 && (
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => removeHighlightedPosition(index)}
+                >
+                  Remove
+                </Button>
+              )}
             </div>
           ))}
           <Button
@@ -166,32 +188,14 @@ export default function AboutAdminPage() {
             Activities
           </Typography>
           {activityFields.map((field, index) => (
-            <div key={field.id} className="flex gap-2 items-center mb-2">
-              <Input
-                {...register(`activities.${index}.label`)}
-                placeholder="e.g., Climate Change Adaptation"
-              />
-              <FileInput
-                {...register(`activities.${index}.icon`)}
-                error={(errors.activities?.[index]?.icon as any)?.message}
-              />
-              {field.icon && typeof field.icon === "string" && (
-                <Image
-                  src={field.icon}
-                  alt={field.label}
-                  width={40}
-                  height={40}
-                  className="object-cover"
-                />
-              )}
-              <Button
-                type="button"
-                size="sm"
-                onClick={() => removeActivity(index)}
-              >
-                Remove
-              </Button>
-            </div>
+            <ActivityField
+              key={index}
+              control={control}
+              field={field}
+              index={index}
+              register={register}
+              removeActivity={removeActivity}
+            />
           ))}
           <Button
             type="button"
@@ -209,5 +213,47 @@ export default function AboutAdminPage() {
         </div>
       </form>
     </section>
+  );
+}
+
+type ActivityProps = {
+  control: Control<AboutFormValues>;
+  register: UseFormRegister<AboutFormValues>;
+  index: number;
+  removeActivity: (index: number) => void;
+  field: FieldArrayWithId<AboutFormValues, "activities", "id">;
+};
+
+function ActivityField({
+  control,
+  register,
+  index,
+  removeActivity,
+  field,
+}: ActivityProps) {
+  const icon = useWatch({ control, name: `activities.${index}.icon` });
+  return (
+    <div key={field.id} className="flex gap-2 items-center mb-2">
+      <Input
+        {...register(`activities.${index}.label`)}
+        placeholder="e.g., Climate Change Adaptation"
+      />
+      <Controller
+        name={`activities.${index}.icon`}
+        control={control}
+        render={({ field, fieldState: { error } }) => (
+          <FileInput
+            error={error?.message}
+            onChange={(e) => field.onChange(e.target.files?.[0])}
+          />
+        )}
+      />
+      <ImageViewer url={icon} height={60} width={60} />
+      {index > 0 && (
+        <Button type="button" size="sm" onClick={() => removeActivity(index)}>
+          Remove
+        </Button>
+      )}
+    </div>
   );
 }

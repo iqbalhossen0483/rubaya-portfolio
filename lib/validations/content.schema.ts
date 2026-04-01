@@ -1,42 +1,11 @@
 import { z } from "zod";
+import { validateImageFile } from "./common";
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
-const fileSchema = z
-  .any()
-  .transform((value) => {
-    if (
-      typeof window !== "undefined" &&
-      (value instanceof FileList || Array.isArray(value))
-    ) {
-      return value[0] ?? value;
-    }
-    return value;
-  })
-  .refine(
-    (value) =>
-      typeof value === "string" ||
-      value instanceof File ||
-      value === null ||
-      value === undefined,
-    {
-      message: "Invalid file input",
-    },
-  )
-  .refine((value) => {
-    if (typeof value === "string") return true;
-    if (!(value instanceof File)) return true;
-
-    return ACCEPTED_IMAGE_TYPES.includes(value.type);
-  }, "Only .jpg, .jpeg and .png formats are supported.")
-  .refine((value) => {
-    if (!(value instanceof File)) return true;
-
-    return value.size <= MAX_FILE_SIZE;
-  }, "Max file size is 2MB.");
 
 const profileSchema = z.union([
-  fileSchema,
+  validateImageFile({ MAX_FILE_SIZE, ACCEPTED_IMAGE_TYPES }),
   z.url("Please provide a valid URL"),
 ]);
 
