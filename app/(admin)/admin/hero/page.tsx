@@ -21,8 +21,8 @@ export default function HeroAdminPage() {
   const {
     register,
     handleSubmit,
-    reset,
     control,
+    setValue,
     formState: { errors },
   } = useForm<HeroFormValues>({
     resolver: zodResolver(heroSchema),
@@ -40,19 +40,18 @@ export default function HeroAdminPage() {
   // Populate form when data loads
   useEffect(() => {
     if (heroRes?.data) {
-      reset({
-        title: heroRes.data.title || "",
-        subtitle: heroRes.data.subtitle || "",
-        description: heroRes.data.description || "",
-        yearsOfExperience: heroRes.data.yearsOfExperience || "",
-        countries: heroRes.data.countries || "",
-        award: heroRes.data.award || "",
-        profile: heroRes.data.profile || "",
-      });
+      setValue("title", heroRes.data.title || "");
+      setValue("subtitle", heroRes.data.subtitle || "");
+      setValue("description", heroRes.data.description || "");
+      setValue("yearsOfExperience", heroRes.data.yearsOfExperience || "");
+      setValue("countries", heroRes.data.countries || "");
+      setValue("award", heroRes.data.award || "");
+      setValue("profile", heroRes.data.profile || "");
     }
-  }, [heroRes, reset]);
+  }, [heroRes, setValue]);
 
   const profileImage = useWatch({ control, name: "profile" });
+  console.log({ profileImage });
 
   const onSubmit = async (data: HeroFormValues) => {
     try {

@@ -5,8 +5,11 @@ const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
 const fileSchema = z
   .any()
   .transform((value) => {
-    if (typeof window !== "undefined" && value?.[0]) {
-      return value[0];
+    if (
+      typeof window !== "undefined" &&
+      (value instanceof FileList || Array.isArray(value))
+    ) {
+      return value[0] ?? value;
     }
     return value;
   })
