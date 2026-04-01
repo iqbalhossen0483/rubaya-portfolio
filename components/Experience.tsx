@@ -1,46 +1,39 @@
 import Transition from "./Transition";
 import Typography from "./utils/Typography";
 
-export default function Experience() {
-  const experiences = [
-    {
-      period: "Jan 2024 — Present",
-      role: "Program Officer",
-      org: "BRAC, Bangladesh",
-      desc: "Leading climate resilience programming, overseeing implementation of nature-based solutions and community-centered adaptation strategies at national scale.",
-    },
-    {
-      period: "Aug 2022 — Present",
-      role: "Adjunct Faculty",
-      org: "University of South Asia, Bangladesh",
-      desc: "Teaching Environmental Science; guiding students through applied research in climate modeling and environmental assessment.",
-    },
-    {
-      period: "Jan 2024 — Jul 2024",
-      role: "Green Response Officer",
-      org: "Bangladesh Environment Society (BMS)",
-      desc: "Coordinated climate response initiatives, stakeholder outreach and climate communication campaigns.",
-      reverse: true, // Only for layout alternative, but in html grid column 2 was used.
-    },
-    {
-      period: "Nov 2021 — Dec 2023",
-      role: "Assistant Manager, Project Development",
-      org: "Research World | Dec 2021 — Nov 2023",
-      desc: "Led research design and project management for climate change adaptation studies across South Asia.",
-    },
-    {
-      period: "Nov 2020 — Dec 2023",
-      role: "Research Officer",
-      org: "Center for Natural Resource & Climate Change Research (ORCA)",
-      desc: "Spearheaded climate change adaptation research; field data collection, spatial analysis, and policy-facing report writing.",
-    },
-    {
-      period: "Jul 2019 — Jun 2021",
-      role: "Program Officer",
-      org: "Bangladesh Institute of ICT in Development (BIID)",
-      desc: "Managed digital literacy and sustainable development programs in rural and peri-urban Bangladesh.",
-    },
-  ];
+type Experience = {
+  id: number;
+  company: string;
+  role: string;
+  startDate: string;
+  endDate: string | null;
+  isCurrent: boolean;
+  description: string;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+async function getExperienceData() {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/experience`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch experience data");
+  }
+
+  return res.json();
+}
+
+export default async function Experience() {
+  let experienceData;
+  try {
+    const data = await getExperienceData();
+    experienceData = data;
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <section
@@ -60,71 +53,55 @@ export default function Experience() {
       </Transition>
 
       <div className="relative mt-12 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-border-custom max-w-215">
-        {experiences.map((exp, i) => (
-          <Transition key={i}>
-            <div className="grid grid-cols-[auto_1fr] gap-x-[2.2rem] pb-[2.8rem] relative group">
-              {exp.reverse ? (
-                <>
-                  <div className="w-3 h-3 bg-white border-[3px] border-accent rounded-full mt-[0.4rem] -ml-1.25 shrink-0 relative z-10 transition-colors duration-200 group-hover:bg-accent -order-1"></div>
-                  <div className="col-start-2">
-                    <Typography
-                      variant="overline"
-                      component="div"
-                      className="text-accent mb-[0.3rem]"
-                    >
-                      {exp.period}
-                    </Typography>
-                    <Typography variant="h6" className="mb-[0.2rem]">
-                      {exp.role}
-                    </Typography>
-                    <Typography
-                      variant="subtitle2"
-                      component="div"
-                      className="mb-[0.6rem]"
-                    >
-                      {exp.org}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className="text-text-light max-w-140"
-                    >
-                      {exp.desc}
-                    </Typography>
+        {experienceData?.length > 0 &&
+          experienceData.map((exp: Experience, i: number) => (
+            <Transition key={i}>
+              <div className="grid grid-cols-[auto_1fr] gap-x-[2.2rem] pb-[2.8rem] relative group">
+                <div className="w-3 h-3 bg-white border-[3px] border-accent rounded-full mt-[0.4rem] -ml-1.25 shrink-0 relative z-10 transition-colors duration-200 group-hover:bg-accent -order-1"></div>
+                <Transition key={i}>
+                  <div className="grid grid-cols-[auto_1fr] gap-x-[2.2rem] pb-[2.8rem] relative group">
+                    <div>
+                      <Typography
+                        variant="overline"
+                        component="div"
+                        className="text-accent mb-[0.3rem]"
+                      >
+                        {new Date(exp.startDate).toLocaleDateString("en-BN", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })}{" "}
+                        —{" "}
+                        {exp.endDate
+                          ? new Date(exp.endDate).toLocaleDateString("en-BN", {
+                              year: "numeric",
+                              month: "short",
+                              day: "numeric",
+                            })
+                          : "Present"}
+                      </Typography>
+                      <Typography variant="h6" className="mb-[0.2rem]">
+                        {exp.role}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        component="div"
+                        className="mb-[0.6rem]"
+                      >
+                        {exp.company}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        className="text-text-light max-w-140"
+                      >
+                        {exp.description}
+                      </Typography>
+                    </div>
                   </div>
-                </>
-              ) : (
-                <>
-                  <div className="w-3 h-3 bg-white border-[3px] border-accent rounded-full mt-[0.4rem] -ml-1.25 shrink-0 relative z-10 transition-colors duration-200 group-hover:bg-accent"></div>
-                  <div>
-                    <Typography
-                      variant="overline"
-                      component="div"
-                      className="text-accent mb-[0.3rem]"
-                    >
-                      {exp.period}
-                    </Typography>
-                    <Typography variant="h6" className="mb-[0.2rem]">
-                      {exp.role}
-                    </Typography>
-                    <Typography
-                      variant="subtitle2"
-                      component="div"
-                      className="mb-[0.6rem]"
-                    >
-                      {exp.org}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      className="text-text-light max-w-140"
-                    >
-                      {exp.desc}
-                    </Typography>
-                  </div>
-                </>
-              )}
-            </div>
-          </Transition>
-        ))}
+                </Transition>
+              </div>
+            </Transition>
+          ))}
       </div>
     </section>
   );

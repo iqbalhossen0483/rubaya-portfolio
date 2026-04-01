@@ -8,7 +8,7 @@ async function getAboutData() {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch hero data");
+    throw new Error("Failed to fetch about data");
   }
 
   return res.json();
