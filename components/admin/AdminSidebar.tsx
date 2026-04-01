@@ -12,6 +12,7 @@ import {
   Settings,
   Trophy,
   User,
+  X,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -30,18 +31,32 @@ const navItems = [
   { name: "Settings", href: "/admin/settings", icon: Settings },
 ];
 
-export default function AdminSidebar() {
+type Props = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export default function AdminSidebar({ isOpen, onClose }: Props) {
   const pathname = usePathname();
 
   return (
-    <div className="w-64 bg-background-main border-r border-border-custom h-screen flex flex-col fixed left-0 top-0">
-      <div className="p-6 border-b border-border-custom">
-        <Typography variant="h4" className="text-text-head mb-1">
-          Admin Panel
-        </Typography>
-        <Typography variant="body2" className="text-text-light">
-          Manage Portfolio
-        </Typography>
+    <div
+      className={`w-64 bg-background-main border-r border-border-custom h-screen flex flex-col fixed left-0 top-0 transform ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      } lg:translate-x-0 transition-transform duration-300 ease-in-out z-50`}
+    >
+      <div className="p-6 border-b border-border-custom flex justify-between items-center">
+        <div>
+          <Typography variant="h4" className="text-text-head mb-1">
+            Admin Panel
+          </Typography>
+          <Typography variant="body2" className="text-text-light">
+            Manage Portfolio
+          </Typography>
+        </div>
+        <button className="lg:hidden" onClick={onClose}>
+          <X size={24} />
+        </button>
       </div>
 
       <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
@@ -53,6 +68,7 @@ export default function AdminSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={onClose}
               className={`flex items-center px-4 py-3 rounded-lg text-sm transition-colors ${
                 isActive
                   ? "bg-accent text-white"
