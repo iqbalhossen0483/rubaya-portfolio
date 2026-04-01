@@ -31,6 +31,9 @@ export default function GeneralSettingsForm() {
     defaultValues: {
       site_brand_name: "",
       copyright_text: "",
+      contact_section_description: "",
+      impact_section_description: "",
+      event_section_description: "",
     },
   });
 
@@ -38,6 +41,18 @@ export default function GeneralSettingsForm() {
     if (settingsRes?.data) {
       setValue("site_brand_name", settingsRes.data.site_brand_name || "");
       setValue("copyright_text", settingsRes.data.copyright_text || "");
+      setValue(
+        "contact_section_description",
+        settingsRes.data.section_titles?.contact_section_description || "",
+      );
+      setValue(
+        "impact_section_description",
+        settingsRes.data.section_titles?.impact_section_description || "",
+      );
+      setValue(
+        "event_section_description",
+        settingsRes.data.section_titles?.event_section_description || "",
+      );
     }
   }, [settingsRes, setValue]);
 

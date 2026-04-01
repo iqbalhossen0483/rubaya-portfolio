@@ -120,6 +120,6 @@ model Setting {
   id              Int      @id @default(1)
   site_brand_name String
   copyright_text  String
-  section_titles  Json
+  section_titles  Json?
   updatedAt       DateTime @default(now()) @updatedAt
 }

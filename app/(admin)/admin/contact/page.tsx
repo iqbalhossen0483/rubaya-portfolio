@@ -1,5 +1,6 @@
 "use client";
 
+import SectionDescriptionForm from "@/components/admin/SectionDescriptionForm";
 import Button from "@/components/utils/Button";
 import Input from "@/components/utils/Input";
 import Spinner from "@/components/utils/Spinner";
@@ -72,6 +73,8 @@ export default function ContactAdminPage() {
           Update the contact information on your portfolio homepage.
         </Typography>
       </div>
+
+      <SectionDescriptionForm section="contact" />
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
         <Input

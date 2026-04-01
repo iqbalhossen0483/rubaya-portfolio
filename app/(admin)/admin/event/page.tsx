@@ -1,6 +1,8 @@
 "use client";
 
+import SectionDescriptionForm from "@/components/admin/SectionDescriptionForm";
 import Button from "@/components/utils/Button";
+import Card from "@/components/utils/Card";
 import NoDataFound from "@/components/utils/NoDataFound";
 import Spinner from "@/components/utils/Spinner";
 import Typography from "@/components/utils/Typography";
@@ -48,9 +50,24 @@ export default function EventPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="border-b border-border-custom pb-4 mb-6">
         <Typography variant="h3" className="text-text-head">
-          Events Management
+          Manage Event Section
+        </Typography>
+        <Typography variant="body2" className="text-text-light mt-1">
+          Update the event information on your portfolio homepage.
+        </Typography>
+      </div>
+
+      <Card className="p-6 mb-6">
+        <Typography variant="h5" className="mb-6">
+          Section Description
+        </Typography>
+        <SectionDescriptionForm section="event" />
+      </Card>
+      <div className="flex justify-between items-center">
+        <Typography variant="h3" className="mb-0 text-text-head">
+          Event Management
         </Typography>
         {!isFormOpen && (
           <Button
