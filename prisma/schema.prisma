@@ -115,3 +115,11 @@ model Contact {
   linkedin_url String
   updatedAt    DateTime @default(now()) @updatedAt
 }
+
+model Setting {
+  id              Int      @id @default(1)
+  site_brand_name String
+  copyright_text  String
+  section_titles  Json
+  updatedAt       DateTime @default(now()) @updatedAt
+}

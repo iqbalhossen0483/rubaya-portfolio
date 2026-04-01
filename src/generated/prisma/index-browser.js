@@ -224,9 +224,21 @@ exports.Prisma.ContactScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SettingScalarFieldEnum = {
+  id: 'id',
+  site_brand_name: 'site_brand_name',
+  copyright_text: 'copyright_text',
+  section_titles: 'section_titles',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.NullsOrder = {
@@ -305,6 +317,22 @@ exports.Prisma.ContactOrderByRelevanceFieldEnum = {
   linkedin_url: 'linkedin_url'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
+exports.Prisma.SettingOrderByRelevanceFieldEnum = {
+  site_brand_name: 'site_brand_name',
+  copyright_text: 'copyright_text'
+};
+
 
 exports.Prisma.ModelName = {
   AdminUser: 'AdminUser',
@@ -317,7 +345,8 @@ exports.Prisma.ModelName = {
   Gallery: 'Gallery',
   Impact: 'Impact',
   Award: 'Award',
-  Contact: 'Contact'
+  Contact: 'Contact',
+  Setting: 'Setting'
 };
 
 /**
