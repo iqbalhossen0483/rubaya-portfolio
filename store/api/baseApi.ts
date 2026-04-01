@@ -14,6 +14,7 @@ export const baseApi = createApi({
     "Contact",
     "Impact",
     "Award",
+    "Reference",
   ],
   endpoints: (builder) => ({
     // Hero Endpoints

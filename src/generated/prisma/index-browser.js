@@ -215,6 +215,15 @@ exports.Prisma.AwardScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ContactScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  phone: 'phone',
+  location: 'location',
+  linkedin_url: 'linkedin_url',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -289,6 +298,13 @@ exports.Prisma.AwardOrderByRelevanceFieldEnum = {
   time_to_receipt: 'time_to_receipt'
 };
 
+exports.Prisma.ContactOrderByRelevanceFieldEnum = {
+  email: 'email',
+  phone: 'phone',
+  location: 'location',
+  linkedin_url: 'linkedin_url'
+};
+
 
 exports.Prisma.ModelName = {
   AdminUser: 'AdminUser',
@@ -300,7 +316,8 @@ exports.Prisma.ModelName = {
   Event: 'Event',
   Gallery: 'Gallery',
   Impact: 'Impact',
-  Award: 'Award'
+  Award: 'Award',
+  Contact: 'Contact'
 };
 
 /**

@@ -105,3 +105,12 @@ model Award {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @default(now()) @updatedAt
 }
+
+model Contact {
+  id           Int      @id @default(1)
+  email        String
+  phone        String
+  location     String
+  linkedin_url String
+  updatedAt    DateTime @default(now()) @updatedAt
+}
