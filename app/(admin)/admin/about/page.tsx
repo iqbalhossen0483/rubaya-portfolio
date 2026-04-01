@@ -6,6 +6,7 @@ import {
   Control,
   Controller,
   FieldArrayWithId,
+  FieldErrors,
   useFieldArray,
   useForm,
   UseFormRegister,
@@ -158,10 +159,12 @@ export default function AboutAdminPage() {
               <Input
                 {...register(`highlightedPositions.${index}.company`)}
                 placeholder="e.g., BRAC"
+                error={errors.highlightedPositions?.[index]?.company?.message}
               />
               <Input
                 {...register(`highlightedPositions.${index}.title`)}
                 placeholder="e.g., Program Officer"
+                error={errors.highlightedPositions?.[index]?.title?.message}
               />
               {highlightedPositionFields.length > 1 && (
                 <Button
@@ -195,6 +198,7 @@ export default function AboutAdminPage() {
               index={index}
               register={register}
               removeActivity={removeActivity}
+              errors={errors}
             />
           ))}
           <Button
@@ -222,6 +226,7 @@ type ActivityProps = {
   index: number;
   removeActivity: (index: number) => void;
   field: FieldArrayWithId<AboutFormValues, "activities", "id">;
+  errors: FieldErrors<AboutFormValues>;
 };
 
 function ActivityField({
@@ -230,6 +235,7 @@ function ActivityField({
   index,
   removeActivity,
   field,
+  errors,
 }: ActivityProps) {
   const icon = useWatch({ control, name: `activities.${index}.icon` });
   return (
@@ -237,6 +243,7 @@ function ActivityField({
       <Input
         {...register(`activities.${index}.label`)}
         placeholder="e.g., Climate Change Adaptation"
+        error={errors.activities?.[index]?.label?.message}
       />
       <Controller
         name={`activities.${index}.icon`}
@@ -244,7 +251,7 @@ function ActivityField({
         render={({ field, fieldState: { error } }) => (
           <FileInput
             error={error?.message}
-            onChange={(e) => field.onChange(e.target.files?.[0])}
+            onChange={(e) => field.onChange(e.target.files?.[0] || null)}
           />
         )}
       />

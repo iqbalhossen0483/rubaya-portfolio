@@ -12,6 +12,7 @@ export function validateImageFile({
   return z
     .any()
     .transform((value) => {
+      if (!value) return false;
       if (
         typeof window !== "undefined" &&
         (value instanceof FileList || Array.isArray(value))
@@ -27,7 +28,7 @@ export function validateImageFile({
         value === null ||
         value === undefined,
       {
-        message: "Invalid file input",
+        message: "Please provide a valid file.",
       },
     )
     .refine(
