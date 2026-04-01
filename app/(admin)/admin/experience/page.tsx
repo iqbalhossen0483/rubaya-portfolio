@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/utils/Button";
+import NoDataFound from "@/components/utils/NoDataFound";
 import Spinner from "@/components/utils/Spinner";
 import Typography from "@/components/utils/Typography";
 import {
@@ -49,7 +50,7 @@ export default function ExperienceAdminPage() {
   };
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner text="Loading experiences..." />;
   }
 
   return (
@@ -77,7 +78,7 @@ export default function ExperienceAdminPage() {
       ) : (
         <div className="space-y-4">
           {experiences?.length === 0 && (
-            <p className="text-gray-500">No experiences found.</p>
+            <NoDataFound message="No experience found" />
           )}
           {experiences?.map((exp) => (
             <div

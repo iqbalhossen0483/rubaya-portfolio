@@ -1558,37 +1558,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type EventCountOutputType
-   */
-
-  export type EventCountOutputType = {
-    galleryImages: number
-  }
-
-  export type EventCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    galleryImages?: boolean | EventCountOutputTypeCountGalleryImagesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * EventCountOutputType without action
-   */
-  export type EventCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the EventCountOutputType
-     */
-    select?: EventCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * EventCountOutputType without action
-   */
-  export type EventCountOutputTypeCountGalleryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: GalleryWhereInput
-  }
-
-
-  /**
    * Models
    */
 
@@ -7474,10 +7443,11 @@ export namespace Prisma {
   export type EventMinAggregateOutputType = {
     id: number | null
     title: string | null
+    role: string | null
     date: Date | null
     location: string | null
     description: string | null
-    coverImageUrl: string | null
+    coverImage: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7485,10 +7455,11 @@ export namespace Prisma {
   export type EventMaxAggregateOutputType = {
     id: number | null
     title: string | null
+    role: string | null
     date: Date | null
     location: string | null
     description: string | null
-    coverImageUrl: string | null
+    coverImage: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7496,10 +7467,11 @@ export namespace Prisma {
   export type EventCountAggregateOutputType = {
     id: number
     title: number
+    role: number
     date: number
     location: number
     description: number
-    coverImageUrl: number
+    coverImage: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -7517,10 +7489,11 @@ export namespace Prisma {
   export type EventMinAggregateInputType = {
     id?: true
     title?: true
+    role?: true
     date?: true
     location?: true
     description?: true
-    coverImageUrl?: true
+    coverImage?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7528,10 +7501,11 @@ export namespace Prisma {
   export type EventMaxAggregateInputType = {
     id?: true
     title?: true
+    role?: true
     date?: true
     location?: true
     description?: true
-    coverImageUrl?: true
+    coverImage?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7539,10 +7513,11 @@ export namespace Prisma {
   export type EventCountAggregateInputType = {
     id?: true
     title?: true
+    role?: true
     date?: true
     location?: true
     description?: true
-    coverImageUrl?: true
+    coverImage?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7637,10 +7612,11 @@ export namespace Prisma {
   export type EventGroupByOutputType = {
     id: number
     title: string
+    role: string
     date: Date
-    location: string | null
+    location: string
     description: string
-    coverImageUrl: string | null
+    coverImage: string
     createdAt: Date
     updatedAt: Date
     _count: EventCountAggregateOutputType | null
@@ -7667,14 +7643,13 @@ export namespace Prisma {
   export type EventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    role?: boolean
     date?: boolean
     location?: boolean
     description?: boolean
-    coverImageUrl?: boolean
+    coverImage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    galleryImages?: boolean | Event$galleryImagesArgs<ExtArgs>
-    _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
 
@@ -7682,32 +7657,28 @@ export namespace Prisma {
   export type EventSelectScalar = {
     id?: boolean
     title?: boolean
+    role?: boolean
     date?: boolean
     location?: boolean
     description?: boolean
-    coverImageUrl?: boolean
+    coverImage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "date" | "location" | "description" | "coverImageUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
-  export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    galleryImages?: boolean | Event$galleryImagesArgs<ExtArgs>
-    _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
-  }
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "role" | "date" | "location" | "description" | "coverImage" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
 
   export type $EventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Event"
-    objects: {
-      galleryImages: Prisma.$GalleryPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
+      role: string
       date: Date
-      location: string | null
+      location: string
       description: string
-      coverImageUrl: string | null
+      coverImage: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["event"]>
@@ -8050,7 +8021,6 @@ export namespace Prisma {
    */
   export interface Prisma__EventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    galleryImages<T extends Event$galleryImagesArgs<ExtArgs> = {}>(args?: Subset<T, Event$galleryImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8082,10 +8052,11 @@ export namespace Prisma {
   interface EventFieldRefs {
     readonly id: FieldRef<"Event", 'Int'>
     readonly title: FieldRef<"Event", 'String'>
+    readonly role: FieldRef<"Event", 'String'>
     readonly date: FieldRef<"Event", 'DateTime'>
     readonly location: FieldRef<"Event", 'String'>
     readonly description: FieldRef<"Event", 'String'>
-    readonly coverImageUrl: FieldRef<"Event", 'String'>
+    readonly coverImage: FieldRef<"Event", 'String'>
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
   }
@@ -8105,10 +8076,6 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter, which Event to fetch.
      */
     where: EventWhereUniqueInput
@@ -8127,10 +8094,6 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter, which Event to fetch.
      */
     where: EventWhereUniqueInput
@@ -8148,10 +8111,6 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
     /**
      * Filter, which Event to fetch.
      */
@@ -8201,10 +8160,6 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter, which Event to fetch.
      */
     where?: EventWhereInput
@@ -8252,10 +8207,6 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
     /**
      * Filter, which Events to fetch.
      */
@@ -8305,10 +8256,6 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * The data needed to create a Event.
      */
     data: XOR<EventCreateInput, EventUncheckedCreateInput>
@@ -8337,10 +8284,6 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
     /**
      * The data needed to update a Event.
      */
@@ -8382,10 +8325,6 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * The filter to search for the Event to update in case it exists.
      */
     where: EventWhereUniqueInput
@@ -8412,10 +8351,6 @@ export namespace Prisma {
      */
     omit?: EventOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
-    /**
      * Filter which Event to delete.
      */
     where: EventWhereUniqueInput
@@ -8436,30 +8371,6 @@ export namespace Prisma {
   }
 
   /**
-   * Event.galleryImages
-   */
-  export type Event$galleryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Gallery
-     */
-    select?: GallerySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Gallery
-     */
-    omit?: GalleryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
-    where?: GalleryWhereInput
-    orderBy?: GalleryOrderByWithRelationInput | GalleryOrderByWithRelationInput[]
-    cursor?: GalleryWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: GalleryScalarFieldEnum | GalleryScalarFieldEnum[]
-  }
-
-  /**
    * Event without action
    */
   export type EventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8471,10 +8382,6 @@ export namespace Prisma {
      * Omit specific fields from the Event
      */
     omit?: EventOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
   }
 
 
@@ -8492,19 +8399,16 @@ export namespace Prisma {
 
   export type GalleryAvgAggregateOutputType = {
     id: number | null
-    eventId: number | null
   }
 
   export type GallerySumAggregateOutputType = {
     id: number | null
-    eventId: number | null
   }
 
   export type GalleryMinAggregateOutputType = {
     id: number | null
     imageUrl: string | null
     caption: string | null
-    eventId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8513,7 +8417,6 @@ export namespace Prisma {
     id: number | null
     imageUrl: string | null
     caption: string | null
-    eventId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8522,7 +8425,6 @@ export namespace Prisma {
     id: number
     imageUrl: number
     caption: number
-    eventId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -8531,19 +8433,16 @@ export namespace Prisma {
 
   export type GalleryAvgAggregateInputType = {
     id?: true
-    eventId?: true
   }
 
   export type GallerySumAggregateInputType = {
     id?: true
-    eventId?: true
   }
 
   export type GalleryMinAggregateInputType = {
     id?: true
     imageUrl?: true
     caption?: true
-    eventId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8552,7 +8451,6 @@ export namespace Prisma {
     id?: true
     imageUrl?: true
     caption?: true
-    eventId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8561,7 +8459,6 @@ export namespace Prisma {
     id?: true
     imageUrl?: true
     caption?: true
-    eventId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -8657,7 +8554,6 @@ export namespace Prisma {
     id: number
     imageUrl: string
     caption: string | null
-    eventId: number | null
     createdAt: Date
     updatedAt: Date
     _count: GalleryCountAggregateOutputType | null
@@ -8685,10 +8581,8 @@ export namespace Prisma {
     id?: boolean
     imageUrl?: boolean
     caption?: boolean
-    eventId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    event?: boolean | Gallery$eventArgs<ExtArgs>
   }, ExtArgs["result"]["gallery"]>
 
 
@@ -8697,26 +8591,19 @@ export namespace Prisma {
     id?: boolean
     imageUrl?: boolean
     caption?: boolean
-    eventId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "caption" | "eventId" | "createdAt" | "updatedAt", ExtArgs["result"]["gallery"]>
-  export type GalleryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    event?: boolean | Gallery$eventArgs<ExtArgs>
-  }
+  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "caption" | "createdAt" | "updatedAt", ExtArgs["result"]["gallery"]>
 
   export type $GalleryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Gallery"
-    objects: {
-      event: Prisma.$EventPayload<ExtArgs> | null
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
       imageUrl: string
       caption: string | null
-      eventId: number | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["gallery"]>
@@ -9059,7 +8946,6 @@ export namespace Prisma {
    */
   export interface Prisma__GalleryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    event<T extends Gallery$eventArgs<ExtArgs> = {}>(args?: Subset<T, Gallery$eventArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9092,7 +8978,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Gallery", 'Int'>
     readonly imageUrl: FieldRef<"Gallery", 'String'>
     readonly caption: FieldRef<"Gallery", 'String'>
-    readonly eventId: FieldRef<"Gallery", 'Int'>
     readonly createdAt: FieldRef<"Gallery", 'DateTime'>
     readonly updatedAt: FieldRef<"Gallery", 'DateTime'>
   }
@@ -9112,10 +8997,6 @@ export namespace Prisma {
      */
     omit?: GalleryOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
-    /**
      * Filter, which Gallery to fetch.
      */
     where: GalleryWhereUniqueInput
@@ -9134,10 +9015,6 @@ export namespace Prisma {
      */
     omit?: GalleryOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
-    /**
      * Filter, which Gallery to fetch.
      */
     where: GalleryWhereUniqueInput
@@ -9155,10 +9032,6 @@ export namespace Prisma {
      * Omit specific fields from the Gallery
      */
     omit?: GalleryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
     /**
      * Filter, which Gallery to fetch.
      */
@@ -9208,10 +9081,6 @@ export namespace Prisma {
      */
     omit?: GalleryOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
-    /**
      * Filter, which Gallery to fetch.
      */
     where?: GalleryWhereInput
@@ -9259,10 +9128,6 @@ export namespace Prisma {
      * Omit specific fields from the Gallery
      */
     omit?: GalleryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
     /**
      * Filter, which Galleries to fetch.
      */
@@ -9312,10 +9177,6 @@ export namespace Prisma {
      */
     omit?: GalleryOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
-    /**
      * The data needed to create a Gallery.
      */
     data: XOR<GalleryCreateInput, GalleryUncheckedCreateInput>
@@ -9344,10 +9205,6 @@ export namespace Prisma {
      * Omit specific fields from the Gallery
      */
     omit?: GalleryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
     /**
      * The data needed to update a Gallery.
      */
@@ -9389,10 +9246,6 @@ export namespace Prisma {
      */
     omit?: GalleryOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
-    /**
      * The filter to search for the Gallery to update in case it exists.
      */
     where: GalleryWhereUniqueInput
@@ -9419,10 +9272,6 @@ export namespace Prisma {
      */
     omit?: GalleryOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
-    /**
      * Filter which Gallery to delete.
      */
     where: GalleryWhereUniqueInput
@@ -9443,25 +9292,6 @@ export namespace Prisma {
   }
 
   /**
-   * Gallery.event
-   */
-  export type Gallery$eventArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Event
-     */
-    select?: EventSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Event
-     */
-    omit?: EventOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EventInclude<ExtArgs> | null
-    where?: EventWhereInput
-  }
-
-  /**
    * Gallery without action
    */
   export type GalleryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9473,10 +9303,6 @@ export namespace Prisma {
      * Omit specific fields from the Gallery
      */
     omit?: GalleryOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GalleryInclude<ExtArgs> | null
   }
 
 
@@ -10514,10 +10340,11 @@ export namespace Prisma {
   export const EventScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    role: 'role',
     date: 'date',
     location: 'location',
     description: 'description',
-    coverImageUrl: 'coverImageUrl',
+    coverImage: 'coverImage',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -10529,7 +10356,6 @@ export namespace Prisma {
     id: 'id',
     imageUrl: 'imageUrl',
     caption: 'caption',
-    eventId: 'eventId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -10624,9 +10450,10 @@ export namespace Prisma {
 
   export const EventOrderByRelevanceFieldEnum: {
     title: 'title',
+    role: 'role',
     location: 'location',
     description: 'description',
-    coverImageUrl: 'coverImageUrl'
+    coverImage: 'coverImage'
   };
 
   export type EventOrderByRelevanceFieldEnum = (typeof EventOrderByRelevanceFieldEnum)[keyof typeof EventOrderByRelevanceFieldEnum]
@@ -11082,25 +10909,25 @@ export namespace Prisma {
     NOT?: EventWhereInput | EventWhereInput[]
     id?: IntFilter<"Event"> | number
     title?: StringFilter<"Event"> | string
+    role?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
-    location?: StringNullableFilter<"Event"> | string | null
+    location?: StringFilter<"Event"> | string
     description?: StringFilter<"Event"> | string
-    coverImageUrl?: StringNullableFilter<"Event"> | string | null
+    coverImage?: StringFilter<"Event"> | string
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
-    galleryImages?: GalleryListRelationFilter
   }
 
   export type EventOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    role?: SortOrder
     date?: SortOrder
-    location?: SortOrderInput | SortOrder
+    location?: SortOrder
     description?: SortOrder
-    coverImageUrl?: SortOrderInput | SortOrder
+    coverImage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    galleryImages?: GalleryOrderByRelationAggregateInput
     _relevance?: EventOrderByRelevanceInput
   }
 
@@ -11110,22 +10937,23 @@ export namespace Prisma {
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
     title?: StringFilter<"Event"> | string
+    role?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
-    location?: StringNullableFilter<"Event"> | string | null
+    location?: StringFilter<"Event"> | string
     description?: StringFilter<"Event"> | string
-    coverImageUrl?: StringNullableFilter<"Event"> | string | null
+    coverImage?: StringFilter<"Event"> | string
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
-    galleryImages?: GalleryListRelationFilter
   }, "id">
 
   export type EventOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    role?: SortOrder
     date?: SortOrder
-    location?: SortOrderInput | SortOrder
+    location?: SortOrder
     description?: SortOrder
-    coverImageUrl?: SortOrderInput | SortOrder
+    coverImage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EventCountOrderByAggregateInput
@@ -11141,10 +10969,11 @@ export namespace Prisma {
     NOT?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Event"> | number
     title?: StringWithAggregatesFilter<"Event"> | string
+    role?: StringWithAggregatesFilter<"Event"> | string
     date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    location?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    location?: StringWithAggregatesFilter<"Event"> | string
     description?: StringWithAggregatesFilter<"Event"> | string
-    coverImageUrl?: StringNullableWithAggregatesFilter<"Event"> | string | null
+    coverImage?: StringWithAggregatesFilter<"Event"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
   }
@@ -11156,20 +10985,16 @@ export namespace Prisma {
     id?: IntFilter<"Gallery"> | number
     imageUrl?: StringFilter<"Gallery"> | string
     caption?: StringNullableFilter<"Gallery"> | string | null
-    eventId?: IntNullableFilter<"Gallery"> | number | null
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeFilter<"Gallery"> | Date | string
-    event?: XOR<EventNullableScalarRelationFilter, EventWhereInput> | null
   }
 
   export type GalleryOrderByWithRelationInput = {
     id?: SortOrder
     imageUrl?: SortOrder
     caption?: SortOrderInput | SortOrder
-    eventId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    event?: EventOrderByWithRelationInput
     _relevance?: GalleryOrderByRelevanceInput
   }
 
@@ -11180,17 +11005,14 @@ export namespace Prisma {
     NOT?: GalleryWhereInput | GalleryWhereInput[]
     imageUrl?: StringFilter<"Gallery"> | string
     caption?: StringNullableFilter<"Gallery"> | string | null
-    eventId?: IntNullableFilter<"Gallery"> | number | null
     createdAt?: DateTimeFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeFilter<"Gallery"> | Date | string
-    event?: XOR<EventNullableScalarRelationFilter, EventWhereInput> | null
   }, "id">
 
   export type GalleryOrderByWithAggregationInput = {
     id?: SortOrder
     imageUrl?: SortOrder
     caption?: SortOrderInput | SortOrder
-    eventId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: GalleryCountOrderByAggregateInput
@@ -11207,7 +11029,6 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Gallery"> | number
     imageUrl?: StringWithAggregatesFilter<"Gallery"> | string
     caption?: StringNullableWithAggregatesFilter<"Gallery"> | string | null
-    eventId?: IntNullableWithAggregatesFilter<"Gallery"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Gallery"> | Date | string
   }
@@ -11665,67 +11486,69 @@ export namespace Prisma {
 
   export type EventCreateInput = {
     title: string
+    role: string
     date: Date | string
-    location?: string | null
+    location: string
     description: string
-    coverImageUrl?: string | null
+    coverImage: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    galleryImages?: GalleryCreateNestedManyWithoutEventInput
   }
 
   export type EventUncheckedCreateInput = {
     id?: number
     title: string
+    role: string
     date: Date | string
-    location?: string | null
+    location: string
     description: string
-    coverImageUrl?: string | null
+    coverImage: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    galleryImages?: GalleryUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type EventUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    galleryImages?: GalleryUpdateManyWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    galleryImages?: GalleryUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type EventCreateManyInput = {
     id?: number
     title: string
+    role: string
     date: Date | string
-    location?: string | null
+    location: string
     description: string
-    coverImageUrl?: string | null
+    coverImage: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type EventUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11733,10 +11556,11 @@ export namespace Prisma {
   export type EventUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11746,14 +11570,12 @@ export namespace Prisma {
     caption?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    event?: EventCreateNestedOneWithoutGalleryImagesInput
   }
 
   export type GalleryUncheckedCreateInput = {
     id?: number
     imageUrl: string
     caption?: string | null
-    eventId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11763,14 +11585,12 @@ export namespace Prisma {
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    event?: EventUpdateOneWithoutGalleryImagesNestedInput
   }
 
   export type GalleryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
-    eventId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11779,7 +11599,6 @@ export namespace Prisma {
     id?: number
     imageUrl: string
     caption?: string | null
-    eventId?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11795,7 +11614,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     imageUrl?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
-    eventId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12341,16 +12159,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type GalleryListRelationFilter = {
-    every?: GalleryWhereInput
-    some?: GalleryWhereInput
-    none?: GalleryWhereInput
-  }
-
-  export type GalleryOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type EventOrderByRelevanceInput = {
     fields: EventOrderByRelevanceFieldEnum | EventOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -12360,10 +12168,11 @@ export namespace Prisma {
   export type EventCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    role?: SortOrder
     date?: SortOrder
     location?: SortOrder
     description?: SortOrder
-    coverImageUrl?: SortOrder
+    coverImage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12375,10 +12184,11 @@ export namespace Prisma {
   export type EventMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    role?: SortOrder
     date?: SortOrder
     location?: SortOrder
     description?: SortOrder
-    coverImageUrl?: SortOrder
+    coverImage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12386,21 +12196,17 @@ export namespace Prisma {
   export type EventMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    role?: SortOrder
     date?: SortOrder
     location?: SortOrder
     description?: SortOrder
-    coverImageUrl?: SortOrder
+    coverImage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type EventSumOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type EventNullableScalarRelationFilter = {
-    is?: EventWhereInput | null
-    isNot?: EventWhereInput | null
   }
 
   export type GalleryOrderByRelevanceInput = {
@@ -12413,21 +12219,18 @@ export namespace Prisma {
     id?: SortOrder
     imageUrl?: SortOrder
     caption?: SortOrder
-    eventId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type GalleryAvgOrderByAggregateInput = {
     id?: SortOrder
-    eventId?: SortOrder
   }
 
   export type GalleryMaxOrderByAggregateInput = {
     id?: SortOrder
     imageUrl?: SortOrder
     caption?: SortOrder
-    eventId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12436,14 +12239,12 @@ export namespace Prisma {
     id?: SortOrder
     imageUrl?: SortOrder
     caption?: SortOrder
-    eventId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type GallerySumOrderByAggregateInput = {
     id?: SortOrder
-    eventId?: SortOrder
   }
 
   export type ContactOrderByRelevanceInput = {
@@ -12640,64 +12441,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type GalleryCreateNestedManyWithoutEventInput = {
-    create?: XOR<GalleryCreateWithoutEventInput, GalleryUncheckedCreateWithoutEventInput> | GalleryCreateWithoutEventInput[] | GalleryUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: GalleryCreateOrConnectWithoutEventInput | GalleryCreateOrConnectWithoutEventInput[]
-    createMany?: GalleryCreateManyEventInputEnvelope
-    connect?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-  }
-
-  export type GalleryUncheckedCreateNestedManyWithoutEventInput = {
-    create?: XOR<GalleryCreateWithoutEventInput, GalleryUncheckedCreateWithoutEventInput> | GalleryCreateWithoutEventInput[] | GalleryUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: GalleryCreateOrConnectWithoutEventInput | GalleryCreateOrConnectWithoutEventInput[]
-    createMany?: GalleryCreateManyEventInputEnvelope
-    connect?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-  }
-
-  export type GalleryUpdateManyWithoutEventNestedInput = {
-    create?: XOR<GalleryCreateWithoutEventInput, GalleryUncheckedCreateWithoutEventInput> | GalleryCreateWithoutEventInput[] | GalleryUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: GalleryCreateOrConnectWithoutEventInput | GalleryCreateOrConnectWithoutEventInput[]
-    upsert?: GalleryUpsertWithWhereUniqueWithoutEventInput | GalleryUpsertWithWhereUniqueWithoutEventInput[]
-    createMany?: GalleryCreateManyEventInputEnvelope
-    set?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    disconnect?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    delete?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    connect?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    update?: GalleryUpdateWithWhereUniqueWithoutEventInput | GalleryUpdateWithWhereUniqueWithoutEventInput[]
-    updateMany?: GalleryUpdateManyWithWhereWithoutEventInput | GalleryUpdateManyWithWhereWithoutEventInput[]
-    deleteMany?: GalleryScalarWhereInput | GalleryScalarWhereInput[]
-  }
-
-  export type GalleryUncheckedUpdateManyWithoutEventNestedInput = {
-    create?: XOR<GalleryCreateWithoutEventInput, GalleryUncheckedCreateWithoutEventInput> | GalleryCreateWithoutEventInput[] | GalleryUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: GalleryCreateOrConnectWithoutEventInput | GalleryCreateOrConnectWithoutEventInput[]
-    upsert?: GalleryUpsertWithWhereUniqueWithoutEventInput | GalleryUpsertWithWhereUniqueWithoutEventInput[]
-    createMany?: GalleryCreateManyEventInputEnvelope
-    set?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    disconnect?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    delete?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    connect?: GalleryWhereUniqueInput | GalleryWhereUniqueInput[]
-    update?: GalleryUpdateWithWhereUniqueWithoutEventInput | GalleryUpdateWithWhereUniqueWithoutEventInput[]
-    updateMany?: GalleryUpdateManyWithWhereWithoutEventInput | GalleryUpdateManyWithWhereWithoutEventInput[]
-    deleteMany?: GalleryScalarWhereInput | GalleryScalarWhereInput[]
-  }
-
-  export type EventCreateNestedOneWithoutGalleryImagesInput = {
-    create?: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
-    connectOrCreate?: EventCreateOrConnectWithoutGalleryImagesInput
-    connect?: EventWhereUniqueInput
-  }
-
-  export type EventUpdateOneWithoutGalleryImagesNestedInput = {
-    create?: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
-    connectOrCreate?: EventCreateOrConnectWithoutGalleryImagesInput
-    upsert?: EventUpsertWithoutGalleryImagesInput
-    disconnect?: EventWhereInput | boolean
-    delete?: EventWhereInput | boolean
-    connect?: EventWhereUniqueInput
-    update?: XOR<XOR<EventUpdateToOneWithWhereWithoutGalleryImagesInput, EventUpdateWithoutGalleryImagesInput>, EventUncheckedUpdateWithoutGalleryImagesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -13103,117 +12846,6 @@ export namespace Prisma {
     highlightedPositions?: HighlightedPositionUncheckedUpdateManyWithoutAboutNestedInput
   }
 
-  export type GalleryCreateWithoutEventInput = {
-    imageUrl: string
-    caption?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GalleryUncheckedCreateWithoutEventInput = {
-    id?: number
-    imageUrl: string
-    caption?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GalleryCreateOrConnectWithoutEventInput = {
-    where: GalleryWhereUniqueInput
-    create: XOR<GalleryCreateWithoutEventInput, GalleryUncheckedCreateWithoutEventInput>
-  }
-
-  export type GalleryCreateManyEventInputEnvelope = {
-    data: GalleryCreateManyEventInput | GalleryCreateManyEventInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type GalleryUpsertWithWhereUniqueWithoutEventInput = {
-    where: GalleryWhereUniqueInput
-    update: XOR<GalleryUpdateWithoutEventInput, GalleryUncheckedUpdateWithoutEventInput>
-    create: XOR<GalleryCreateWithoutEventInput, GalleryUncheckedCreateWithoutEventInput>
-  }
-
-  export type GalleryUpdateWithWhereUniqueWithoutEventInput = {
-    where: GalleryWhereUniqueInput
-    data: XOR<GalleryUpdateWithoutEventInput, GalleryUncheckedUpdateWithoutEventInput>
-  }
-
-  export type GalleryUpdateManyWithWhereWithoutEventInput = {
-    where: GalleryScalarWhereInput
-    data: XOR<GalleryUpdateManyMutationInput, GalleryUncheckedUpdateManyWithoutEventInput>
-  }
-
-  export type GalleryScalarWhereInput = {
-    AND?: GalleryScalarWhereInput | GalleryScalarWhereInput[]
-    OR?: GalleryScalarWhereInput[]
-    NOT?: GalleryScalarWhereInput | GalleryScalarWhereInput[]
-    id?: IntFilter<"Gallery"> | number
-    imageUrl?: StringFilter<"Gallery"> | string
-    caption?: StringNullableFilter<"Gallery"> | string | null
-    eventId?: IntNullableFilter<"Gallery"> | number | null
-    createdAt?: DateTimeFilter<"Gallery"> | Date | string
-    updatedAt?: DateTimeFilter<"Gallery"> | Date | string
-  }
-
-  export type EventCreateWithoutGalleryImagesInput = {
-    title: string
-    date: Date | string
-    location?: string | null
-    description: string
-    coverImageUrl?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type EventUncheckedCreateWithoutGalleryImagesInput = {
-    id?: number
-    title: string
-    date: Date | string
-    location?: string | null
-    description: string
-    coverImageUrl?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type EventCreateOrConnectWithoutGalleryImagesInput = {
-    where: EventWhereUniqueInput
-    create: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
-  }
-
-  export type EventUpsertWithoutGalleryImagesInput = {
-    update: XOR<EventUpdateWithoutGalleryImagesInput, EventUncheckedUpdateWithoutGalleryImagesInput>
-    create: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
-    where?: EventWhereInput
-  }
-
-  export type EventUpdateToOneWithWhereWithoutGalleryImagesInput = {
-    where?: EventWhereInput
-    data: XOR<EventUpdateWithoutGalleryImagesInput, EventUncheckedUpdateWithoutGalleryImagesInput>
-  }
-
-  export type EventUpdateWithoutGalleryImagesInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type EventUncheckedUpdateWithoutGalleryImagesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type HighlightedPositionCreateManyAboutInput = {
     id?: number
     title: string
@@ -13258,37 +12890,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     label?: StringFieldUpdateOperationsInput | string
     icon?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type GalleryCreateManyEventInput = {
-    id?: number
-    imageUrl: string
-    caption?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GalleryUpdateWithoutEventInput = {
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type GalleryUncheckedUpdateWithoutEventInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type GalleryUncheckedUpdateManyWithoutEventInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    imageUrl?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

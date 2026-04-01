@@ -20,7 +20,7 @@ const navItems = [
   { name: "Hero", href: "/admin/hero", icon: User },
   { name: "About", href: "/admin/about", icon: User },
   { name: "Experience", href: "/admin/experience", icon: Briefcase },
-  { name: "Events", href: "/admin/events", icon: CalendarDays },
+  { name: "Events", href: "/admin/event", icon: CalendarDays },
   { name: "Gallery", href: "/admin/gallery", icon: ImageIcon },
   { name: "Contact", href: "/admin/contact", icon: MessageSquare },
   { name: "Settings", href: "/admin/settings", icon: Settings },

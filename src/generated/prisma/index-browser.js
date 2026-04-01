@@ -179,10 +179,11 @@ exports.Prisma.ExperienceScalarFieldEnum = {
 exports.Prisma.EventScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  role: 'role',
   date: 'date',
   location: 'location',
   description: 'description',
-  coverImageUrl: 'coverImageUrl',
+  coverImage: 'coverImage',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -191,7 +192,6 @@ exports.Prisma.GalleryScalarFieldEnum = {
   id: 'id',
   imageUrl: 'imageUrl',
   caption: 'caption',
-  eventId: 'eventId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -256,9 +256,10 @@ exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
 
 exports.Prisma.EventOrderByRelevanceFieldEnum = {
   title: 'title',
+  role: 'role',
   location: 'location',
   description: 'description',
-  coverImageUrl: 'coverImageUrl'
+  coverImage: 'coverImage'
 };
 
 exports.Prisma.GalleryOrderByRelevanceFieldEnum = {
