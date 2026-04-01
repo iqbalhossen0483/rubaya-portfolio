@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma";
 import { impactSchema } from "@/lib/validations/impact.schema";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
+import { z } from "zod";
 
 export const GET = withErrorHandler(async () => {
   const impacts = await prisma.impact.findMany({
@@ -33,7 +34,7 @@ export const POST = withErrorHandler(async (req: Request) => {
   });
 
   if (!result.success) {
-    throw new AppError("Invalid input", 400, result.error.flatten());
+    throw new AppError("Invalid input", 400, z.treeifyError(result.error));
   }
 
   let imageUrl = "";
