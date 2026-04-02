@@ -1,4 +1,5 @@
 import { getSettings } from "@/lib/directDatabaseAccess";
+import Link from "next/link";
 import Typography from "./utils/Typography";
 
 export default async function Footer() {
@@ -24,7 +25,15 @@ export default async function Footer() {
         component="p"
         className="text-accent-muted font-normal"
       >
-        Built with purpose · For the planet 🌿
+        Built with purpose · For the planet by{" "}
+        <Link
+          href="https://elonit.com"
+          target="_blank"
+          referrerPolicy="no-referrer"
+          className="text-accent hover:underline font-semibold"
+        >
+          ElonIT 🌿
+        </Link>
       </Typography>
     </footer>
   );
