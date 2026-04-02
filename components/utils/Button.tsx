@@ -36,8 +36,7 @@ export default function Button({
   const variantStyles: Record<ButtonVariant, string> = {
     primary:
       "bg-accent text-white tracking-[0.07em] rounded-[3px] hover:bg-accent-soft hover:-translate-y-[2px]",
-    secondary:
-      "gap-[0.4rem] tracking-[0.07em] text-accent hover:gap-[0.75rem] after:content-['→']",
+    secondary: "gap-[0.4rem] tracking-[0.07em] text-accent hover:gap-[0.75rem]",
     icon: "gap-[0.8rem] bg-accent text-white tracking-[0.07em] rounded-[3px] hover:opacity-100 opacity-95 hover:-translate-y-[2px]",
     nav: "text-[0.85rem] tracking-[0.09em] text-text-mid hover:text-accent",
   };

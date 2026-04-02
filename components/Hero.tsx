@@ -1,4 +1,5 @@
 import type { Hero } from "@/types";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Transition from "./Transition";
 import Button from "./utils/Button";
@@ -63,7 +64,7 @@ export default function Hero({ heroData }: { heroData: Hero | null }) {
               Get in Touch
             </Button>
             <Button variant="secondary" href="#experience">
-              View Experience
+              <p>View Experience</p> <ArrowRight size={18} />
             </Button>
           </div>
         </Transition>

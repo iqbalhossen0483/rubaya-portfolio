@@ -1,6 +1,7 @@
 import type { Event as EventType } from "@/types";
 import { MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface EventCardProps {
   evt: EventType;
@@ -9,9 +10,9 @@ interface EventCardProps {
 
 export default function EventCard({ evt, dynamicClass }: EventCardProps) {
   return (
-    <div
-      key={evt.id}
-      className={`relative overflow-hidden cursor-pointer rounded-sm group shadow-sm hover:shadow-lg transition-all duration-500 ${dynamicClass}`}
+    <Link
+      href={`/events/${evt.id}`}
+      className={`block relative overflow-hidden cursor-pointer rounded-sm group shadow-sm hover:shadow-lg transition-all duration-500 ${dynamicClass}`}
     >
       <Image
         src={evt.coverImage}
@@ -36,6 +37,6 @@ export default function EventCard({ evt, dynamicClass }: EventCardProps) {
           })}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

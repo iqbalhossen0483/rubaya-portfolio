@@ -17,9 +17,16 @@ type Props = {
   width?: number;
   height?: number;
   alt?: string;
+  className?: string;
 };
 
-const ImageViewer = ({ url, width = 200, height = 200, alt }: Props) => {
+const ImageViewer = ({
+  url,
+  width = 200,
+  height = 200,
+  alt,
+  className,
+}: Props) => {
   const previewUrl = getFilePreviewUrl(url);
   if (!url || !previewUrl) return null;
   return (
@@ -29,7 +36,7 @@ const ImageViewer = ({ url, width = 200, height = 200, alt }: Props) => {
         alt={alt || "Image preview"}
         width={width}
         height={height}
-        className="object-cover"
+        className={`object-cover ${className}`}
       />
     </div>
   );
