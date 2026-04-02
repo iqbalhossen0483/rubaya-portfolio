@@ -81,19 +81,19 @@ export default function AwardPage() {
               key={award.id}
               className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col"
             >
-              <div className="flex-1">
-                {award.image && (
-                  <div className="relative w-full h-48 mb-4">
-                    <Image
-                      src={award.image}
-                      alt={award.title}
-                      fill
-                      className="object-cover rounded-md"
-                    />
-                  </div>
-                )}
-                <div className="flex justify-between items-start mb-4">
-                  <Typography variant="h6" className="line-clamp-2">
+              {award.image && (
+                <div className="relative w-full h-48">
+                  <Image
+                    src={award.image}
+                    alt={award.title}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              )}
+              <div className="flex-1 px-3 py-2">
+                <div className="flex justify-between items-center">
+                  <Typography variant="h6" className="line-clamp-1">
                     {award.title}
                   </Typography>
                   <div className="flex gap-2">
@@ -113,10 +113,10 @@ export default function AwardPage() {
                     </button>
                   </div>
                 </div>
-                <Typography variant="subtitle2" className="mb-2">
+                <Typography variant="subtitle2">
                   {award.time_to_receipt}
                 </Typography>
-                <Typography variant="body2" className="line-clamp-3 mt-4">
+                <Typography variant="body2" className="line-clamp-3">
                   {award.description}
                 </Typography>
               </div>
