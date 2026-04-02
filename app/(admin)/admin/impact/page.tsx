@@ -102,7 +102,7 @@ export default function ImpactPage() {
               className="bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col"
             >
               {impact.image && (
-                <div className="relative w-full h-48 mb-4">
+                <div className="relative w-full h-48">
                   <Image
                     src={impact.image}
                     alt={impact.title}

@@ -79,21 +79,21 @@ export default function GalleryPage() {
           {galleries?.map((gallery) => (
             <div
               key={gallery.id}
-              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col"
+              className="bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col"
             >
-              <div className="flex-1">
-                {gallery.image && (
-                  <div className="relative w-full h-48 mb-4">
-                    <Image
-                      src={gallery.image}
-                      alt={gallery.caption}
-                      fill
-                      className="object-cover rounded-md"
-                    />
-                  </div>
-                )}
-                <div className="flex justify-between items-start mb-4">
-                  <Typography variant="h6" className="line-clamp-2">
+              {gallery.image && (
+                <div className="relative w-full h-48">
+                  <Image
+                    src={gallery.image}
+                    alt={gallery.caption}
+                    fill
+                    className="object-cover rounded-md"
+                  />
+                </div>
+              )}
+              <div className="flex-1 px-3 py-2">
+                <div className="flex justify-between items-center">
+                  <Typography variant="h6" className="line-clamp-1">
                     {gallery.caption}
                   </Typography>
                   <div className="flex gap-2">

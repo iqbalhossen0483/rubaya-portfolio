@@ -112,8 +112,8 @@ export default function EventPage() {
                 </div>
               )}
               <div className="flex-1 px-3 py-2">
-                <div className="flex justify-between items-start">
-                  <Typography variant="h6" className="line-clamp-2">
+                <div className="flex justify-between items-center">
+                  <Typography variant="h6" className="line-clamp-1">
                     {event.title}
                   </Typography>
                   <div className="flex gap-2">
