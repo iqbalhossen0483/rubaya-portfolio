@@ -12,6 +12,7 @@ import {
   useGetEventsQuery,
 } from "@/store/api/eventApi";
 import { Pencil, Plus, Trash2 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import EventForm from "./EventForm";
@@ -98,10 +99,20 @@ export default function EventPage() {
           {events?.map((event) => (
             <div
               key={event.id}
-              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col"
+              className="bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col"
             >
-              <div className="flex-1">
-                <div className="flex justify-between items-start mb-4">
+              {event.coverImage && (
+                <div className="relative w-full h-48 mb-4">
+                  <Image
+                    src={event.coverImage}
+                    alt={event.title}
+                    fill
+                    className="object-cover rounded-t-md"
+                  />
+                </div>
+              )}
+              <div className="flex-1 px-3 py-2">
+                <div className="flex justify-between items-start">
                   <Typography variant="h6" className="line-clamp-2">
                     {event.title}
                   </Typography>
@@ -122,13 +133,16 @@ export default function EventPage() {
                     </button>
                   </div>
                 </div>
-                <Typography variant="subtitle2" className="mb-2">
-                  {event.role}
+                <Typography variant="subtitle2">{event.role}</Typography>
+                <Typography variant="body2">
+                  {new Date(event.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}{" "}
+                  • {event.location}
                 </Typography>
-                <Typography variant="body2" className="mb-2">
-                  {new Date(event.date).toLocaleDateString()} • {event.location}
-                </Typography>
-                <Typography variant="body2" className="line-clamp-3 mt-4">
+                <Typography variant="body2" className="line-clamp-3">
                   {event.description}
                 </Typography>
               </div>
