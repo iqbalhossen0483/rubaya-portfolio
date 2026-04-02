@@ -145,6 +145,7 @@ export default function AboutAdminPage() {
         <Textarea
           label="Description"
           {...register("description")}
+          rows={5}
           placeholder="e.g., I am a development professional..."
           error={errors.description?.message}
         />

@@ -1,7 +1,9 @@
 "use client";
 
 import Button from "@/components/utils/Button";
+import Card from "@/components/utils/Card";
 import Input from "@/components/utils/Input";
+import Typography from "@/components/utils/Typography";
 import {
   ProfileSettingsInput,
   profileSettingsSchema,
@@ -51,23 +53,28 @@ export default function ProfileSettingsForm() {
         {...register("name")}
         error={errors.name?.message as string}
       />
-      <Input
-        id="password"
-        label="Password"
-        type="password"
-        placeholder="Enter new password"
-        {...register("password")}
-        error={errors.password?.message as string}
-      />
-      <Input
-        id="confirmPassword"
-        label="Confirm Password"
-        type="password"
-        placeholder="Confirm new password"
-        {...register("confirmPassword")}
-        error={errors.confirmPassword?.message as string}
-      />
-      <div className="pt-4 flex justify-end">
+
+      <Card className="p-3 space-y-3">
+        <Typography variant="body1">Change Password</Typography>
+
+        <Input
+          id="password"
+          label="Password"
+          type="password"
+          placeholder="Enter new password"
+          {...register("password")}
+          error={errors.password?.message as string}
+        />
+        <Input
+          id="confirmPassword"
+          label="Confirm Password"
+          type="password"
+          placeholder="Confirm new password"
+          {...register("confirmPassword")}
+          error={errors.confirmPassword?.message as string}
+        />
+      </Card>
+      <div className="mt-4 flex justify-end">
         <Button type="submit" variant="primary" size="md" isLoading={isLoading}>
           Save Changes
         </Button>

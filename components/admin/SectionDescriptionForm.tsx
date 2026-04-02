@@ -66,6 +66,7 @@ export default function SectionDescriptionForm({
       <Textarea
         id={`${section}`}
         label={title}
+        rows={4}
         placeholder={`Enter description for ${section} section`}
         {...register(`section_description.${section}`)}
         error={errors.section_description?.[section]?.message as string}

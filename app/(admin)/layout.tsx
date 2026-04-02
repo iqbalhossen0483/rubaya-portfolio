@@ -37,14 +37,14 @@ export default function AdminLayout({
             onClick={() => setIsSidebarOpen(false)}
           ></div>
         )}
-        <div className="flex-1 lg:ml-64 p-4 md:p-8">
+        <div className="flex-1 lg:ml-72 p-4 md:p-8">
           <button
             className="lg:hidden p-2 mb-4"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           >
             <Menu size={24} />
           </button>
-          <main className="max-w-5xl mx-auto bg-white rounded-xl shadow-sm border border-border-custom p-4 md:p-8">
+          <main className="container mx-auto bg-white rounded-xl shadow-sm border border-border-custom p-4 md:p-8">
             {children}
           </main>
         </div>
