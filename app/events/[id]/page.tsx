@@ -1,3 +1,4 @@
+import ShareModalWrapper from "@/components/eventDetails/Sharemodalwrapper";
 import Button from "@/components/utils/Button";
 import Typography from "@/components/utils/Typography";
 import prisma from "@/lib/prisma";
@@ -120,9 +121,7 @@ async function EventDetailPage({ params }: Props) {
           >
             Back to Events
           </Button>
-          <Button variant="icon" icon={<Share2 className="w-4 h-4" />}>
-            Share
-          </Button>
+          <ShareModalWrapper title={event.title} />
         </div>
 
         {/* Related events */}
