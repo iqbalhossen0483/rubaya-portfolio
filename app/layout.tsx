@@ -1,6 +1,7 @@
 import Providers from "@/components/Providers";
 import type { Metadata } from "next";
 import { Lato, Merriweather } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 const lato = Lato({
@@ -84,6 +85,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <Providers>{children}</Providers>
+        <NextTopLoader showSpinner={false} color="#1f6b42" />
       </body>
     </html>
   );
