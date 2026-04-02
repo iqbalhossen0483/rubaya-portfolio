@@ -119,7 +119,7 @@ export default function EventForm({
         label="Description"
         {...register("description")}
         error={errors.description?.message}
-        rows={4}
+        rows={15}
         placeholder="Details about the event..."
       />
 
