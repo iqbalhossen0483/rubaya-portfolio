@@ -93,16 +93,25 @@ export default function ExperienceAdminPage() {
               className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 flex flex-col sm:flex-row justify-between sm:items-center gap-4"
             >
               <div>
-                <Typography variant="h4" className="font-semibold text-accent">
+                <Typography variant="h6" className="font-semibold text-accent">
                   {exp.role}
                 </Typography>
-                <p className="text-gray-700 font-medium">{exp.company}</p>
-                <p className="text-sm text-gray-500">
-                  {new Date(exp.startDate).toLocaleDateString()} -{" "}
+                <Typography variant="subtitle1">{exp.company}</Typography>
+                <Typography variant="caption">
+                  {new Date(exp.startDate).toLocaleDateString("en-US", {
+                    month: "long",
+                    year: "numeric",
+                    day: "numeric",
+                  })}{" "}
+                  -{" "}
                   {exp.isCurrent || !exp.endDate
                     ? "Present"
-                    : new Date(exp.endDate).toLocaleDateString()}
-                </p>
+                    : new Date(exp.endDate).toLocaleDateString("en-US", {
+                        month: "long",
+                        year: "numeric",
+                        day: "numeric",
+                      })}
+                </Typography>
               </div>
               <div className="flex gap-2">
                 <Button
