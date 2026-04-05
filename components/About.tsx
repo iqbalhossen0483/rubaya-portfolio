@@ -65,7 +65,7 @@ export default function About({ aboutData }: { aboutData: AboutType | null }) {
               — Professional Philosophy
             </cite>
           </div>
-          <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {aboutData?.highlightedPositions &&
               aboutData?.highlightedPositions?.length > 0 &&
               aboutData.highlightedPositions.map(

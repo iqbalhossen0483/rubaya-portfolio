@@ -31,7 +31,7 @@ export default function Experience({
               <div className="grid grid-cols-[auto_1fr] gap-x-[2.2rem] pb-[2.8rem] relative group">
                 <div className="w-3 h-3 bg-white border-[3px] border-accent rounded-full mt-[0.4rem] -ml-1.25 shrink-0 relative z-10 transition-colors duration-200 group-hover:bg-accent -order-1"></div>
                 <Transition key={i}>
-                  <div className="grid grid-cols-[auto_1fr] gap-x-[2.2rem] pb-[2.8rem] relative group">
+                  <div className="grid grid-cols-[auto_1fr] gap-x-[2.2rem] relative group">
                     <div>
                       <Typography
                         variant="overline"

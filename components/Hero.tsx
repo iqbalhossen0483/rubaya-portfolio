@@ -25,9 +25,9 @@ export default function Hero({ heroData }: { heroData: Hero | null }) {
         ></div>
       </div>
 
-      <div className="flex flex-col justify-center pt-32 pb-16 px-8 lg:pt-32 lg:pb-16 lg:px-20 relative z-10">
+      <div className="flex flex-col justify-center pt-28 pb-10 px-8 lg:pt-32 lg:pb-16 lg:px-20 relative z-10">
         <Transition>
-          <div className="inline-flex items-center gap-[0.7rem] font-sans text-[0.78rem] font-bold tracking-[0.14em] uppercase text-accent mb-[1.6rem]">
+          <div className="inline-flex items-center gap-[0.7rem] font-sans text-[0.78rem] font-bold tracking-[0.14em] uppercase text-accent mb-3 md:mb-5">
             <span className="block w-7.5 h-0.5 bg-accent"></span>
             Development Professional · Climate & Sustainability
           </div>
@@ -45,7 +45,7 @@ export default function Hero({ heroData }: { heroData: Hero | null }) {
         <Transition>
           <Typography
             variant="body2"
-            className="font-normal tracking-widest uppercase mb-[1.8rem] leading-[1.9]"
+            className="font-normal tracking-widest uppercase mb-3 md:mb-5 leading-[1.9]"
           >
             {heroData?.subtitle}
           </Typography>
@@ -53,7 +53,7 @@ export default function Hero({ heroData }: { heroData: Hero | null }) {
         <Transition>
           <Typography
             variant="subtitle1"
-            className="text-text-mid max-w-105 mb-10"
+            className="text-text-mid max-w-105 mb-5 md:mb-10"
           >
             {heroData?.description}
           </Typography>
