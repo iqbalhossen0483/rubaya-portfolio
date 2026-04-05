@@ -41,7 +41,7 @@ export type Experience = {
   startDate: Date;
   endDate: Date | null;
   isCurrent: boolean;
-  description: string;
+  description: string | null;
   order: number;
   createdAt: Date;
   updatedAt: Date;

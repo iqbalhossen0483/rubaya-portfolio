@@ -7596,7 +7596,7 @@ export namespace Prisma {
     startDate: Date
     endDate: Date | null
     isCurrent: boolean
-    description: string
+    description: string | null
     order: number
     createdAt: Date
     updatedAt: Date
@@ -7685,7 +7685,7 @@ export namespace Prisma {
       startDate: Date
       endDate: Date | null
       isCurrent: boolean
-      description: string
+      description: string | null
       order: number
       createdAt: Date
       updatedAt: Date
@@ -15392,7 +15392,7 @@ export namespace Prisma {
     startDate?: DateTimeFilter<"Experience"> | Date | string
     endDate?: DateTimeNullableFilter<"Experience"> | Date | string | null
     isCurrent?: BoolFilter<"Experience"> | boolean
-    description?: StringFilter<"Experience"> | string
+    description?: StringNullableFilter<"Experience"> | string | null
     order?: IntFilter<"Experience"> | number
     createdAt?: DateTimeFilter<"Experience"> | Date | string
     updatedAt?: DateTimeFilter<"Experience"> | Date | string
@@ -15405,7 +15405,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
     isCurrent?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15421,7 +15421,7 @@ export namespace Prisma {
     startDate?: DateTimeFilter<"Experience"> | Date | string
     endDate?: DateTimeNullableFilter<"Experience"> | Date | string | null
     isCurrent?: BoolFilter<"Experience"> | boolean
-    description?: StringFilter<"Experience"> | string
+    description?: StringNullableFilter<"Experience"> | string | null
     order?: IntFilter<"Experience"> | number
     createdAt?: DateTimeFilter<"Experience"> | Date | string
     updatedAt?: DateTimeFilter<"Experience"> | Date | string
@@ -15434,7 +15434,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
     isCurrent?: SortOrder
-    description?: SortOrder
+    description?: SortOrderInput | SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15455,7 +15455,7 @@ export namespace Prisma {
     startDate?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
     endDate?: DateTimeNullableWithAggregatesFilter<"Experience"> | Date | string | null
     isCurrent?: BoolWithAggregatesFilter<"Experience"> | boolean
-    description?: StringWithAggregatesFilter<"Experience"> | string
+    description?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     order?: IntWithAggregatesFilter<"Experience"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
@@ -16129,7 +16129,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate?: Date | string | null
     isCurrent?: boolean
-    description: string
+    description?: string | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16142,7 +16142,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate?: Date | string | null
     isCurrent?: boolean
-    description: string
+    description?: string | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16154,7 +16154,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCurrent?: BoolFieldUpdateOperationsInput | boolean
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16167,7 +16167,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCurrent?: BoolFieldUpdateOperationsInput | boolean
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16180,7 +16180,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate?: Date | string | null
     isCurrent?: boolean
-    description: string
+    description?: string | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16192,7 +16192,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCurrent?: BoolFieldUpdateOperationsInput | boolean
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16205,7 +16205,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     isCurrent?: BoolFieldUpdateOperationsInput | boolean
-    description?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
