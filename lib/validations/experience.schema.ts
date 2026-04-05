@@ -7,7 +7,7 @@ export const experienceSchema = z
     startDate: z.string().or(z.date()),
     endDate: z.string().or(z.date()).nullable().optional(),
     isCurrent: z.boolean(),
-    description: z.string().nullable().optional(),
+    description: z.string().optional(),
     order: z.number().int(),
   })
   .refine(
